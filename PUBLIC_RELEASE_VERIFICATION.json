@@ -1,0 +1,259 @@
+{
+  "checks": [
+    {
+      "check": "public_manifest",
+      "detail": {
+        "csv_entries": 155,
+        "entries": 155,
+        "errors": []
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "no_raw_row_level_or_model_artifacts",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "github_100_mib_file_limit",
+      "detail": {},
+      "status": "PASS"
+    },
+    {
+      "check": "publication_metadata_and_licenses",
+      "detail": "JSON parsed; required files present",
+      "status": "PASS"
+    },
+    {
+      "check": "unit_tests",
+      "detail": [
+        "C14B unit contracts: 4/4 PASS",
+        "C14C unit contracts: 2/2 PASS",
+        "C14D unit contracts: 6/6 PASS",
+        "C14E weighted bootstrap contracts: 10/10 PASS"
+      ],
+      "status": "PASS"
+    },
+    {
+      "check": "c14a_protocol",
+      "detail": {
+        "checks": 8,
+        "errors": [],
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "c14b_aggregates",
+      "detail": {
+        "absolute_configurations": 150,
+        "budget_rows": 600,
+        "checks": 13,
+        "contrast_rows": 484,
+        "errors": [],
+        "models_fitted": 0,
+        "phase": "C14B",
+        "primary_stage_policy_families": 44,
+        "status": "PASS",
+        "strict_sign_reversal_families": 30
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "c14e_draws_and_statistics",
+      "detail": {
+        "bootstrap_tasks": 42,
+        "checks": 15,
+        "contrasts": 151,
+        "draw_hash_errors": 0,
+        "errors": [],
+        "max_abs_exact_duplicate_statistic_error": 1.0061396160665481e-16,
+        "max_abs_summary_recalculation_error": 1.1102230246251565e-16,
+        "models_refitted": false,
+        "multiplicity_family_errors": 0,
+        "phase": "C14E",
+        "primary_familywise_negative_cells": 30,
+        "primary_familywise_positive_cells": 0,
+        "primary_precision_rows": 296,
+        "shared_resampling_stream_errors": 0,
+        "status": "PASS",
+        "summary_rows_recalculated": 2869,
+        "tolerance": 1e-12
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "c14c_aggregate_gate",
+      "detail": {
+        "all_probabilities_finite": true,
+        "all_probabilities_in_unit_interval": true,
+        "configurations": 44,
+        "environment": {
+          "joblib": "1.5.3",
+          "numpy": "2.3.5",
+          "pandas": "2.2.3",
+          "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+          "python": "3.12.13 (main, Aug  7 2026, 02:25:39) [Clang 22.1.3 ]",
+          "scikit_learn": "1.8.0"
+        },
+        "errors": [],
+        "expected_configurations": 44,
+        "inputs": {
+          "oulad_snapshots_manifest_sha256": "c74344d2b04be27cc071ef3520187eeea6bace9357aff071b473ab60db553d82",
+          "uci320_math_sha256": "e47f9ee225e1ee6e69b7564e6dac7123e80b8486677fe111f351964cef5dec80",
+          "uci320_portuguese_sha256": "a7594a11d7771c0efe1a740824e0e833da9c4cad07c39a9766a874575563fb3f",
+          "uci697_csv_sha256": "3ef126de5cefff26eb11fbb4237f1a1401cb64b488e2f1d598c23cedeb4c45ae"
+        },
+        "metric_rows": 68,
+        "minimum_positive_cases_in_evaluation": 40,
+        "models": {
+          "histgb": 22,
+          "logistic": 22
+        },
+        "phase": "C14C",
+        "prediction_rows": 250044,
+        "protocol_id": "SecureEWS-C14A",
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "c14d_aggregate_gate",
+      "detail": {
+        "candidate_fit_rows": 408,
+        "checks": 16,
+        "errors": [],
+        "feature_exclusion_errors": 0,
+        "harmonized_pairs": 30,
+        "harmonized_prediction_rows": 274004,
+        "max_abs_full_control_replay_error": 0.0,
+        "max_abs_new_model_replay_error": 1.1102230246251565e-16,
+        "new_model_prediction_rows": 249381,
+        "new_models_replayed": 28,
+        "pair_identity_errors": 0,
+        "phase": "C14D",
+        "replay_tolerance": 1e-12,
+        "status": "PASS",
+        "xuetangx_c05_retrained": false,
+        "xuetangx_c05_sha256": "5f6d6c4a5b9635b61d6049d7bb1261ef3c49ed8710df468342edce1efeac2828"
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "c14f_article_and_supplement",
+      "detail": {
+        "checks": [
+          {
+            "check": "required_release_files",
+            "detail": {
+              "missing": []
+            },
+            "status": "PASS"
+          },
+          {
+            "check": "pdf_page_counts",
+            "detail": {
+              "article": 21,
+              "supplement": 10
+            },
+            "status": "PASS"
+          },
+          {
+            "check": "article_required_claims_and_guards",
+            "detail": [],
+            "status": "PASS"
+          },
+          {
+            "check": "supplement_required_inventory_and_guards",
+            "detail": [],
+            "status": "PASS"
+          },
+          {
+            "check": "pdf_text_has_no_replacement_glyph",
+            "detail": {
+              "article": 0,
+              "supplement": 0
+            },
+            "status": "PASS"
+          },
+          {
+            "check": "all_pdf_pages_render_nontrivially",
+            "detail": {
+              "rendered": {
+                "article": 21,
+                "supplement": 10
+              },
+              "small_or_missing": []
+            },
+            "status": "PASS"
+          },
+          {
+            "check": "latex_logs_no_overflow_or_unresolved_crossrefs",
+            "detail": {
+              "main.log": [],
+              "supplement_wrapper.log": []
+            },
+            "status": "PASS"
+          },
+          {
+            "check": "locked_c14c_c14e_input_hashes",
+            "detail": {},
+            "status": "PASS"
+          },
+          {
+            "check": "generated_figure_hashes",
+            "detail": {},
+            "status": "PASS"
+          },
+          {
+            "check": "recorded_visual_inspection",
+            "detail": {
+              "article_pages_inspected": 21,
+              "checks": [
+                "page completeness",
+                "no blank pages",
+                "no clipping or overlap",
+                "table readability",
+                "figure readability",
+                "title and section hierarchy",
+                "page numbering"
+              ],
+              "defects": [],
+              "phase": "C14F",
+              "render_resolution_dpi": 110,
+              "status": "PASS",
+              "supplement_pages_inspected": 10
+            },
+            "status": "PASS"
+          }
+        ],
+        "checks_passed": 10,
+        "checks_total": 10,
+        "failures": [],
+        "pdf_sha256": {
+          "article": "5e380fe816d0a7b09f82a62589a33bddca7a8f1ac3d09ea1f827bb70ce02e739",
+          "supplement": "ab8c44fac25fcf9b6c7f1f5c09bd19f75b1b3bd44d1b26305a99bcfb6dcca065"
+        },
+        "phase": "C14F",
+        "status": "PASS"
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "private_cleanroom_anchor",
+      "detail": {
+        "project_manifest": "PASS",
+        "status": "PASS",
+        "xuetangx_c05_retrained": false
+      },
+      "status": "PASS"
+    }
+  ],
+  "checks_passed": 12,
+  "checks_total": 12,
+  "failures": [],
+  "largest_file_bytes": 2202863,
+  "public_files": 158,
+  "release": "SecureEWS-v0.6.0",
+  "status": "PASS"
+}

@@ -1,0 +1,19 @@
+{
+  "release": "SecureEWS-v0.6.0",
+  "technical_status": "READY_FOR_PRIVATE_GITHUB_AND_ZENODO_DRAFT",
+  "permanent_publication_status": "BLOCKED_PENDING_CONFIRMATIONS",
+  "required_confirmations": [
+    "author order and spelling",
+    "CRediT contributor roles",
+    "funding statement",
+    "ethics determination",
+    "competing-interest declarations",
+    "final approval from every listed author"
+  ],
+  "safe_next_actions": [
+    "create a private GitHub repository",
+    "create and inspect an unpublished Zenodo draft"
+  ],
+  "publication_gate": "Do not make the GitHub repository public or publish the Zenodo record until every required confirmation is complete.",
+  "xuetangx_c05_retrained": false
+}

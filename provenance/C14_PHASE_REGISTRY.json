@@ -1,0 +1,36 @@
+{
+  "canonical_parent": {
+    "file": "canonical_c13e/SecureEWS_C13E_CLEANROOM_PROJECT.zip",
+    "sha256": "d2473b5a90c0cc731cd4fffc6706ba082dc6354d7a4aaa80e01c7943178bec56"
+  },
+  "phases": {
+    "C14A": {
+      "file": "phase_archives/SecureEWS_C14A_PROTOCOL.zip",
+      "sha256": "bd5fe0b08b3ce4961ea35268f6d50dc7b9c4726ad671fe7d22ecba77acec7925"
+    },
+    "C14B": {
+      "file": "phase_archives/SecureEWS_C14B_BUDGET_SENSITIVITY.zip",
+      "sha256": "63df100dfcc61cf024f6e201ea3e0dc1de9cc48083cb218d1f510d95e86a9f4d"
+    },
+    "C14C": {
+      "file": "phase_archives/SecureEWS_C14C_PROXY_PERSISTENCE.zip",
+      "sha256": "e8cbef575ecffdf37d816351c170670c9b8a01eb893e102a4a005ff1a287b67b"
+    },
+    "C14D": {
+      "file": "phase_archives/SecureEWS_C14D_HARMONIZED_MODELS.zip",
+      "sha256": "a81668ebd40fa4cd7d51fd0052fdff9e94ee20c388796951d085cd89b992ba94"
+    },
+    "C14E": {
+      "file": "phase_archives/SecureEWS_C14E_PAIRED_STATISTICS.zip",
+      "sha256": "897727ad0c643a516f0f812c528d8e8cce395a4a155fb451bb29d2f886342c4a"
+    },
+    "C14F": {
+      "file": "phase_archives/SecureEWS_C14F_ARTICLE_SUPPLEMENT.zip",
+      "sha256": "f3c1038e4e2586f37c355ad58099c6916e6cface817573ac6afefa3207e9ce6d"
+    }
+  },
+  "xuetangx_c05": {
+    "archive_sha256": "5f6d6c4a5b9635b61d6049d7bb1261ef3c49ed8710df468342edce1efeac2828",
+    "status": "PRESERVED_NOT_EXTRACTED_OR_RETRAINED_BY_C14"
+  }
+}

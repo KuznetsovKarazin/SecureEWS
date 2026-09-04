@@ -1,0 +1,35 @@
+{
+  "bootstrap_tasks": 42,
+  "bootstrap_units": {
+    "oulad": "id_student cluster",
+    "uci320": "row",
+    "uci697": "row"
+  },
+  "c14b_point_replay_checks": 2299,
+  "c14b_point_replay_max_abs_error": 3.5431726996826285e-16,
+  "contrasts": 151,
+  "environment": {
+    "joblib": "1.5.3",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+    "python": "3.12.13"
+  },
+  "input_sha256": {
+    "c14b_budget_contrasts": "a1174a8a4083f5b7adf027f2ccdf48b149cf33115862f78a4e52aa15c033f09b",
+    "c14b_probability_contrasts": "dade9e60d20ead03dc97771958eb056385500bf02e6fd814efdade2528533877",
+    "c14d_harmonized_predictions": "4622fdc6f5e0852f3468667cc57c4505df8b4c1dd066811bb91ce5834d640a68"
+  },
+  "models_refitted": false,
+  "multiplicity": "Bonferroni percentile and Bonferroni-adjusted bootstrap sign proportions within dataset x subject/outcome x named policy/block x metric across frozen stages x four budgets; probability metrics omit budgets",
+  "paired_multiplicities": true,
+  "paired_statistic_rows": 2869,
+  "phase": "C14E",
+  "primary_contrasts": 74,
+  "primary_replicates": 5000,
+  "protocol_id": "SecureEWS-C14A/C14E",
+  "resampling_stream_contract": "one deterministic RNG stream per dataset x subject/outcome x stage, shared across C14B and C14D when observation identities coincide",
+  "sensitivity_contrasts": 77,
+  "sensitivity_replicates": 2000,
+  "status": "PAIRED_STATISTICS_LOCKED_BEFORE_C14F"
+}

@@ -1,0 +1,96 @@
+{
+  "checks": [
+    {
+      "check": "required_release_files",
+      "detail": {
+        "missing": []
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "pdf_page_counts",
+      "detail": {
+        "article": 21,
+        "supplement": 10
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "article_required_claims_and_guards",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "supplement_required_inventory_and_guards",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "pdf_text_has_no_replacement_glyph",
+      "detail": {
+        "article": 0,
+        "supplement": 0
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "all_pdf_pages_render_nontrivially",
+      "detail": {
+        "rendered": {
+          "article": 21,
+          "supplement": 10
+        },
+        "small_or_missing": []
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "latex_logs_no_overflow_or_unresolved_crossrefs",
+      "detail": {
+        "main.log": [],
+        "supplement_wrapper.log": []
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "locked_c14c_c14e_input_hashes",
+      "detail": {},
+      "status": "PASS"
+    },
+    {
+      "check": "generated_figure_hashes",
+      "detail": {},
+      "status": "PASS"
+    },
+    {
+      "check": "recorded_visual_inspection",
+      "detail": {
+        "article_pages_inspected": 21,
+        "checks": [
+          "page completeness",
+          "no blank pages",
+          "no clipping or overlap",
+          "table readability",
+          "figure readability",
+          "title and section hierarchy",
+          "page numbering"
+        ],
+        "defects": [],
+        "phase": "C14F",
+        "render_resolution_dpi": 110,
+        "status": "PASS",
+        "supplement_pages_inspected": 10
+      },
+      "status": "PASS"
+    }
+  ],
+  "checks_passed": 10,
+  "checks_total": 10,
+  "failures": [],
+  "pdf_sha256": {
+    "article": "5e380fe816d0a7b09f82a62589a33bddca7a8f1ac3d09ea1f827bb70ce02e739",
+    "supplement": "ab8c44fac25fcf9b6c7f1f5c09bd19f75b1b3bd44d1b26305a99bcfb6dcca065"
+  },
+  "phase": "C14F",
+  "status": "PASS"
+}

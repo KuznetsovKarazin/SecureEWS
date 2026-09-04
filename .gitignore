@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+verification_runs/
+zenodo_draft_receipt.json
+*.tmp
+*.bak
+dist/
+SecureEWS-v0.6.0.zip
+SecureEWS-v0.6.0.zip.sha256

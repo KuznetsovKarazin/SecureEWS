@@ -1,0 +1,14 @@
+{
+  "phase": "C14B",
+  "status": "PASS",
+  "checks": 13,
+  "models_fitted": 0,
+  "absolute_configurations": 150,
+  "budget_rows": 600,
+  "contrast_rows": 484,
+  "primary_stage_policy_families": 44,
+  "strict_sign_reversal_families": 30,
+  "max_abs_10pct_replay_error": 2.220446049250313e-16,
+  "errors": []
+}
+

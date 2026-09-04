@@ -1,0 +1,10 @@
+{
+  "phase": "C14A",
+  "status": "PASS",
+  "checks": 8,
+  "errors": [],
+  "json_parse": "PASS",
+  "python_compile": "PASS",
+  "protocol_frozen_before": ["C14B results", "C14C results", "C14D results"],
+  "canonical_c13e_sha256": "d2473b5a90c0cc731cd4fffc6706ba082dc6354d7a4aaa80e01c7943178bec56"
+}

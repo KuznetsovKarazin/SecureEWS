@@ -1,0 +1,24 @@
+{
+  "c13e_archive": {
+    "file": "SecureEWS_C13E_CLEANROOM_PROJECT(2).zip",
+    "size_bytes": 222765143,
+    "sha256": "d2473b5a90c0cc731cd4fffc6706ba082dc6354d7a4aaa80e01c7943178bec56",
+    "zip_integrity": "PASS",
+    "manifest_rows_verified": 257
+  },
+  "c12e_nested": {
+    "sha256": "f9a8c106b5109976a48325292ded7158addad3829f1da5d326898026715b8aac",
+    "role": "canonical OULAD reference and saved test predictions"
+  },
+  "uci697": {
+    "sha256": "e90e55fd65ec462ae283ebeb2cca409319e3460ed898d8754f62fb35cc83a65d"
+  },
+  "uci320": {
+    "sha256": "82ae9d66437b9808df42e8c89d2bb179c46e9cfbcf06f38abc1d20b3b747e177"
+  },
+  "xuetangx": {
+    "canonical_phase": "C05/v0.3.1",
+    "action": "preserve; do not retrain; do not include in demographic evidence"
+  }
+}
+

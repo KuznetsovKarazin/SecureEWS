@@ -1,0 +1,56 @@
+cff-version: 1.2.0
+message: "If you use this software or its aggregate results, please cite this release."
+title: "SecureEWS: Auditable data-minimization stress tests for educational early-warning systems"
+type: software
+version: 0.6.0
+date-released: 2026-09-04
+license: MIT
+authors:
+  - family-names: Shaikhanova
+    given-names: Aigul
+    affiliation: "L.N. Gumilyov Eurasian National University; University of Illinois at Urbana-Champaign"
+  - family-names: Kuznetsov
+    given-names: Oleksandr
+    orcid: "https://orcid.org/0000-0003-2331-6326"
+    affiliation: "eCampus University; V. N. Karazin Kharkiv National University"
+  - family-names: Shangytbayeva
+    given-names: Gulmira
+    affiliation: "Zhubanov University"
+  - family-names: Bakenova
+    given-names: Kamila
+    affiliation: "University of Illinois at Urbana-Champaign; Arkalyk Pedagogical University"
+  - family-names: Iklassova
+    given-names: Kainizhamal
+    affiliation: "Manash Kozybayev North Kazakhstan University"
+  - family-names: Tulemisova
+    given-names: Dana
+    affiliation: "Astana IT University"
+abstract: >-
+  SecureEWS provides auditable post-development stress tests of educational
+  early-warning data-minimization claims across review budgets, stages,
+  excluded feature blocks, and metrics in OULAD and two UCI datasets.
+keywords:
+  - learning analytics
+  - early-warning systems
+  - data minimization
+  - workload-constrained evaluation
+  - proxy persistence
+  - multiplicity
+  - temporal validation
+preferred-citation:
+  type: article
+  title: "Stress-Testing Data Minimization Across Review Budgets and Decision Stages in Educational Early Warning: Paired Evidence from OULAD and Two UCI Datasets"
+  year: 2026
+  authors:
+    - family-names: Shaikhanova
+      given-names: Aigul
+    - family-names: Kuznetsov
+      given-names: Oleksandr
+    - family-names: Shangytbayeva
+      given-names: Gulmira
+    - family-names: Bakenova
+      given-names: Kamila
+    - family-names: Iklassova
+      given-names: Kainizhamal
+    - family-names: Tulemisova
+      given-names: Dana

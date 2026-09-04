@@ -1,0 +1,18 @@
+{
+  "candidate_fit_rows": 408,
+  "checks": 16,
+  "errors": [],
+  "feature_exclusion_errors": 0,
+  "harmonized_pairs": 30,
+  "harmonized_prediction_rows": 274004,
+  "max_abs_full_control_replay_error": 0.0,
+  "max_abs_new_model_replay_error": 1.1102230246251565e-16,
+  "new_model_prediction_rows": 249381,
+  "new_models_replayed": 28,
+  "pair_identity_errors": 0,
+  "phase": "C14D",
+  "replay_tolerance": 1e-12,
+  "status": "PASS",
+  "xuetangx_c05_retrained": false,
+  "xuetangx_c05_sha256": "5f6d6c4a5b9635b61d6049d7bb1261ef3c49ed8710df468342edce1efeac2828"
+}

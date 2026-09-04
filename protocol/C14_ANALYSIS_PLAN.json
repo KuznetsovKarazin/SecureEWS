@@ -1,0 +1,106 @@
+{
+  "protocol_id": "SecureEWS-C14A",
+  "version": "1.0.0",
+  "frozen_utc_date": "2026-09-02",
+  "status": "FROZEN_BEFORE_C14B_C14C_C14D_RESULTS",
+  "development_status": "post-development extension; not preregistered or independently confirmatory",
+  "canonical_parent": {
+    "phase": "C13E",
+    "archive_sha256": "d2473b5a90c0cc731cd4fffc6706ba082dc6354d7a4aaa80e01c7943178bec56",
+    "verification": "PASS",
+    "oulad": "C12E/v0.4.3-official-pinned",
+    "xuetangx": "C05/v0.3.1 preserved; do not retrain; excluded from demographic claims"
+  },
+  "research_questions": [
+    "budget robustness at 5, 10, 20 and 30 percent",
+    "held-out predictability of directly excluded targeted fields",
+    "cross-dataset operational harmonization of sex_gender and socioeconomic_family blocks",
+    "survival of claims under paired family-wise uncertainty across budgets and stages"
+  ],
+  "c14b": {
+    "models_refit": false,
+    "inputs": "frozen C12 test predictions and C13 OOF predictions",
+    "budgets": [0.05, 0.1, 0.2, 0.3],
+    "rounding": "ceil within each operational group",
+    "groups": {"oulad": "code_module", "uci697": "Course", "uci320": "school"},
+    "tie_break": {
+      "oulad": "saved tie_key_sha256 after descending calibrated probability",
+      "uci": "exact C13 SecureEWS-C13A deterministic hash using dataset, row_id and original dataset seed"
+    },
+    "queue_metrics": ["alerts", "true_alerts", "false_alerts", "precision", "recall", "lift", "alert_jaccard_vs_full", "retained_full_alert_fraction"],
+    "probability_metrics_once_per_configuration": ["average_precision", "auroc", "brier"],
+    "primary_model": "histgb",
+    "secondary_model": "logistic",
+    "report_all_frozen_policies": true
+  },
+  "c14c": {
+    "interpretation": "predictability audit only; not proof that the EWS uses a proxy and not a fairness/privacy/causal test",
+    "targets": {
+      "oulad": ["gender", "disability"],
+      "uci697": ["Gender", "Educational special needs"],
+      "uci320": ["sex"]
+    },
+    "predictor_view": "exact targeted-exclusion retained outcome-model fields at each stage, excluding outcome, identifiers, split fields and future fields",
+    "evaluation": {
+      "oulad_primary": "fit fixed probes on 2013B/2013J; use 2014B only to select the balanced-accuracy decision threshold; test on 2014J without test-label use",
+      "oulad_unseen_student_sensitivity": true,
+      "uci": "same 10 outer folds as C13"
+    },
+    "models": {
+      "primary": {"name": "logistic", "C": 1.0, "max_iter": 2000, "selection": "none"},
+      "nonlinear_sensitivity": {"name": "histgb", "max_leaf_nodes": 15, "selection": "none", "other_parameters": "C13 fixed parameters"}
+    },
+    "metrics": ["auroc", "average_precision", "balanced_accuracy", "brier", "prevalence"],
+    "retain_all_targets_and_stages": true
+  },
+  "c14d": {
+    "primary_model_only": "histgb",
+    "new_logistic_models": false,
+    "blocks": {
+      "sex_gender": {
+        "oulad": ["gender"],
+        "uci697": ["Gender"],
+        "uci320": ["sex"]
+      },
+      "socioeconomic_family": {
+        "oulad": ["highest_education", "imd_band"],
+        "uci697": ["Mother's qualification", "Father's qualification", "Mother's occupation", "Father's occupation", "Debtor", "Tuition fees up to date", "Scholarship holder"],
+        "uci320": ["Medu", "Fedu", "Mjob", "Fjob"]
+      }
+    },
+    "reuse_exact_same_run_pairs": {
+      "sex_gender": ["OULAD day14/day42 C12 LOO", "UCI697 C13 LOO Gender", "UCI320 C13 targeted_no_sex"],
+      "socioeconomic_family": ["UCI697 C13 no_family_financial"]
+    },
+    "new_pairs": {
+      "oulad_sex_gender": [28, 56, 70, 90],
+      "oulad_socioeconomic_family": [14, 28, 42, 56, 70, 90],
+      "uci320_socioeconomic_family": ["mathematics/baseline", "mathematics/period1", "mathematics/period2", "portuguese/baseline", "portuguese/period1", "portuguese/period2"]
+    },
+    "same_run_full_control_required": true,
+    "full_replay_tolerance_max_abs_probability": 1e-12,
+    "reject_pair_on_failed_control_replay": true
+  },
+  "c14e": {
+    "primary_bootstrap_replicates": 5000,
+    "secondary_bootstrap_replicates": 2000,
+    "oulad_unit": "id_student cluster",
+    "uci_unit": "row",
+    "paired_multiplicities": true,
+    "pointwise_interval": "95% paired percentile",
+    "familywise_interval": "Bonferroni paired percentile",
+    "family": "dataset x subject/outcome x named policy/block x metric over all frozen stages x four budgets; probability metrics omit budget",
+    "primary_estimand": "precision_restricted_minus_full",
+    "secondary_estimands": ["recall difference", "alert overlap", "AP difference", "AUROC difference", "Brier difference", "proxy metrics"],
+    "no_equivalence_from_nonsignificance": true,
+    "no_pooled_meta_effect": true
+  },
+  "reporting_guards": [
+    "retain negative, null, unstable and contradictory results",
+    "never compare a restricted model to a full control from a different run",
+    "do not call operational harmonization measurement equivalence",
+    "do not call proxy predictability actual proxy use",
+    "do not claim formal non-inferiority, fairness certification, privacy guarantee or causal teacher effectiveness",
+    "keep OULAD, UCI697 and UCI320 separately identified"
+  ]
+}

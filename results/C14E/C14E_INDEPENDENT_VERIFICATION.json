@@ -1,0 +1,19 @@
+{
+  "bootstrap_tasks": 42,
+  "checks": 15,
+  "contrasts": 151,
+  "draw_hash_errors": 0,
+  "errors": [],
+  "max_abs_exact_duplicate_statistic_error": 1.0061396160665481e-16,
+  "max_abs_summary_recalculation_error": 1.1102230246251565e-16,
+  "models_refitted": false,
+  "multiplicity_family_errors": 0,
+  "phase": "C14E",
+  "primary_familywise_negative_cells": 30,
+  "primary_familywise_positive_cells": 0,
+  "primary_precision_rows": 296,
+  "shared_resampling_stream_errors": 0,
+  "status": "PASS",
+  "summary_rows_recalculated": 2869,
+  "tolerance": 1e-12
+}

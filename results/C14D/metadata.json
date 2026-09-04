@@ -1,0 +1,34 @@
+{
+  "candidate_fit_rows": 408,
+  "distinct_new_full_controls": 12,
+  "environment": {
+    "joblib": "1.5.3",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "platform": "Linux-6.18.35-x86_64-with-glibc2.39",
+    "python": "3.12.13",
+    "scikit_learn": "1.8.0"
+  },
+  "full_replay_max_abs_error": 1.1102230246251565e-16,
+  "full_replay_rows": 18,
+  "full_replay_tolerance": 1e-12,
+  "harmonized_pairs": 30,
+  "harmonized_prediction_rows": 274004,
+  "inputs": {
+    "c12_oulad_predictions_sha256": "d228aad69a6059165b275e6dd90e09daa076a3a4ec3452d433c70e760639927e",
+    "c13_uci_oof_sha256": "1e77b96a42008b27a548794a1d8b331be850bc712aef634e7263f7a7bd66262d"
+  },
+  "new_logistic_models": 0,
+  "new_oulad_selected_models": 16,
+  "new_selected_models": 28,
+  "new_uci320_selected_bundles": 12,
+  "new_uci697_models": 0,
+  "phase": "C14D",
+  "protocol_id": "SecureEWS-C14A/C14D",
+  "status": "MODELS_AND_PREDICTIONS_LOCKED_BEFORE_C14E",
+  "xuetangx_c05": {
+    "action": "preserved; not extracted; not retrained; not analyzed",
+    "archive": "SecureEWS_v0.3.1_C05_COMPLETE_STAGE.zip",
+    "archive_sha256": "5f6d6c4a5b9635b61d6049d7bb1261ef3c49ed8710df468342edce1efeac2828"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "phase": "C14F",
+  "status": "PASS",
+  "article_pages_inspected": 21,
+  "supplement_pages_inspected": 10,
+  "render_resolution_dpi": 110,
+  "checks": [
+    "page completeness",
+    "no blank pages",
+    "no clipping or overlap",
+    "table readability",
+    "figure readability",
+    "title and section hierarchy",
+    "page numbering"
+  ],
+  "defects": []
+}

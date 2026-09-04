@@ -1,0 +1,339 @@
+{
+  "checks": {
+    "canonical_c13e": {
+      "expected_sha256": "d2473b5a90c0cc731cd4fffc6706ba082dc6354d7a4aaa80e01c7943178bec56",
+      "internal_manifest": {
+        "entries": 257,
+        "errors": [],
+        "status": "PASS"
+      },
+      "sha256": "d2473b5a90c0cc731cd4fffc6706ba082dc6354d7a4aaa80e01c7943178bec56",
+      "zip_crc": "PASS"
+    },
+    "canonical_c13e_deep_verifier": {
+      "deep_checks": {
+        "c12e": "PASS",
+        "c13b": {
+          "configurations_verified": 114,
+          "errors": [],
+          "max_abs_prediction_replay_error": 1.1102230246251565e-16,
+          "oof_rows": 243220,
+          "status": "PASS"
+        },
+        "c13c": {
+          "absolute_rows": 840,
+          "attenuation_rows": 195,
+          "bootstrap_rows": 284000,
+          "errors": [],
+          "frozen_models_verified": 114,
+          "max_attenuation_error": 1.1102230246251565e-16,
+          "max_bootstrap_quantile_error": 9.71445146547012e-17,
+          "max_same_run_point_contrast_error": 3.191891195797325e-16,
+          "max_sklearn_probability_metric_error": 2.220446049250313e-16,
+          "paired_contrast_rows": 470,
+          "preserved_results": {
+            "negative_point_contrasts": 234,
+            "pointwise_intervals_crossing_or_touching_zero": 350,
+            "positive_point_contrasts": 161,
+            "zero_point_contrasts": 75
+          },
+          "status": "PASS"
+        },
+        "c13d": {
+          "errors": [],
+          "pdfs": [
+            {
+              "file": "main.pdf",
+              "pages": 16,
+              "sha256": "1e1202b6707557a53092728c8824e66dfdf8f63aede33ecfdb9648307641047b",
+              "size_bytes": 473798
+            },
+            {
+              "file": "supplement_wrapper.pdf",
+              "pages": 7,
+              "sha256": "bf75a607a9a1933996716ffbdd4748d8161cfb32783eff963ada59945308babf",
+              "size_bytes": 260175
+            }
+          ],
+          "source_stats_sha256": {
+            "absolute_metrics_long.csv": "c6d41bb0ee4736e5fb342b0c27aac865967585aee87b02fc49250d21fdd8017e",
+            "paired_contrasts.csv": "a0c2cf3e497fa9a5f9855d9880fcab116be63e184a1d28468388bfc59df0461e"
+          },
+          "status": "PASS",
+          "visual_review": {
+            "article_pages_reviewed": 16,
+            "clipping_or_overlap_found": false,
+            "supplement_pages_reviewed": 7
+          }
+        },
+        "uci_input_audit": "PASS"
+      },
+      "errors": [],
+      "manifest_rows_verified": 257,
+      "pinned_sha256": {
+        "c12e": "f9a8c106b5109976a48325292ded7158addad3829f1da5d326898026715b8aac",
+        "uci320": "82ae9d66437b9808df42e8c89d2bb179c46e9cfbcf06f38abc1d20b3b747e177",
+        "uci697": "e90e55fd65ec462ae283ebeb2cca409319e3460ed898d8754f62fb35cc83a65d"
+      },
+      "status": "PASS",
+      "timestamp_utc": "2026-09-02T20:36:59.853430+00:00",
+      "zip_crc": {
+        "c12e": "PASS",
+        "uci320": "PASS",
+        "uci697": "PASS"
+      }
+    },
+    "phase_archives": {
+      "C14A": {
+        "expected_sha256": "bd5fe0b08b3ce4961ea35268f6d50dc7b9c4726ad671fe7d22ecba77acec7925",
+        "file": "SecureEWS_C14A_PROTOCOL.zip",
+        "sha256": "bd5fe0b08b3ce4961ea35268f6d50dc7b9c4726ad671fe7d22ecba77acec7925",
+        "zip_crc": "PASS"
+      },
+      "C14B": {
+        "expected_sha256": "63df100dfcc61cf024f6e201ea3e0dc1de9cc48083cb218d1f510d95e86a9f4d",
+        "file": "SecureEWS_C14B_BUDGET_SENSITIVITY.zip",
+        "sha256": "63df100dfcc61cf024f6e201ea3e0dc1de9cc48083cb218d1f510d95e86a9f4d",
+        "zip_crc": "PASS"
+      },
+      "C14C": {
+        "expected_sha256": "e8cbef575ecffdf37d816351c170670c9b8a01eb893e102a4a005ff1a287b67b",
+        "file": "SecureEWS_C14C_PROXY_PERSISTENCE.zip",
+        "sha256": "e8cbef575ecffdf37d816351c170670c9b8a01eb893e102a4a005ff1a287b67b",
+        "zip_crc": "PASS"
+      },
+      "C14D": {
+        "expected_sha256": "a81668ebd40fa4cd7d51fd0052fdff9e94ee20c388796951d085cd89b992ba94",
+        "file": "SecureEWS_C14D_HARMONIZED_MODELS.zip",
+        "sha256": "a81668ebd40fa4cd7d51fd0052fdff9e94ee20c388796951d085cd89b992ba94",
+        "zip_crc": "PASS"
+      },
+      "C14E": {
+        "expected_sha256": "897727ad0c643a516f0f812c528d8e8cce395a4a155fb451bb29d2f886342c4a",
+        "file": "SecureEWS_C14E_PAIRED_STATISTICS.zip",
+        "sha256": "897727ad0c643a516f0f812c528d8e8cce395a4a155fb451bb29d2f886342c4a",
+        "zip_crc": "PASS"
+      },
+      "C14F": {
+        "expected_sha256": "f3c1038e4e2586f37c355ad58099c6916e6cface817573ac6afefa3207e9ce6d",
+        "file": "SecureEWS_C14F_ARTICLE_SUPPLEMENT.zip",
+        "sha256": "f3c1038e4e2586f37c355ad58099c6916e6cface817573ac6afefa3207e9ce6d",
+        "zip_crc": "PASS"
+      }
+    },
+    "phase_independent_verifiers": {
+      "C14A": {
+        "checks": 8,
+        "errors": [],
+        "status": "PASS"
+      },
+      "C14B": {
+        "absolute_configurations": 150,
+        "budget_rows": 600,
+        "checks": 13,
+        "contrast_rows": 484,
+        "errors": [],
+        "models_fitted": 0,
+        "phase": "C14B",
+        "primary_stage_policy_families": 44,
+        "status": "PASS",
+        "strict_sign_reversal_families": 30
+      },
+      "C14C": {
+        "checks": 10,
+        "configurations_replayed": 44,
+        "errors": [],
+        "forbidden_feature_errors": 0,
+        "max_abs_prediction_replay_error": 1.1102230246251565e-16,
+        "metric_rows": 68,
+        "phase": "C14C",
+        "prediction_rows": 250044,
+        "replay_tolerance": 1e-12,
+        "status": "PASS"
+      },
+      "C14D": {
+        "candidate_fit_rows": 408,
+        "checks": 16,
+        "errors": [],
+        "feature_exclusion_errors": 0,
+        "harmonized_pairs": 30,
+        "harmonized_prediction_rows": 274004,
+        "max_abs_full_control_replay_error": 0.0,
+        "max_abs_new_model_replay_error": 1.1102230246251565e-16,
+        "new_model_prediction_rows": 249381,
+        "new_models_replayed": 28,
+        "pair_identity_errors": 0,
+        "phase": "C14D",
+        "replay_tolerance": 1e-12,
+        "status": "PASS",
+        "xuetangx_c05_retrained": false,
+        "xuetangx_c05_sha256": "5f6d6c4a5b9635b61d6049d7bb1261ef3c49ed8710df468342edce1efeac2828"
+      },
+      "C14E": {
+        "bootstrap_tasks": 42,
+        "checks": 15,
+        "contrasts": 151,
+        "draw_hash_errors": 0,
+        "errors": [],
+        "max_abs_exact_duplicate_statistic_error": 1.0061396160665481e-16,
+        "max_abs_summary_recalculation_error": 1.1102230246251565e-16,
+        "models_refitted": false,
+        "multiplicity_family_errors": 0,
+        "phase": "C14E",
+        "primary_familywise_negative_cells": 30,
+        "primary_familywise_positive_cells": 0,
+        "primary_precision_rows": 296,
+        "shared_resampling_stream_errors": 0,
+        "status": "PASS",
+        "summary_rows_recalculated": 2869,
+        "tolerance": 1e-12
+      },
+      "C14F": {
+        "checks": [
+          {
+            "check": "required_release_files",
+            "detail": {
+              "missing": []
+            },
+            "status": "PASS"
+          },
+          {
+            "check": "pdf_page_counts",
+            "detail": {
+              "article": 21,
+              "supplement": 10
+            },
+            "status": "PASS"
+          },
+          {
+            "check": "article_required_claims_and_guards",
+            "detail": [],
+            "status": "PASS"
+          },
+          {
+            "check": "supplement_required_inventory_and_guards",
+            "detail": [],
+            "status": "PASS"
+          },
+          {
+            "check": "pdf_text_has_no_replacement_glyph",
+            "detail": {
+              "article": 0,
+              "supplement": 0
+            },
+            "status": "PASS"
+          },
+          {
+            "check": "all_pdf_pages_render_nontrivially",
+            "detail": {
+              "rendered": {
+                "article": 21,
+                "supplement": 10
+              },
+              "small_or_missing": []
+            },
+            "status": "PASS"
+          },
+          {
+            "check": "latex_logs_no_overflow_or_unresolved_crossrefs",
+            "detail": {
+              "main.log": [],
+              "supplement_wrapper.log": []
+            },
+            "status": "PASS"
+          },
+          {
+            "check": "locked_c14c_c14e_input_hashes",
+            "detail": {},
+            "status": "PASS"
+          },
+          {
+            "check": "generated_figure_hashes",
+            "detail": {},
+            "status": "PASS"
+          },
+          {
+            "check": "recorded_visual_inspection",
+            "detail": {
+              "article_pages_inspected": 21,
+              "checks": [
+                "page completeness",
+                "no blank pages",
+                "no clipping or overlap",
+                "table readability",
+                "figure readability",
+                "title and section hierarchy",
+                "page numbering"
+              ],
+              "defects": [],
+              "phase": "C14F",
+              "render_resolution_dpi": 110,
+              "status": "PASS",
+              "supplement_pages_inspected": 10
+            },
+            "status": "PASS"
+          }
+        ],
+        "checks_passed": 10,
+        "checks_total": 10,
+        "failures": [],
+        "pdf_sha256": {
+          "article": "5e380fe816d0a7b09f82a62589a33bddca7a8f1ac3d09ea1f827bb70ce02e739",
+          "supplement": "ab8c44fac25fcf9b6c7f1f5c09bd19f75b1b3bd44d1b26305a99bcfb6dcca065"
+        },
+        "phase": "C14F",
+        "status": "PASS"
+      }
+    },
+    "phase_internal_manifests": {
+      "C14A": {
+        "entries": 7,
+        "errors": [],
+        "status": "PASS"
+      },
+      "C14B": {
+        "entries": 16,
+        "errors": [],
+        "status": "PASS"
+      },
+      "C14C": {
+        "entries": 61,
+        "errors": [],
+        "status": "PASS"
+      },
+      "C14D": {
+        "entries": 49,
+        "errors": [],
+        "status": "PASS"
+      },
+      "C14E": {
+        "entries": 56,
+        "errors": [],
+        "status": "PASS"
+      },
+      "C14F": {
+        "entries": 43,
+        "errors": [],
+        "status": "PASS"
+      }
+    },
+    "project_manifest": {
+      "entries": 28,
+      "errors": [],
+      "status": "PASS"
+    },
+    "xuetangx_c05": {
+      "archive_sha256": "5f6d6c4a5b9635b61d6049d7bb1261ef3c49ed8710df468342edce1efeac2828",
+      "expected_sha256": "5f6d6c4a5b9635b61d6049d7bb1261ef3c49ed8710df468342edce1efeac2828",
+      "extracted_by_c14": false,
+      "retrained_by_c14": false,
+      "zip_crc": "PASS"
+    }
+  },
+  "errors": [],
+  "mode": "verify-existing-no-training",
+  "phase": "C14G",
+  "status": "PASS",
+  "timestamp_utc": "2026-09-02T20:36:59.931505+00:00",
+  "xuetangx_c05_retrained": false
+}

@@ -1,0 +1,8 @@
+block_id,dataset,excluded_fields,existing_exact_pair,new_models_required,interpretation_limit
+sex_gender,oulad,gender,"day14 and day42",day28/day56/day70/day90,"shared sex/gender field; coding and populations differ"
+sex_gender,uci697,Gender,"enrollment and semester1",none,"shared sex/gender field; coding and populations differ"
+sex_gender,uci320,sex,"both subjects and all three stages",none,"shared sex/gender field; coding and populations differ"
+socioeconomic_family,oulad,"highest_education|imd_band",none,"all six landmarks","education and area deprivation proxies; no direct family variables"
+socioeconomic_family,uci697,"Mother's qualification|Father's qualification|Mother's occupation|Father's occupation|Debtor|Tuition fees up to date|Scholarship holder",both stages,none,"mixed parental and current financial indicators"
+socioeconomic_family,uci320,"Medu|Fedu|Mjob|Fjob",none,"both subjects and all three stages","parental education and occupation only"
+

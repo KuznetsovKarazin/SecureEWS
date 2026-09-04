@@ -1,0 +1,28 @@
+{
+  "budget_contrast_rows": 484,
+  "budget_metric_rows": 600,
+  "budgets": [
+    0.05,
+    0.1,
+    0.2,
+    0.3
+  ],
+  "errors": [],
+  "inputs": {
+    "oulad_point_metrics_sha256": "a57a8641aff7ee44a7d94fd69a86c2e1f81b191649318852a5e2f7fdc370f4bb",
+    "uci_absolute_metrics_sha256": "c6d41bb0ee4736e5fb342b0c27aac865967585aee87b02fc49250d21fdd8017e",
+    "uci_oof_sha256": "1e77b96a42008b27a548794a1d8b331be850bc712aef634e7263f7a7bd66262d"
+  },
+  "max_abs_10pct_replay_error": 2.220446049250313e-16,
+  "models_fitted": 0,
+  "oulad_configurations": 36,
+  "phase": "C14B",
+  "primary_budget_contrast_rows": 176,
+  "primary_families_with_strict_sign_reversal": 30,
+  "primary_stage_policy_families": 44,
+  "probability_contrast_rows": 363,
+  "probability_metric_rows": 150,
+  "replay_tolerance": 1e-12,
+  "status": "PASS",
+  "uci_configurations": 114
+}

@@ -1,0 +1,15 @@
+{
+  "inputs": {
+    "paired_statistics.csv.gz": "eb795957ca22519095bc804e1c63397df5fa1d1bc982af3f86941f07e1da571e",
+    "primary_family_summary.csv": "ab175f51c7bc98fa17a95d98067bcfad63e00fb2b35939dbbd947bbbba926b7b",
+    "proxy_primary_metrics.csv": "62af82759d716ba436230868ceb92b61140ef3dd05b434bb6d5bd1875a16535b"
+  },
+  "outputs": {
+    "figures/fig3_c14_budget_harmonized.pdf": "f7c6b9c2788d4d639599fcacc5abdc3dec417ec78631a5031090a6c0b98b29f8",
+    "figures/fig3_c14_budget_harmonized.png": "7659b4b9b9586b8301fb5470617cbb61fec546ccdeaa6ad20d9059e04cd70046",
+    "figures/fig4_c14_proxy_persistence.pdf": "2c281b04ec7bd49139c0bec9e2d23fa4c58985275e044e4866f93b2490168dd9",
+    "figures/fig4_c14_proxy_persistence.png": "7e54f5b927e2274c58b59dbb1266ac8d4f899ef1bcf834512e2923e7ea2a4933"
+  },
+  "phase": "C14F",
+  "status": "ASSETS_FROM_LOCKED_C14C_C14E_ONLY"
+}
