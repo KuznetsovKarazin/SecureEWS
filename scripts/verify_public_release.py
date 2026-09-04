@@ -10,7 +10,6 @@ import json
 import os
 import subprocess
 import sys
-import tempfile
 from pathlib import Path
 
 
@@ -64,7 +63,10 @@ def main() -> int:
         "entries": len(manifest["files"]), "csv_entries": len(csv_rows), "errors": manifest_errors,
     })
 
-    files = [path for path in ROOT.rglob("*") if path.is_file() and ".git" not in path.parts]
+    files = [
+        path for path in ROOT.rglob("*")
+        if path.is_file() and ".git" not in path.parts and "__pycache__" not in path.parts
+    ]
     forbidden = []
     for path in files:
         relative = path.relative_to(ROOT)
@@ -114,15 +116,10 @@ def main() -> int:
     add(checks, "c14d_aggregate_gate", c14d.get("status") == "PASS" and c14d.get("new_models_replayed") == 28 and c14d.get("xuetangx_c05_retrained") is False, c14d)
 
     try:
-        with tempfile.TemporaryDirectory(prefix="secureews_public_verify_") as temporary:
-            report_path = Path(temporary) / "C14F.json"
-            c14f = json.loads(run([
-                sys.executable, "src/c14f/verify_c14f.py", "--release", "paper",
-                "--c14c", "results/C14C", "--c14e", "results/C14E", "--output", str(report_path),
-            ], env=env))
-        add(checks, "c14f_article_and_supplement", c14f.get("status") == "PASS", c14f)
+        mdpi = json.loads(run([sys.executable, "scripts/verify_mdpi_submission.py"], env=env))
+        add(checks, "c14f_mdpi_final_article_and_supplement", mdpi.get("status") == "PASS", mdpi)
     except Exception as exc:
-        add(checks, "c14f_article_and_supplement", False, str(exc))
+        add(checks, "mdpi_submission_article_and_supplement", False, str(exc))
 
     private = json.loads((ROOT / "provenance/C14G_VERIFY_EXISTING.json").read_text(encoding="utf-8"))
     private_ok = (
@@ -138,7 +135,7 @@ def main() -> int:
 
     failures = [item["check"] for item in checks if item["status"] != "PASS"]
     report = {
-        "release": "SecureEWS-v0.6.0",
+        "release": "SecureEWS-v0.6.1",
         "status": "PASS" if not failures else "FAIL",
         "checks_passed": len(checks) - len(failures),
         "checks_total": len(checks),

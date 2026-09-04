@@ -8,5 +8,5 @@ zenodo_draft_receipt.json
 *.tmp
 *.bak
 dist/
-SecureEWS-v0.6.0.zip
-SecureEWS-v0.6.0.zip.sha256
+SecureEWS-v*.zip
+SecureEWS-v*.zip.sha256

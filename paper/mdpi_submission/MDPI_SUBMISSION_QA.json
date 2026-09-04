@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "journal": "Education Sciences",
+  "journal_option": "education",
+  "article": {
+    "source": "article_source/article_mdpi.tex",
+    "source_sha256": "99d5f8806f65c7a71744317629d919f8dc2eaf6140485bb687cf922524342907",
+    "pdf": "outputs/SecureEWS_MDPI_article_v3.pdf",
+    "pdf_sha256": "69fc8c1d36e5bac94f3b6a70849a02ee8b80654bf8c5ed8829a4da4794bd12b0",
+    "pages": 19,
+    "pages_visually_inspected": 19
+  },
+  "supplement": {
+    "source": "supplement_source/supplement_mdpi.tex",
+    "source_sha256": "1be190bd63a5fa26f6d34d516419575850ff76bd3f5b72b61c69581276853713",
+    "pdf": "outputs/SecureEWS_MDPI_supplement_v3.pdf",
+    "pdf_sha256": "eef452e77b0f3d89fe8a1f7f31c964cf9df0c04a99a4b9dbc46cc503db0f4bf8",
+    "pages": 9,
+    "pages_visually_inspected": 9
+  },
+  "input_archives": {
+    "SecureEWS_MDPI_article_SOURCE_v2.zip": "e31cca53b17f14623c47956e420560a34414902d459180353f5e52f07b8b6616",
+    "SecureEWS_MDPI_supplement_SOURCE_v2.zip": "d4ae429e80fc9e0f8fb3f912955298c21abee1486e9ca5f2fe4e0e1632b54879"
+  },
+  "author_metadata": {
+    "status": "PASS",
+    "cross_checked_against_author_sheet": "2026-09-04",
+    "author_order": [
+      "Aigul Shaikhanova",
+      "Oleksandr Kuznetsov",
+      "Gulmira Shangytbayeva",
+      "Kamila Bakenova",
+      "Kainizhamal Iklassova",
+      "Dana Tulemisova"
+    ],
+    "corresponding_authors": [
+      "Oleksandr Kuznetsov <oleksandr.kuznetsov@uniecampus.it>",
+      "Gulmira Shangytbayeva <gshangytbayeva@zhubanov.edu.kz>"
+    ],
+    "orcid_complete": true,
+    "funding": "Science Committee of the Ministry of Science and Higher Education of the Republic of Kazakhstan, grant AP23489228"
+  },
+  "checks": {
+    "input_zip_integrity": "PASS",
+    "safe_zip_paths": "PASS",
+    "article_compilation": "PASS",
+    "supplement_compilation": "PASS",
+    "journal_identity": "PASS",
+    "undefined_citations_or_references": 0,
+    "overfull_boxes": 0,
+    "duplicate_labels": 0,
+    "visual_defects": []
+  },
+  "scientific_results_changed": false,
+  "note": "Underfull table-cell warnings and MDPI class-level headheight/font warnings were visually inspected and did not produce clipping, overlap, or missing content. Volume, issue, DOI, and publication dates remain under publisher control."
+}

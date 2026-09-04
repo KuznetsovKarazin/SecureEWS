@@ -11,10 +11,15 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_ARCHIVE = ROOT.parent / "SecureEWS-v0.6.0.zip"
-DEFAULT_CHECKSUM = ROOT.parent / "SecureEWS-v0.6.0.zip.sha256"
-DEFAULT_OUTPUT = ROOT.parent / "SecureEWS-v0.6.0_ZIP_VERIFICATION.json"
-SELF_EXCLUDED = {"MANIFEST.csv", "MANIFEST.json", "PUBLIC_RELEASE_VERIFICATION.json"}
+DEFAULT_ARCHIVE = ROOT.parent / "SecureEWS-v0.6.1.zip"
+DEFAULT_CHECKSUM = ROOT.parent / "SecureEWS-v0.6.1.zip.sha256"
+DEFAULT_OUTPUT = ROOT.parent / "SecureEWS-v0.6.1_ZIP_VERIFICATION.json"
+SELF_EXCLUDED = {
+    "MANIFEST.csv",
+    "MANIFEST.json",
+    "PUBLIC_RELEASE_VERIFICATION.json",
+    "paper/mdpi_submission/MDPI_SUBMISSION_VERIFICATION.json",
+}
 
 
 def file_sha256(path: Path) -> str:

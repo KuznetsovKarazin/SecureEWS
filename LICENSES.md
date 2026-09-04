@@ -23,7 +23,7 @@ CC BY 4.0 applies to:
 
 License text and attribution requirements: https://creativecommons.org/licenses/by/4.0/
 
-Suggested attribution: “SecureEWS v0.6.0, Shaikhanova, Kuznetsov, Shangytbayeva, Bakenova, Iklassova, and Tulemisova (2026).”
+Suggested attribution: “SecureEWS v0.6.1, Shaikhanova, Kuznetsov, Shangytbayeva, Bakenova, Iklassova, and Tulemisova (2026).”
 
 ## Exclusions
 

@@ -1,8 +1,8 @@
-# SecureEWS v0.6.0
+# SecureEWS v0.6.1
 
-SecureEWS is an auditable, post-development stress test of data-minimization claims in educational early-warning systems. The release evaluates whether conclusions change across review budgets, prediction stages, excluded feature blocks, and metrics in OULAD and two separately reported UCI datasets.
+SecureEWS is an auditable, post-development stress test of data-minimization claims in educational early-warning systems. It evaluates whether conclusions change across review budgets, prediction stages, excluded feature blocks, and metrics in OULAD and two separately reported UCI datasets.
 
-This public package contains source code, frozen protocols, aggregate results, paired-bootstrap draws, verification reports, manuscript sources, and rendered PDFs. It deliberately excludes raw or processed row-level educational data, individual predictions, trained model bundles, and the preserved XuetangX C05 archive.
+This aggregate-only public release accompanies the manuscript **“Stress-Testing Data Minimization Across Review Budgets and Decision Stages in Educational Early Warning: Paired Evidence from OULAD and Two UCI Datasets.”** Version 0.6.1 adds submission-ready Education Sciences/MDPI LaTeX sources and rendered PDFs without changing the C14 scientific results.
 
 ## Main findings
 
@@ -26,9 +26,10 @@ The analyses do not establish equivalence, fairness, privacy, causal educational
 | `results/C14C/` | Aggregate proxy-probe metrics and model inventory; no predictions or bundles |
 | `results/C14D/` | Aggregate harmonized-block results and inventories; no predictions or bundles |
 | `results/C14E/` | Paired statistics and hashed bootstrap draws |
-| `paper/` | Academic article, supplement, LaTeX source, tables, figures, and PDF QA records |
-| `provenance/` | Canonical phase registry and full private-clean-room verification report |
-| `scripts/` | Public-release verification, packaging, and Zenodo draft scripts |
+| `paper/mdpi_submission/` | Final Education Sciences/MDPI article and supplement sources, PDFs, logs, and QA record |
+| `paper/figures/`, `paper/tables/` | Reproducible C14F assets generated from locked aggregate results |
+| `provenance/` | Canonical phase registry and private-clean-room verification report; no superseded manuscript payload |
+| `scripts/` | Release, MDPI-package, GitHub, and Zenodo verification tools |
 
 ## Verification
 
@@ -36,21 +37,32 @@ Python 3.12 is recommended. Poppler is required for PDF verification.
 
 ```bash
 python -m pip install -r requirements.txt
+python scripts/make_public_manifest.py
 python scripts/verify_public_release.py
+python scripts/build_release_zip.py
+python scripts/verify_release_zip.py
 ```
 
-The public verifier checks the manifest, forbidden-artifact exclusions, GitHub file-size limits, unit tests, C14A/C14B/C14E numerical verification, C14C/C14D aggregate gates, and the complete C14F PDF/provenance checks. After packaging, `scripts/verify_release_zip.py` additionally checks ZIP integrity, the checksum sidecar, the exact member set, and every internal-manifest hash.
+Every verifier must report `PASS`. The public verifier checks the manifest, forbidden-artifact exclusions, GitHub file-size limits, unit tests, C14A/C14B/C14E numerical verification, C14C/C14D aggregate gates, locked C14F figure provenance, and the final MDPI article/supplement package.
 
-## Reproduction boundary
+## Manuscript files
 
-The public release can independently reproduce the reported C14E intervals from the supplied hashed bootstrap draws and can regenerate C14F tables and figures from aggregate C14C/C14E results. Full model refitting and row-level prediction replay require the official datasets and the separately retained private clean-room checkpoint. See [DATA_AVAILABILITY.md](DATA_AVAILABILITY.md).
+Submission-ready files are in `paper/mdpi_submission/`:
 
-## Article
+- `outputs/SecureEWS_MDPI_article_v3.pdf` — 19 pages;
+- `outputs/SecureEWS_MDPI_supplement_v3.pdf` — 9 pages;
+- `article_source/article_mdpi.tex` — `education,article,submit` profile;
+- `supplement_source/supplement_mdpi.tex` — `education,supfile,submit` profile.
 
-- `paper/outputs/SecureEWS_C14F_article.pdf`
-- `paper/outputs/SecureEWS_C14F_supplement.pdf`
+Both PDFs were compiled from the included sources and visually inspected on every page. See `paper/mdpi_submission/README.md`, `FINAL_PUBLISH_STEPS_RU.md`, and `SUBMISSION_CHECKLIST_RU.md`.
 
-The manuscript is a working revision. Author order, CRediT roles, funding wording, ethics determination, competing-interest declarations, and final author approval must be confirmed before journal submission or permanent public publication.
+## Reproduction and redistribution boundary
+
+The public release can independently reproduce the reported C14E intervals from the supplied hashed bootstrap draws and regenerate C14F tables and figures from aggregate C14C/C14E results. It deliberately excludes raw or processed student-level data, individual predictions, trained model bundles, the private clean-room, and XuetangX-derived files. See [DATA_AVAILABILITY.md](DATA_AVAILABILITY.md).
+
+## Publication status
+
+Technical QA is complete. On 4 September 2026, the corresponding author confirmed all-author approval of the final manuscript and publication declarations. The aggregate-only repository can now be made public, tagged, archived in Zenodo, and submitted to Education Sciences.
 
 ## License
 
@@ -58,4 +70,4 @@ Source code is licensed under the MIT License. Documentation, manuscript materia
 
 ## Citation
 
-Please use the metadata in `CITATION.cff`. A Zenodo DOI can be added after a draft record has been created or when the release is published.
+Use `CITATION.cff`. After Zenodo publication, add the version DOI to `CITATION.cff` and this README in a metadata-only follow-up commit; do not mutate the tagged `v0.6.1` payload.

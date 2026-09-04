@@ -1,0 +1,98 @@
+{
+  "checks": [
+    {
+      "check": "required_files",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "mdpi_source_profiles",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "authors_orcids_correspondence_and_funding",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "required_declarations_present",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "no_editorial_working_markers",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "no_editorial_markup_commands",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "pdf_page_counts",
+      "detail": {
+        "article": 19,
+        "supplement": 9
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "pdf_identity_and_text",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "pdf_metadata_has_no_ai_tool_marker",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "all_pages_render",
+      "detail": {
+        "errors": [],
+        "rendered": {
+          "article": 19,
+          "supplement": 9
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "latex_logs_no_critical_findings",
+      "detail": {
+        "article_mdpi.log": [],
+        "supplement_mdpi.log": []
+      },
+      "status": "PASS"
+    },
+    {
+      "check": "locked_c14c_c14e_input_hashes",
+      "detail": {},
+      "status": "PASS"
+    },
+    {
+      "check": "generated_c14f_figure_hashes",
+      "detail": {},
+      "status": "PASS"
+    },
+    {
+      "check": "qa_hashes_and_visual_record",
+      "detail": {
+        "hash_mismatches": {},
+        "qa_status": "PASS"
+      },
+      "status": "PASS"
+    }
+  ],
+  "checks_passed": 14,
+  "checks_total": 14,
+  "failures": [],
+  "pdf_sha256": {
+    "article": "69fc8c1d36e5bac94f3b6a70849a02ee8b80654bf8c5ed8829a4da4794bd12b0",
+    "supplement": "eef452e77b0f3d89fe8a1f7f31c964cf9df0c04a99a4b9dbc46cc503db0f4bf8"
+  },
+  "release": "SecureEWS-v0.6.1",
+  "status": "PASS"
+}

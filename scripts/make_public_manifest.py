@@ -12,7 +12,12 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-EXCLUDED = {"MANIFEST.csv", "MANIFEST.json", "PUBLIC_RELEASE_VERIFICATION.json"}
+EXCLUDED = {
+    "MANIFEST.csv",
+    "MANIFEST.json",
+    "PUBLIC_RELEASE_VERIFICATION.json",
+    "MDPI_SUBMISSION_VERIFICATION.json",
+}
 
 
 def sha256(path: Path) -> str:
@@ -47,7 +52,7 @@ def main() -> int:
     writer.writerows(rows)
     atomic_text(ROOT / "MANIFEST.csv", stream.getvalue())
     atomic_text(ROOT / "MANIFEST.json", json.dumps({
-        "release": "SecureEWS-v0.6.0",
+        "release": "SecureEWS-v0.6.1",
         "status": "PASS",
         "scope": "public payload; manifest files and runtime verification report excluded to avoid self-reference",
         "files": rows,

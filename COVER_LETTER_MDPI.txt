@@ -1,0 +1,20 @@
+Dear Guest Editors,
+
+We are pleased to submit the manuscript “Stress-Testing Data Minimization Across Review Budgets and Decision Stages in Educational Early Warning: Paired Evidence from OULAD and Two UCI Datasets” for consideration as an Article in Education Sciences and the Special Issue “Advancing AI Education: Virtual Learning, Technology Integration, and Instructional Design.”
+
+The manuscript presents an auditable post-development stress test of educational early-warning data-minimization claims. Across OULAD and two separately reported UCI datasets, we evaluate whether conclusions change with review capacity, prediction stage, excluded feature block, and metric. The study combines multi-budget evaluation, held-out residual-predictability probes, harmonized feature-block comparisons with same-run controls, and paired family-wise uncertainty. It also draws explicit boundaries around what the analyses do not establish: equivalence, fairness, privacy, actual proxy use, or causal educational benefit.
+
+We believe the work fits the Special Issue because it addresses responsible design and evaluation of AI-enabled educational decision support, including the operational constraints under which teachers and institutions review alerts. The manuscript emphasizes transparent provenance, reproducible analysis, and governance-relevant reporting rather than a single performance score.
+
+The aggregate-only reproducibility release contains code, frozen protocols, aggregate results, bootstrap draws, verification reports, and manuscript sources. It excludes raw or processed student-level records, individual predictions, trained models, private clean-room archives, and XuetangX-derived files. All listed authors have approved the manuscript and agree with its submission. The work is original, is not under consideration elsewhere, and any overlapping prior use of OULAD is disclosed and cited in the manuscript.
+
+Thank you for considering our submission.
+
+Sincerely,
+
+Oleksandr Kuznetsov and Gulmira Shangytbayeva
+Corresponding Authors
+Department of Theoretical and Applied Sciences, eCampus University
+Department of Intelligent Software Systems and Technologies, V. N. Karazin Kharkiv National University
+Department of Informatics and Information Technologies, Zhubanov University
+oleksandr.kuznetsov@uniecampus.it; gshangytbayeva@zhubanov.edu.kz

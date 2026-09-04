@@ -1,0 +1,12 @@
+{
+  "figure": "fig2_external_stage_contrasts.pdf",
+  "created_from": {
+    "absolute_metrics_long.csv": "c6d41bb0ee4736e5fb342b0c27aac865967585aee87b02fc49250d21fdd8017e",
+    "paired_contrasts.csv": "a0c2cf3e497fa9a5f9855d9880fcab116be63e184a1d28468388bfc59df0461e"
+  },
+  "panels": {
+    "A": "UCI697 dropout-vs-graduate HGB full and legacy-operational precision at the within-Course 10% budget",
+    "B": "UCI320 HGB full-control average precision by grade availability, subjects shown separately"
+  },
+  "guard": "No pooling across datasets or UCI320 subjects"
+}

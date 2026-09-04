@@ -1,0 +1,36 @@
+{
+  "phase": "C12D manuscript assets",
+  "source_files": {
+    "results/c12b/point_metrics.csv": "a57a8641aff7ee44a7d94fd69a86c2e1f81b191649318852a5e2f7fdc370f4bb",
+    "results/c12c/paired_contrasts.csv": "890ec670b9d3239f648676eb8d5357509d430c6ff454682f5fa116b948261db6",
+    "results/c12c/alert_overlap.csv": "a7cfe35d284187c6a0515730970871b8e03396b52a0bc36606aa90cf5688bb1c",
+    "results/c12c/historical_numerical_replay.csv": "c5fa9321e4cf3d55cc38e43faf85b0b0a66316582ef7d104a0be0bf28c674324",
+    "results/c12b/C11_TO_C12_MAIN_TRANSITION.csv": "2079e6421c620838ff418c0409eddd159793a5a49d97f517c316f0fe0bdc8edf"
+  },
+  "output_files": {
+    "paper/C12D_working/tables/main_day42.tex": "d0aad6e7faff3f3841a7e3d5c12d445806ed1337dba682f2fe75ccf6fa53b3df",
+    "paper/C12D_working/tables/main_landmarks.tex": "067b3eece4c843e1bf42f652c94a2ca0cdfc41c1fcf9d2a68a0dd768017665c3",
+    "paper/C12D_working/tables/main_strict.tex": "c499c18d81132efc62939d7b2be6d6bc26ed3f9f3986a823468504674e35f592",
+    "paper/C12D_working/tables/supp_c11_c12_transition.tex": "51750aaf2d76e04741971579f2de627e9718b3f461264aba62b15264da09d2c7",
+    "paper/C12D_working/tables/supp_common_did.tex": "7b3fd750a95600213f8d42a583713375859b98a6280c6d3522fc9328b54354b8",
+    "paper/C12D_working/tables/supp_historical_replay.tex": "c5b791cbdc3405cc7a8b00fa2da54ae1889d5ff71cbfe66a40725932ba5e0f0f",
+    "paper/C12D_working/tables/supp_loo.tex": "ea6c41bb3e7974ade8f08b6d59ba7cc58b0707a970b600e92ef3f832155c75b9",
+    "paper/C12D_working/tables/supp_main_points.tex": "2bf7ac27838a0fc223af60c0bbe412f243ae912cd60613abef7289457c290f29",
+    "paper/C12D_working/figures/fig1_partial_six_horizons.pdf": "4a7b1f0a72cb873f0b23f8106c7c37951493158461253540fb23889d76b5973d",
+    "paper/C12D_working/figures/fig1_partial_six_horizons.png": "f0f944c59eda5603ffbc7b09f92b40938d029053818389e5ec3400b136067bf9"
+  },
+  "figure_filter": {
+    "scope": "dynamic",
+    "contrast": "partial_minus_full",
+    "metric": "precision_at_10",
+    "cutoffs": [
+      14,
+      28,
+      42,
+      56,
+      70,
+      90
+    ]
+  },
+  "models_or_predictions_loaded": false
+}

@@ -3,8 +3,8 @@
     {
       "check": "public_manifest",
       "detail": {
-        "csv_entries": 155,
-        "entries": 155,
+        "csv_entries": 231,
+        "entries": 231,
         "errors": []
       },
       "status": "PASS"
@@ -140,58 +140,73 @@
       "status": "PASS"
     },
     {
-      "check": "c14f_article_and_supplement",
+      "check": "c14f_mdpi_final_article_and_supplement",
       "detail": {
         "checks": [
           {
-            "check": "required_release_files",
-            "detail": {
-              "missing": []
-            },
+            "check": "required_files",
+            "detail": [],
+            "status": "PASS"
+          },
+          {
+            "check": "mdpi_source_profiles",
+            "detail": [],
+            "status": "PASS"
+          },
+          {
+            "check": "authors_orcids_correspondence_and_funding",
+            "detail": [],
+            "status": "PASS"
+          },
+          {
+            "check": "required_declarations_present",
+            "detail": [],
+            "status": "PASS"
+          },
+          {
+            "check": "no_editorial_working_markers",
+            "detail": [],
+            "status": "PASS"
+          },
+          {
+            "check": "no_editorial_markup_commands",
+            "detail": [],
             "status": "PASS"
           },
           {
             "check": "pdf_page_counts",
             "detail": {
-              "article": 21,
-              "supplement": 10
+              "article": 19,
+              "supplement": 9
             },
             "status": "PASS"
           },
           {
-            "check": "article_required_claims_and_guards",
+            "check": "pdf_identity_and_text",
             "detail": [],
             "status": "PASS"
           },
           {
-            "check": "supplement_required_inventory_and_guards",
+            "check": "pdf_metadata_has_no_ai_tool_marker",
             "detail": [],
             "status": "PASS"
           },
           {
-            "check": "pdf_text_has_no_replacement_glyph",
+            "check": "all_pages_render",
             "detail": {
-              "article": 0,
-              "supplement": 0
-            },
-            "status": "PASS"
-          },
-          {
-            "check": "all_pdf_pages_render_nontrivially",
-            "detail": {
+              "errors": [],
               "rendered": {
-                "article": 21,
-                "supplement": 10
-              },
-              "small_or_missing": []
+                "article": 19,
+                "supplement": 9
+              }
             },
             "status": "PASS"
           },
           {
-            "check": "latex_logs_no_overflow_or_unresolved_crossrefs",
+            "check": "latex_logs_no_critical_findings",
             "detail": {
-              "main.log": [],
-              "supplement_wrapper.log": []
+              "article_mdpi.log": [],
+              "supplement_mdpi.log": []
             },
             "status": "PASS"
           },
@@ -201,40 +216,27 @@
             "status": "PASS"
           },
           {
-            "check": "generated_figure_hashes",
+            "check": "generated_c14f_figure_hashes",
             "detail": {},
             "status": "PASS"
           },
           {
-            "check": "recorded_visual_inspection",
+            "check": "qa_hashes_and_visual_record",
             "detail": {
-              "article_pages_inspected": 21,
-              "checks": [
-                "page completeness",
-                "no blank pages",
-                "no clipping or overlap",
-                "table readability",
-                "figure readability",
-                "title and section hierarchy",
-                "page numbering"
-              ],
-              "defects": [],
-              "phase": "C14F",
-              "render_resolution_dpi": 110,
-              "status": "PASS",
-              "supplement_pages_inspected": 10
+              "hash_mismatches": {},
+              "qa_status": "PASS"
             },
             "status": "PASS"
           }
         ],
-        "checks_passed": 10,
-        "checks_total": 10,
+        "checks_passed": 14,
+        "checks_total": 14,
         "failures": [],
         "pdf_sha256": {
-          "article": "5e380fe816d0a7b09f82a62589a33bddca7a8f1ac3d09ea1f827bb70ce02e739",
-          "supplement": "ab8c44fac25fcf9b6c7f1f5c09bd19f75b1b3bd44d1b26305a99bcfb6dcca065"
+          "article": "69fc8c1d36e5bac94f3b6a70849a02ee8b80654bf8c5ed8829a4da4794bd12b0",
+          "supplement": "eef452e77b0f3d89fe8a1f7f31c964cf9df0c04a99a4b9dbc46cc503db0f4bf8"
         },
-        "phase": "C14F",
+        "release": "SecureEWS-v0.6.1",
         "status": "PASS"
       },
       "status": "PASS"
@@ -253,7 +255,7 @@
   "checks_total": 12,
   "failures": [],
   "largest_file_bytes": 2202863,
-  "public_files": 158,
-  "release": "SecureEWS-v0.6.0",
+  "public_files": 235,
+  "release": "SecureEWS-v0.6.1",
   "status": "PASS"
 }

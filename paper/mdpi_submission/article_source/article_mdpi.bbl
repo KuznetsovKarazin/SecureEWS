@@ -1,0 +1,277 @@
+\begin{thebibliography}{999}
+
+\bibitem[\protect\citeauthoryear{Alfredo et~al.}{Alfredo
+  et~al.}{{2024}}]{alfredo2024dashboard}
+Alfredo, R.  D., Echeverria, V., Zhao, L., Lawrence, L., Fan, J.  X., Yan, L.,
+  Li, X., Swiecki, Z., Gasevic, D.,  \BBA\ Martinez-Maldonado, R.
+\newblock
+\APACrefYearMonthDay{2024}{}{}.
+\newblock Designing a Human-Centred Learning Analytics Dashboard In-Use.
+\newblock \APACjournalVolNumPages{Journal of Learning
+  Analytics}{11}{3}{62--81}.
+\newblock {\url{https://doi.org/10.18608/jla.2024.8487}}.
+
+\bibitem[\protect\citeauthoryear{Chiu, Wong,  \BBA\ Wong}{Chiu
+  et~al.}{{2026}}]{chiu2026privacy}
+Chiu, H.  S., Wong, A.,  \BBA\ Wong, T.  L.
+\newblock
+\APACrefYearMonthDay{2026}{}{}.
+\newblock A Privacy-Conscious {AI} Framework for Early Identification of
+  At-Risk Students Across Disciplines Using {LMS} Engagement Data.
+\newblock \APACjournalVolNumPages{Education Sciences}{16}{7}{1046}.
+\newblock {\url{https://doi.org/10.3390/educsci16071046}}.
+
+\bibitem[\protect\citeauthoryear{Collins et~al.}{Collins
+  et~al.}{{2024}}]{collins2024tripod}
+Collins, G.  S., Moons, K.  G.  M., Dhiman, P., Riley, R.  D., Beam, A.  L.,
+  Van~Calster, B., Ghassemi, M., Liu, X., Reitsma, J.  B., van Smeden, M.,
+  et~al.
+\newblock
+\APACrefYearMonthDay{2024}{}{}.
+\newblock {TRIPOD+AI} Statement: Updated Guidance for Reporting Clinical
+  Prediction Models That Use Regression or Machine Learning Methods.
+\newblock \APACjournalVolNumPages{BMJ}{385}{}{e078378}.
+\newblock {\url{https://doi.org/10.1136/bmj-2023-078378}}.
+
+\bibitem[\protect\citeauthoryear{Cortez}{Cortez}{{2008}}]{cortez2008uci320}
+Cortez, P.
+\newblock
+\APACrefYearMonthDay{2008}{}{}.
+\newblock \APACrefbtitle {Student Performance.} {Student performance.}
+\newblock \APAChowpublished {UCI Machine Learning Repository}.
+\newblock Available online:
+  \url{https://archive.ics.uci.edu/dataset/320/student+performance} (accessed
+  on).
+\newblock \APACrefnote{CC BY 4.0}
+\newblock {\url{https://doi.org/10.24432/C5TG7T}}.
+
+\bibitem[\protect\citeauthoryear{Drachsler \BBA\ Greller}{Drachsler \BBA\
+  Greller}{{2016}}]{drachsler2016delicate}
+Drachsler, H.,  \BBA\ Greller, W.
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock Privacy and Learning Analytics: It's a {DELICATE} Issue. A Checklist
+  for Trusted Learning Analytics.
+\newblock \BIn{} \APACrefbtitle {Proceedings of the Sixth International
+  Conference on Learning Analytics and Knowledge} {Proceedings of the sixth
+  international conference on learning analytics and knowledge}\ (\BPGS\
+  89--98).
+\newblock \APACaddressPublisher{}{Association for Computing Machinery}.
+\newblock {\url{https://doi.org/10.1145/2883851.2883893}}.
+
+\bibitem[\protect\citeauthoryear{{European Parliament and Council of the
+  European Union}}{{European Parliament and Council of the European
+  Union}}{{2016}}]{gdpr2016}
+{European Parliament and Council of the European Union}.
+\newblock
+\APACrefYearMonthDay{2016}{}{}.
+\newblock \APACrefbtitle {Regulation ({EU}) 2016/679 of the European Parliament
+  and of the Council of 27 April 2016.} {Regulation ({EU}) 2016/679 of the
+  european parliament and of the council of 27 april 2016.}
+\newblock \APAChowpublished {Official Journal of the European Union, L 119,
+  1--88}.
+\newblock Available online: \url{https://eur-lex.europa.eu/eli/reg/2016/679/oj}
+  (accessed on).
+
+\bibitem[\protect\citeauthoryear{Evenstein~Sigalov, Hershkovitz, Cohen,  \BBA\
+  Nachmias}{Evenstein~Sigalov et~al.}{{2026}}]{evenstein2026trusting}
+Evenstein~Sigalov, S., Hershkovitz, A., Cohen, A.,  \BBA\ Nachmias, R.
+\newblock
+\APACrefYearMonthDay{2026}{}{}.
+\newblock Trusting the Data: An Updated Framework for Teachers' Data-Driven
+  Decision-Making ({DDDM}) in Higher Education.
+\newblock \APACjournalVolNumPages{Education and Information
+  Technologies}{31}{}{953--981}.
+\newblock {\url{https://doi.org/10.1007/s10639-025-13819-8}}.
+
+\bibitem[\protect\citeauthoryear{Gardner, Brooks,  \BBA\ Baker}{Gardner
+  et~al.}{{2019}}]{gardner2019fairness}
+Gardner, J., Brooks, C.,  \BBA\ Baker, R.
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock Evaluating the Fairness of Predictive Student Models through Slicing
+  Analysis.
+\newblock \BIn{} \APACrefbtitle {Proceedings of the Ninth International
+  Conference on Learning Analytics and Knowledge} {Proceedings of the ninth
+  international conference on learning analytics and knowledge}\ (\BPGS\
+  225--234).
+\newblock \APACaddressPublisher{}{Association for Computing Machinery}.
+\newblock {\url{https://doi.org/10.1145/3303772.3303791}}.
+
+\bibitem[\protect\citeauthoryear{Hasan \BBA\ Fritz}{Hasan \BBA\
+  Fritz}{{2022}}]{hasan2022utility}
+Hasan, R.,  \BBA\ Fritz, M.
+\newblock
+\APACrefYearMonthDay{2022}{}{}.
+\newblock Understanding Utility and Privacy of Demographic Data in Education
+  Technology by Causal Analysis and Adversarial-Censoring.
+\newblock \APACjournalVolNumPages{Proceedings on Privacy Enhancing
+  Technologies}{2022}{2}{245--262}.
+\newblock {\url{https://doi.org/10.2478/popets-2022-0044}}.
+
+\bibitem[\protect\citeauthoryear{Herodotou, Rienties, Boroowa, Zdrahal,  \BBA\
+  Hlosta}{Herodotou et~al.}{{2019}}]{herodotou2019teachers}
+Herodotou, C., Rienties, B., Boroowa, A., Zdrahal, Z.,  \BBA\ Hlosta, M.
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock A Large-Scale Implementation of Predictive Learning Analytics in
+  Higher Education: The Teachers' Role and Perspective.
+\newblock \APACjournalVolNumPages{Educational Technology Research and
+  Development}{67}{}{1273--1306}.
+\newblock {\url{https://doi.org/10.1007/s11423-019-09685-0}}.
+
+\bibitem[\protect\citeauthoryear{Kuzilek, Hlosta,  \BBA\ Zdrahal}{Kuzilek
+  et~al.}{{2017}}]{kuzilek2017oulad}
+Kuzilek, J., Hlosta, M.,  \BBA\ Zdrahal, Z.
+\newblock
+\APACrefYearMonthDay{2017}{}{}.
+\newblock Open University Learning Analytics Dataset.
+\newblock \APACjournalVolNumPages{Scientific Data}{4}{}{170171}.
+\newblock {\url{https://doi.org/10.1038/sdata.2017.171}}.
+
+\bibitem[\protect\citeauthoryear{Le, Abel,  \BBA\ Laforge}{Le
+  et~al.}{{2026}}]{le2026leap}
+Le, N.  L., Abel, M.-H.,  \BBA\ Laforge, B.
+\newblock
+\APACrefYearMonthDay{2026}{}{}.
+\newblock \APACrefbtitle {When Can We Trust Early Warnings? Leakage-Excluded
+  Early Outcome Prediction from {LMS} Interaction Logs.} {When can we trust
+  early warnings? leakage-excluded early outcome prediction from {LMS}
+  interaction logs.}
+\newblock \APAChowpublished {arXiv:2605.25794}.
+\newblock Available online: \url{https://arxiv.org/abs/2605.25794} (accessed
+  on).
+\newblock \APACrefnote{Preprint}
+\newblock {\url{https://doi.org/10.48550/arXiv.2605.25794}}.
+
+\bibitem[\protect\citeauthoryear{Moons et~al.}{Moons
+  et~al.}{{2025}}]{moons2025probast}
+Moons, K.  G.  M., Damen, J.  A.  A., Kaul, T., Hooft, L., Andaur~Navarro, C.
+  L., Dhiman, P., Beam, A.  L., Van~Calster, B., Ghassemi, M., Liu, X.,
+  Reitsma, J.  B., van Smeden, M., Boulesteix, A.-L., Collins, G.  S.,  et~al.
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock {PROBAST+AI}: An Updated Quality, Risk of Bias, and Applicability
+  Assessment Tool for Prediction Models Using Regression or Artificial
+  Intelligence Methods.
+\newblock \APACjournalVolNumPages{BMJ}{388}{}{e082505}.
+\newblock {\url{https://doi.org/10.1136/bmj-2024-082505}}.
+
+\bibitem[\protect\citeauthoryear{Pedregosa et~al.}{Pedregosa
+  et~al.}{{2011}}]{pedregosa2011scikit}
+Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel,
+  O., Blondel, M., Prettenhofer, P., Weiss, R., Dubourg, V., Vanderplas, J.,
+  Passos, A., Cournapeau, D., Brucher, M., Perrot, M.,  \BBA\ Duchesnay, E.
+\newblock
+\APACrefYearMonthDay{2011}{}{}.
+\newblock Scikit-learn: Machine Learning in {Python}.
+\newblock \APACjournalVolNumPages{Journal of Machine Learning
+  Research}{12}{}{2825--2830}.
+\newblock Available online: \url{https://jmlr.org/papers/v12/pedregosa11a.html}
+  (accessed on).
+
+\bibitem[\protect\citeauthoryear{Pham, Pham~Ngoc,  \BBA\ Nguyen-Duc}{Pham
+  et~al.}{{2025}}]{pham2025fairness}
+Pham, N., Pham~Ngoc, H.,  \BBA\ Nguyen-Duc, A.
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock Fairness for Machine Learning Software in Education: A Systematic
+  Mapping Study.
+\newblock \APACjournalVolNumPages{Journal of Systems and
+  Software}{219}{}{112244}.
+\newblock {\url{https://doi.org/10.1016/j.jss.2024.112244}}.
+
+\bibitem[\protect\citeauthoryear{Plak, Cornelisz, Meeter,  \BBA\ van
+  Klaveren}{Plak et~al.}{{2022}}]{plak2022early}
+Plak, S., Cornelisz, I., Meeter, M.,  \BBA\ van Klaveren, C.
+\newblock
+\APACrefYearMonthDay{2022}{}{}.
+\newblock Early Warning Systems for More Effective Student Counselling in
+  Higher Education: Evidence from a {Dutch} Field Experiment.
+\newblock \APACjournalVolNumPages{Higher Education Quarterly}{76}{1}{131--152}.
+\newblock {\url{https://doi.org/10.1111/hequ.12298}}.
+
+\bibitem[\protect\citeauthoryear{Realinho, Vieira~Martins, Machado,  \BBA\
+  Baptista}{Realinho et~al.}{{2021}}]{realinho2021uci697}
+Realinho, V., Vieira~Martins, M., Machado, J.,  \BBA\ Baptista, L.
+\newblock
+\APACrefYearMonthDay{2021}{}{}.
+\newblock \APACrefbtitle {Predict Students' Dropout and Academic Success.}
+  {Predict students' dropout and academic success.}
+\newblock \APAChowpublished {UCI Machine Learning Repository}.
+\newblock Available online:
+  \url{https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success}
+  (accessed on).
+\newblock \APACrefnote{CC BY 4.0}
+\newblock {\url{https://doi.org/10.24432/C5MC89}}.
+
+\bibitem[\protect\citeauthoryear{Rets, Herodotou,  \BBA\ Gillespie}{Rets
+  et~al.}{{2023}}]{rets2023six}
+Rets, I., Herodotou, C.,  \BBA\ Gillespie, A.
+\newblock
+\APACrefYearMonthDay{2023}{}{}.
+\newblock Six Practical Recommendations Enabling Ethical Use of Predictive
+  Learning Analytics in Distance Education.
+\newblock \APACjournalVolNumPages{Journal of Learning
+  Analytics}{10}{1}{149--167}.
+\newblock {\url{https://doi.org/10.18608/jla.2023.7743}}.
+
+\bibitem[\protect\citeauthoryear{Saito \BBA\ Rehmsmeier}{Saito \BBA\
+  Rehmsmeier}{{2015}}]{saito2015precision}
+Saito, T.,  \BBA\ Rehmsmeier, M.
+\newblock
+\APACrefYearMonthDay{2015}{}{}.
+\newblock The Precision-Recall Plot Is More Informative than the {ROC} Plot
+  When Evaluating Binary Classifiers on Imbalanced Datasets.
+\newblock \APACjournalVolNumPages{PLOS ONE}{10}{3}{e0118432}.
+\newblock {\url{https://doi.org/10.1371/journal.pone.0118432}}.
+
+\bibitem[\protect\citeauthoryear{Shaikhanova, Kuznetsov, Iklassova,
+  Tokkuliyeva,  \BBA\ Sugurova}{Shaikhanova
+  et~al.}{{2025}}]{shaikhanova2025interpretable}
+Shaikhanova, A., Kuznetsov, O., Iklassova, K., Tokkuliyeva, A.,  \BBA\
+  Sugurova, L.
+\newblock
+\APACrefYearMonthDay{2025}{}{}.
+\newblock Interpretable Predictive Modeling for Educational Equity: A
+  Workload-Aware Decision Support System for Early Identification of At-Risk
+  Students.
+\newblock \APACjournalVolNumPages{Big Data and Cognitive
+  Computing}{9}{11}{297}.
+\newblock {\url{https://doi.org/10.3390/bdcc9110297}}.
+
+\bibitem[\protect\citeauthoryear{Van~Calster, McLernon, van Smeden, Wynants,
+  \BBA\ Steyerberg}{Van~Calster et~al.}{{2019}}]{vancalster2019calibration}
+Van~Calster, B., McLernon, D.  J., van Smeden, M., Wynants, L.,  \BBA\
+  Steyerberg, E.  W.
+\newblock
+\APACrefYearMonthDay{2019}{}{}.
+\newblock Calibration: The Achilles Heel of Predictive Analytics.
+\newblock \APACjournalVolNumPages{BMC Medicine}{17}{}{230}.
+\newblock {\url{https://doi.org/10.1186/s12916-019-1466-7}}.
+
+\bibitem[\protect\citeauthoryear{Wu, Duan,  \BBA\ Luo}{Wu
+  et~al.}{{2026}}]{wu2026calibrated}
+Wu, S., Duan, J.,  \BBA\ Luo, M.
+\newblock
+\APACrefYearMonthDay{2026}{}{}.
+\newblock Calibrated Early-Warning Models with Fairness Auditing and Selective
+  Prediction for Course Withdrawal Risk: Evidence from {OULAD}.
+\newblock \APACjournalVolNumPages{PLOS ONE}{21}{7}{e0352867}.
+\newblock {\url{https://doi.org/10.1371/journal.pone.0352867}}.
+
+\bibitem[\protect\citeauthoryear{Wu \BBA\ Luo}{Wu \BBA\
+  Luo}{{2026}}]{wuluo2026zenodo}
+Wu, S.,  \BBA\ Luo, M.
+\newblock
+\APACrefYearMonthDay{2026}{}{}.
+\newblock \APACrefbtitle {Reproducibility Code for Evaluating Repeated
+  Course-Withdrawal Early-Warning Systems in Distance Higher Education.}
+  {Reproducibility code for evaluating repeated course-withdrawal early-warning
+  systems in distance higher education.}
+\newblock \APAChowpublished {Zenodo}.
+\newblock Available online: \url{https://doi.org/10.5281/zenodo.21902651}
+  (accessed on).
+\newblock {\url{https://doi.org/10.5281/zenodo.21902651}}.
+
+\end{thebibliography}

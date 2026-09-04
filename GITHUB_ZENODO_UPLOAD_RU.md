@@ -1,136 +1,173 @@
-# Загрузка SecureEWS v0.6.0 в GitHub и Zenodo
+# Обновление SecureEWS v0.6.1 в GitHub и Zenodo
 
-Команды ниже рассчитаны на Windows PowerShell. Используйте один и тот же `SecureEWS-v0.6.0.zip` и его SHA-256 для GitHub Release и ручного Zenodo deposit.
+Команды рассчитаны на Windows PowerShell. Публикуется только `SecureEWS-v0.6.1.zip`; private C14G, datasets, row-level predictions, models и XuetangX загружать нельзя.
 
-## 0. Что нельзя публиковать
+## 0. Переменные
 
-Не загружайте полный 302-MB C14G, C13E, фазовые ZIP, raw/processed datasets, individual predictions, `.joblib`-модели или XuetangX C05. Они специально отсутствуют в публичном архиве.
-
-Статья всё ещё содержит обязательные отметки `confirmation required`. До подтверждения author order/CRediT, funding, ethics, competing interests и финального согласия всех авторов GitHub держите private, Zenodo — draft.
-
-## 1. Проверка архива
+Расположите `SecureEWS-v0.6.1.zip` и `SecureEWS-v0.6.1.zip.sha256` в одной папке, затем задайте:
 
 ```powershell
-Get-FileHash .\SecureEWS-v0.6.0.zip -Algorithm SHA256
-Get-Content .\SecureEWS-v0.6.0.zip.sha256
-Expand-Archive .\SecureEWS-v0.6.0.zip -DestinationPath .\SecureEWS-release
-Set-Location .\SecureEWS-release\SecureEWS-v0.6.0
+$Owner = "KuznetsovKarazin"
+$Repo = "SecureEWS"
+$PackageDir = (Resolve-Path ".").Path
+```
+
+## 1. Проверить и распаковать релиз
+
+```powershell
+Get-FileHash "$PackageDir\SecureEWS-v0.6.1.zip" -Algorithm SHA256
+Get-Content "$PackageDir\SecureEWS-v0.6.1.zip.sha256"
+
+Expand-Archive `
+  "$PackageDir\SecureEWS-v0.6.1.zip" `
+  -DestinationPath "$PackageDir\unpacked" `
+  -Force
+
+$ReleaseRoot = "$PackageDir\unpacked\SecureEWS-v0.6.1"
+Set-Location $ReleaseRoot
 py -3.12 -m pip install -r requirements.txt
 py -3.12 .\scripts\verify_public_release.py
-py -3.12 .\scripts\build_release_zip.py
-py -3.12 .\scripts\verify_release_zip.py
+py -3.12 .\scripts\verify_release_zip.py `
+  --archive "$PackageDir\SecureEWS-v0.6.1.zip" `
+  --checksum "$PackageDir\SecureEWS-v0.6.1.zip.sha256"
 ```
 
-Оба verifier должны завершиться статусом `PASS`; SHA-256 в ZIP-verifier должен совпасть с `.zip.sha256`.
+Обе проверки должны вернуть `PASS`, а два SHA-256 должны совпасть.
 
-## 2. GitHub: сначала private repository
+## 2A. Обновить существующий GitHub repository
 
-Установите Git и GitHub CLI, если их ещё нет:
-
-```powershell
-winget install --id Git.Git -e
-winget install --id GitHub.cli -e
-```
-
-Закройте и снова откройте PowerShell, затем из каталога `SecureEWS-v0.6.0`:
+Работайте в новом clone: это исключает смешивание релиза с локальными незакоммиченными файлами.
 
 ```powershell
-git init -b main
-git config user.name "Oleksandr Kuznetsov"
-git config user.email "YOUR_VERIFIED_GITHUB_EMAIL"
-git add .
+Set-Location $PackageDir
+git clone "https://github.com/$Owner/$Repo.git" SecureEWS-publish
+Set-Location .\SecureEWS-publish
+git switch main
+
+if (git status --porcelain) {
+  throw "Clone is not clean; stop and inspect git status."
+}
+
+git branch "backup/pre-v0.6.1"
+git rm -r --ignore-unmatch -- .
+Get-ChildItem -Force $ReleaseRoot | Copy-Item -Destination . -Recurse -Force
+
+git add -A
 git status --short
-git commit -m "Prepare SecureEWS v0.6.0 public release"
-
-gh auth login --web --git-protocol https
-gh repo create SecureEWS --private --source . --remote origin --push
-gh repo view --web
-```
-
-Если репозиторий должен принадлежать организации, замените последнюю команду создания на:
-
-```powershell
-gh repo create OWNER_OR_ORGANIZATION/SecureEWS --private --source . --remote origin --push
-```
-
-Не используйте прежнюю фиктивную identity `release-prep@example.invalid`.
-
-## 3. Финальная проверка перед публичностью
-
-В GitHub проверьте отображение `README.md`, `CITATION.cff`, лицензий и PDF. Получите письменное согласование авторов и заполните в статье funding, ethics, CRediT и competing interests. После любых изменений пересоберите package:
-
-```powershell
-py -3.12 .\scripts\make_public_manifest.py
-py -3.12 .\scripts\verify_public_release.py
-py -3.12 .\scripts\build_release_zip.py
-git add .
-git commit -m "Finalize SecureEWS v0.6.0 metadata"
+git diff --cached --stat
+git diff --cached --check
+git commit -m "Release SecureEWS v0.6.1 and finalize MDPI submission package"
 git push origin main
 ```
 
-## 4. Сделать GitHub публичным, поставить tag и создать Release
+`git rm` здесь выполняется только в свежем чистом clone; резервная ветка сохраняет прежнее состояние. Перед `commit` обязательно просмотрите `git status` и `git diff --cached --stat`.
 
-В командах ниже `OWNER` замените на точный GitHub login или организацию:
+## 2B. Если repository ещё не существует
 
 ```powershell
-gh repo edit OWNER/SecureEWS --visibility public --accept-visibility-change-consequences
-git tag -a v0.6.0 -m "SecureEWS v0.6.0"
-git push origin v0.6.0
+Set-Location $ReleaseRoot
+git init -b main
+git config user.name "Oleksandr Kuznetsov"
+git config user.email "YOUR_VERIFIED_GITHUB_EMAIL"
+git add -A
+git diff --cached --check
+git commit -m "Release SecureEWS v0.6.1 and finalize MDPI submission package"
 
-gh release create v0.6.0 `
-  ..\SecureEWS-v0.6.0.zip `
-  ..\SecureEWS-v0.6.0.zip.sha256 `
-  --repo OWNER/SecureEWS `
-  --title "SecureEWS v0.6.0" `
+gh auth login --web --git-protocol https
+gh repo create "$Owner/$Repo" --private --source . --remote origin --push
+```
+
+Не подставляйте фиктивный email. Используйте email, подтверждённый в GitHub, или GitHub noreply address.
+
+## 3. Финальная проверка перед публичностью
+
+All-author sign-off подтверждён 4 сентября 2026 года. Выполните финальную техническую проверку:
+
+```powershell
+Set-Location "$PackageDir\SecureEWS-publish"
+py -3.12 .\scripts\make_public_manifest.py
+py -3.12 .\scripts\verify_public_release.py
+git status --short
+```
+
+После публикации manifest не должен неожиданно меняться. Если verifier изменил `PUBLIC_RELEASE_VERIFICATION.json`, зафиксируйте только ожидаемое обновление:
+
+```powershell
+git add MANIFEST.csv MANIFEST.json PUBLIC_RELEASE_VERIFICATION.json
+git commit -m "Refresh v0.6.1 verification receipts"
+git push origin main
+```
+
+После статуса `PASS` сделайте repository публичным:
+
+```powershell
+gh repo edit "$Owner/$Repo" `
+  --visibility public `
+  --accept-visibility-change-consequences
+```
+
+## 4. Tag и GitHub Release
+
+```powershell
+git tag -a v0.6.1 -m "SecureEWS v0.6.1"
+git push origin v0.6.1
+
+gh release create v0.6.1 `
+  "$PackageDir\SecureEWS-v0.6.1.zip" `
+  "$PackageDir\SecureEWS-v0.6.1.zip.sha256" `
+  --repo "$Owner/$Repo" `
+  --title "SecureEWS v0.6.1" `
   --notes-file RELEASE_NOTES.md `
   --verify-tag
+
+gh release view v0.6.1 --repo "$Owner/$Repo" --web
 ```
 
-Проверьте:
+GitHub Release должен содержать оба assets. Не перетагируйте `v0.6.1` после публикации; исправления payload выпускайте новой версией.
 
-```powershell
-gh release view v0.6.0 --repo OWNER/SecureEWS --web
-```
+## 5. Zenodo: создать draft через API
 
-## 5. Zenodo: безопасный draft через API
+Выберите только один маршрут: ручной API **или** Zenodo–GitHub integration. Не используйте оба для одного релиза, иначе появятся два DOI.
 
-Создайте токен в Zenodo Applications со scopes `deposit:write` и `deposit:actions`. Токен никому не отправляйте и не записывайте в файл.
+Для ручного API создайте Zenodo token со scopes `deposit:write` и `deposit:actions`. Не вставляйте токен в командную историю или файл:
 
 ```powershell
 $SecureToken = Read-Host "Zenodo token" -AsSecureString
 $env:ZENODO_TOKEN = [Net.NetworkCredential]::new("", $SecureToken).Password
 
+Set-Location "$PackageDir\SecureEWS-publish"
 .\scripts\create_zenodo_draft.ps1 `
-  -ArchivePath "..\SecureEWS-v0.6.0.zip" `
-  -ChecksumPath "..\SecureEWS-v0.6.0.zip.sha256" `
+  -ArchivePath "$PackageDir\SecureEWS-v0.6.1.zip" `
+  -ChecksumPath "$PackageDir\SecureEWS-v0.6.1.zip.sha256" `
   -MetadataPath ".\zenodo_metadata.json"
 ```
 
-Сценарий создаёт draft, загружает ZIP и SHA-256, записывает локальный `zenodo_draft_receipt.json` и выводит reserved DOI. Он **не публикует** запись.
+Скрипт создаёт draft, загружает оба файла и сохраняет `zenodo_draft_receipt.json`; он ничего не публикует.
 
-Откройте draft URL и вручную проверьте:
+В draft вручную проверьте:
 
-1. порядок и написание всех авторов;
-2. title, version `0.6.0`, publication date и keywords;
-3. GitHub Release URL в Related works;
-4. обе лицензии: MIT для кода и CC BY 4.0 для остальных материалов;
-5. funding — только после официального подтверждения;
-6. состав файлов и совпадение SHA-256.
+1. авторов, порядок, affiliations и ORCID;
+2. title, version `0.6.1`, дату и keywords;
+3. Related work: `https://github.com/KuznetsovKarazin/SecureEWS/releases/tag/v0.6.1`;
+4. MIT как основную software license и примечание о CC BY 4.0 для documentation/results/manuscript materials;
+5. funding `AP23489228`;
+6. точный состав files и SHA-256.
 
-Для теста можно использовать отдельный sandbox-token и ключ `-Sandbox`. Sandbox может очищаться и выдаёт тестовые DOI.
+Для пробного запуска используйте отдельный sandbox-token и параметр `-Sandbox`. Sandbox выдаёт тестовый DOI и может очищаться.
 
-## 6. Публикация Zenodo — только после всех согласований
+## 6. Опубликовать Zenodo — необратимый шаг
 
-Подставьте deposition ID из `zenodo_draft_receipt.json`:
+После ручной проверки Zenodo draft:
 
 ```powershell
+$Receipt = Get-Content .\zenodo_draft_receipt.json -Raw | ConvertFrom-Json
 .\scripts\publish_zenodo_draft.ps1 `
-  -DepositionId 12345678 `
+  -DepositionId $Receipt.deposition_id `
   -IConfirmAuthorFundingEthicsAndConflictsApproval
 ```
 
-После публикации добавьте DOI в `CITATION.cff` и README, создайте отдельный metadata-only commit и не меняйте уже опубликованный ZIP. Для исправления научного payload создавайте новую версию Zenodo и новый Git tag, а не заменяйте историю `v0.6.0`.
+После публикации сохраните DOI. Добавьте его в `CITATION.cff` и README отдельным metadata-only commit на `main`; tagged payload и уже опубликованный Zenodo archive не заменяйте.
 
-## Альтернатива: Zenodo–GitHub integration
+## 7. Альтернатива: Zenodo–GitHub integration
 
-Можно связать GitHub в профиле Zenodo, нажать `Sync now` и включить репозиторий до выпуска GitHub Release. Тогда новый GitHub release будет автоматически архивирован. Не используйте одновременно integration и ручной API deposit: это создаст два Zenodo records/DOI для одного релиза.
+До создания GitHub Release подключите GitHub в Zenodo, выполните `Sync now` и включите repository. После публикации GitHub Release Zenodo автоматически создаст запись. В этом случае не запускайте `create_zenodo_draft.ps1`.

@@ -2,17 +2,18 @@
   "title": "SecureEWS: Auditable data-minimization stress tests for educational early-warning systems",
   "description": "Source code, frozen protocols, aggregate results, paired-bootstrap draws, verification reports, and manuscript materials for a post-development stress test of educational early-warning data-minimization claims across review budgets, stages, excluded feature blocks, and metrics. Raw or processed row-level data, individual predictions, trained models, and XuetangX files are not included. Code: MIT; documentation and aggregate research materials: CC BY 4.0.",
   "creators": [
-    {"name": "Shaikhanova, Aigul", "affiliation": "L.N. Gumilyov Eurasian National University; University of Illinois at Urbana-Champaign"},
+    {"name": "Shaikhanova, Aigul", "affiliation": "L.N. Gumilyov Eurasian National University; University of Illinois at Urbana-Champaign", "orcid": "0000-0001-6006-4813"},
     {"name": "Kuznetsov, Oleksandr", "affiliation": "eCampus University; V. N. Karazin Kharkiv National University", "orcid": "0000-0003-2331-6326"},
-    {"name": "Shangytbayeva, Gulmira", "affiliation": "Zhubanov University"},
-    {"name": "Bakenova, Kamila", "affiliation": "University of Illinois at Urbana-Champaign; Arkalyk Pedagogical University"},
-    {"name": "Iklassova, Kainizhamal", "affiliation": "Manash Kozybayev North Kazakhstan University"},
-    {"name": "Tulemisova, Dana", "affiliation": "Astana IT University"}
+    {"name": "Shangytbayeva, Gulmira", "affiliation": "Zhubanov University", "orcid": "0000-0003-4615-5756"},
+    {"name": "Bakenova, Kamila", "affiliation": "University of Illinois at Urbana-Champaign; Arkalyk Pedagogical University", "orcid": "0009-0004-2567-173X"},
+    {"name": "Iklassova, Kainizhamal", "affiliation": "Manash Kozybayev North Kazakhstan University", "orcid": "0000-0002-8330-4282"},
+    {"name": "Tulemisova, Dana", "affiliation": "Astana IT University", "orcid": "0009-0006-5319-7742"}
   ],
   "upload_type": "software",
   "access_right": "open",
   "license": "MIT",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "publication_date": "2026-09-04",
+  "notes": "Funding: Science Committee of the Ministry of Science and Higher Education of the Republic of Kazakhstan, grant AP23489228. Mixed-license release: source code is MIT; documentation and aggregate research materials are CC BY 4.0.",
   "keywords": ["learning analytics", "early-warning systems", "data minimization", "workload-constrained evaluation", "proxy persistence", "multiplicity", "temporal validation"]
 }
