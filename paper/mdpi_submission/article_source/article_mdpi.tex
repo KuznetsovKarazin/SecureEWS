@@ -23,7 +23,7 @@
 \newcommand{\AP}{\ensuremath{\mathrm{AP}}}
 \newcommand{\AUROC}{\ensuremath{\mathrm{AUROC}}}
 
-\Title{Stress-Testing Data Minimization Across Review Budgets and Decision Stages in Educational Early Warning: Paired Evidence from OULAD and Two UCI Datasets}
+\Title{Evaluating Data-Minimized Early-Warning Systems for Educator Decision Support: Evidence Across Review Capacities and Educational Stages}
 
 \newcommand{\orcidauthorA}{0000-0001-6006-4813}
 \newcommand{\orcidauthorB}{0000-0003-2331-6326}
@@ -48,137 +48,145 @@ $^{8}$ \quad School of Cybersecurity, Astana IT University, 55/11 Mangilik El Av
 
 \corres{Correspondence: oleksandr.kuznetsov@uniecampus.it (O.K.); gshangytbayeva@zhubanov.edu.kz (G.S.)}
 
-\abstract{Data-minimization claims for educational early-warning systems can change with review capacity, prediction stage, excluded field block, and evaluation metric. We extended a provenance-corrected analysis of the Open University Learning Analytics Dataset (OULAD) and two separately identified UCI datasets, re-evaluating frozen legacy models at 5\%, 10\%, 20\%, and 30\% within-group review budgets without refitting them. We also tested whether directly excluded sex/gender and disability/special-needs fields remained predictable from retained inputs, and fitted only the histogram-gradient-boosting models needed for two operationally harmonized blocks -- sex/gender and socioeconomic/family information -- accepting new restricted models only when a same-run full control reproduced its frozen probability to within $10^{-12}$. Paired bootstraps used 5,000 primary replicates with Bonferroni-percentile intervals across all frozen stages and budgets. Of 296 primary precision cells, 30 had family-wise intervals below zero and none above zero; this count includes planned duplicate views and is not 30 independent confirmations. Sex/gender exclusion showed no family-wise workload-precision difference in any dataset, whereas socioeconomic/family exclusion reduced global predictive performance at every OULAD horizon and both UCI 697 stages, with workload penalties concentrated at selected OULAD 30\% queues and large at UCI 697 enrollment; UCI 320 workload differences remained inconclusive. Fixed probes predicted excluded fields above chance, establishing residual predictability rather than actual proxy use by the outcome models. The results support stage-, capacity-, block-, and metric-specific governance rather than a universal claim that direct exclusion is cost-free, and are post-development, conditional on fitted models, without establishing equivalence, fairness, privacy, or causal educational benefit.}
+\abstract{Educational early-warning systems can help educators decide which students may need closer attention when time and support capacity are limited. Institutions also need to know whether collecting less background information preserves the practical usefulness of these systems. We evaluated this question in the Open University Learning Analytics Dataset (OULAD) and two separately analyzed UCI education datasets. Models using all available fields were compared with models that omitted selected student-background information at several educational stages and at review capacities of 5\%, 10\%, 20\%, and 30\%. The primary outcome was the yield of each review list: the proportion of flagged students who later experienced the adverse educational outcome. Paired bootstrap intervals accounted for repeated comparisons across stages and capacities. Removing sex/gender information did not produce a family-wise difference in review-list yield in any dataset. Removing socioeconomic and family-related information had more substantial consequences: global predictive performance decreased throughout OULAD and UCI 697, with additional losses in selected larger OULAD review lists and at UCI 697 enrollment. Results for the smaller UCI 320 samples were inconclusive. Separate diagnostic models also showed that excluded attributes remained partly predictable from other records; direct deletion therefore did not remove all associated information. These post-development findings do not estimate the effect of alerts on teaching or student outcomes. They instead provide an evaluation framework for responsible integration: institutions should assess early-warning systems at the stage, staffing capacity, and data scope in which educators will actually use them, and should prospectively evaluate workload, professional judgement, and student support after deployment.}
 
-\keyword{learning analytics; early-warning systems; data minimization; workload-constrained evaluation; proxy persistence; multiplicity; temporal validation; teacher decision support}
+\keyword{learning analytics; educational early-warning systems; educator decision support; data minimization; review capacity; technology integration; responsible educational technology}
 
 \begin{document}
 
 \section{Introduction}
 
-Educational early-warning systems rank students for possible review or support. Their practical value is determined not only by discrimination but also by the operating queue: how many registrations staff can review and how many selected registrations later experience the target outcome. Precision--recall measures are therefore relevant when risk prevalence and review capacity are constrained \citep{saito2015precision}. A retrospective ranking study nevertheless remains distinct from an intervention study. Field experiments are needed to determine whether displaying alerts changes counselling, teaching practice, retention, or achievement \citep{plak2022early}.
+Educational early-warning systems are intended to help educators notice students who may benefit from timely support. In practice, however, a prediction is useful only when it can be incorporated into professional work. A teacher, adviser, or student-support team may be able to review only a small proportion of a cohort, and the system consequently helps determine whose situation is examined first. Its educational value therefore depends not only on overall predictive accuracy, but also on the quality of the review list produced at the institution's actual staffing capacity.
 
-Background variables can improve prediction while creating questions about necessity, proportionality, and governance. Data minimization is a lifecycle design obligation, not a claim that deleting a direct field automatically makes a model fair, private, or lawful \citep{gdpr2016,drachsler2016delicate,rets2023six}. Direct exclusion can leave proxies and can change which individuals are selected even when aggregate precision is similar. Its cost should therefore be evaluated at the intended decision unit and workload.
+This distinction has a direct practical meaning. If an institution can review 10\% of a cohort, review-list precision is the proportion of students in that 10\% list who later experience the adverse outcome; recall is the proportion of all subsequent adverse outcomes represented in the list. Precision--recall measures are particularly informative when outcomes are imbalanced and capacity is constrained \citep{saito2015precision}. Yet a useful retrospective list is only a prerequisite for effective support. Whether an alert improves counselling, teaching, retention, or achievement must ultimately be established in prospective educational practice \citep{plak2022early}.
 
-Capacity-based alerting, calibration, subgroup audits, repeated landmarks, and alert-list stability are established evaluation components rather than novel contributions \citep{wu2026calibrated,wuluo2026zenodo}. Leakage-excluded OULAD protocols emphasize cutoff-first truncation and feature-availability audits \citep{le2026leap}; the present analysis shares that temporal concern but asks a different question about workload-constrained field exclusion. Privacy-conscious engagement-only prediction and causal or adversarial analyses of demographic data further show that predictive utility, privacy, and fairness cannot be collapsed into one claim \citep{chiu2026privacy,hasan2022utility}. Our contribution is a post-development stress test of exclusion claims across four review budgets, a held-out audit of residual predictability after direct field deletion, two operationally harmonized block comparisons with exact same-run controls, and paired family-wise uncertainty across all frozen stages and budgets. OULAD, UCI 697, and UCI 320 remain separately identified and are not pooled as replications.
+The choice of information used to construct a review list is equally important. Student-background variables may improve prediction, but their collection raises questions about necessity, proportionality, interpretation, and governance. Data minimization is a lifecycle design principle; deleting a field does not by itself make a system fair, private, or lawful \citep{gdpr2016,drachsler2016delicate,rets2023six}. Information related to an excluded attribute may remain in other records, and two models with similar aggregate performance may still direct educators' attention to different students. Evaluating data minimization therefore requires the intended educational stage, staff capacity, comparison model, and consequences for review-list membership to be stated explicitly.
 
-The OULAD data, temporal split, model families, workload framing, demographics, and interpretability have been used in an earlier article by overlapping investigators \citep{shaikhanova2025interpretable}. They are not claimed as new. The original question here concerns exclusion of all six background fields at day 42. The gender/disability-only policy and the additional horizons were defined after earlier OULAD outcomes had been inspected. They are secondary, post-development analyses. The study asks:
+Previous work has established the importance of capacity-based alerting, calibration, subgroup auditing, repeated prediction stages, and alert-list stability \citep{wu2026calibrated,wuluo2026zenodo}. Leakage-aware OULAD protocols likewise show why only information genuinely available at the prediction time should be used \citep{le2026leap}. Privacy-conscious engagement-only prediction and causal or adversarial analyses of demographic information further demonstrate that predictive utility, privacy, and fairness are related but distinct questions \citep{chiu2026privacy,hasan2022utility}. What remains less clear is whether a conclusion reached at one review capacity or educational stage remains valid when the working conditions of educators change.
+
+Within the broader study of effective digital-technology integration into educators' professional activity, this research develops and evaluates a capacity-aware framework for assessing early-warning systems before deployment. We compare review lists across four realistic capacities, examine several points in the educational process, distinguish targeted removal of sex/gender information from broader removal of socioeconomic and family-related information, and test whether excluded attributes remain statistically recoverable from retained records. The OULAD data and several elements of the temporal modeling design were used in an earlier article by overlapping investigators \citep{shaikhanova2025interpretable}; the present contribution is the systematic evaluation of data-removal conclusions across capacities, stages, and datasets. OULAD, UCI 697, and UCI 320 address different educational settings and are therefore interpreted separately rather than pooled as replications.
+
+The study addresses four questions:
 
 \begin{enumerate}[leftmargin=1.8em]
-\item Do restricted-minus-full workload differences retain their sign and practical scale at 5\%, 10\%, 20\%, and 30\% review budgets?
-\item Are directly excluded sex/gender and disability/special-needs fields still predictable from the retained feature view in held-out data?
-\item How do the operationally harmonized sex/gender and socioeconomic/family blocks behave across datasets and stages when every new restricted model has a same-run full control?
-\item Which conclusions survive paired family-wise uncertainty across all frozen stages and budgets?
-\item Do the earlier complete-exclusion, targeted-exclusion, and click-independent findings remain appropriately bounded after this stress test?
+\item How does removing student-background information change the usefulness of review lists when educators can examine 5\%, 10\%, 20\%, or 30\% of a cohort?
+\item Do these consequences change as additional evidence becomes available during the course or program?
+\item Do targeted sex/gender removal and broader socioeconomic/family removal have different practical consequences across the three educational datasets?
+\item Can an excluded attribute still be predicted from retained records, and what does this imply for responsible institutional use?
 \end{enumerate}
 
 \section{Materials and Methods}
 
-\subsection{Analysis status and provenance correction}
+\subsection{Study design, evidentiary status, and provenance}
 
-The analysis is a locked-after-audit, post-development exploratory reanalysis. The 2014J outcomes had been inspected in earlier development. The $-0.03$ complete-exclusion reference was selected after earlier results, and the gender/disability-only policy was not part of the original v0.2.1 question. During forensic review, main models for days 14--56 on the official archive were also observed before the complete C12 production protocol was fixed. After that diagnostic step, no policy, horizon, feature recipe, model grid, seed, alert rule, bootstrap plan, or gate was changed. This chronology prevents a confirmatory or independent-validation interpretation.
+This is a retrospective methodological evaluation of early-warning models using existing, de-identified educational datasets. The framework was developed iteratively from earlier analyses and then locked before the final multi-capacity, attribute-predictability, and harmonized-block evaluations reported here. No review capacity, educational stage, feature definition, model grid, alert rule, resampling plan, or reporting threshold was changed after that lock. The study should therefore be read as a rigorous post-development stress test rather than as preregistered confirmation.
 
-The official OULAD archive had SHA-256
-\texttt{\seqsplit{f2ed1902616c1fe8d2824d872c0b7d2d72be435bf0124d077044fe4be2c6d3e4}}.
-All archive members passed CRC validation and 54 input checks. A superseded recovery archive had SHA-256
-\texttt{\seqsplit{b344faabbf728c2fec93913127813391d259b959aa283de715db51b2c0eaa81b}}
-and replaced 1,111 literal \texttt{?} values in \texttt{imd\_band} with empty fields. Under the inherited preprocessing recipe, the literal marker was an explicit categorical level whereas empty fields were most-frequent-imputed. An exact replay of v0.2.1 on the official archive reproduced all 64 saved workload rows. This established a concrete provenance error rather than evidence that the intermediate numerical results were fabricated. The superseded run is retained only as audit history.
+A provenance audit identified that an earlier recovery copy of OULAD encoded 1,111 missing area-deprivation values differently from the official archive. Because this changed preprocessing, all current OULAD results were regenerated from the official pinned bytes and compared with controls from the same execution. The original release was also replayed exactly on the official archive. Full checksums, the transition between runs, and the computational evidence ledger are provided in the Supplementary Materials and public reproducibility package.
 
-\subsection{Dataset, outcome, and temporal partitions}
+Figure~\ref{fig:studyframework} summarizes the study as an educator-facing decision process. The datasets supply evidence available at different educational stages, the paired models test alternative information policies, and the capacity rule translates model scores into the number of students a responsible team can realistically review.
 
-OULAD contains 32,593 student--module--presentation registrations across 22 presentations of seven anonymized modules, assessment records, and 10,655,280 virtual-learning-environment records \citep{kuzilek2017oulad}. At landmark day $t$, the dynamic risk set contained registrations that had begun by $t$ and had no withdrawal recorded on or before $t$. The binary outcome was future Fail or Withdrawn versus Pass or Distinction. Models used 2013B and 2013J for fitting, 2014B for model selection and calibration, and 2014J for temporal evaluation. Snapshots were created after the end of days 14, 28, 42, 56, 70, and 90.
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{fig0_capacity_aware_framework.pdf}
+\caption{Capacity-aware framework for evaluating an educational early-warning system before prospective use. OULAD, UCI 697, and UCI 320 represent different educational settings and were analyzed separately. The framework links the intended educational decision and evidence available at that stage to paired model comparisons, realistic staff capacity, and measures of practical usefulness.}
+\label{fig:studyframework}
+\end{figure}
 
-Because withdrawals remove registrations from later risk sets, cohort size, composition, and prevalence change over time. Cross-landmark differences therefore do not estimate an optimal intervention time. A common-registration sensitivity retained registrations present at all first four horizons or all six horizons, but this conditions on later retention and is also non-causal.
+\subsection{OULAD setting, outcome, and temporal partitions}
 
-\subsection{As-of-time features and field-exclusion policies}
+OULAD contains 32,593 student--module--presentation registrations across 22 presentations of seven anonymized modules, together with assessment and virtual-learning-environment records \citep{kuzilek2017oulad}. At each observation day, the analysis included registrations that had begun and had not already ended in withdrawal. The educational outcome distinguished future Fail or Withdrawn from Pass or Distinction. Data from 2013B and 2013J were used for fitting, 2014B for model selection and calibration, and 2014J for temporal evaluation. Review lists were constructed after days 14, 28, 42, 56, 70, and 90.
 
-Virtual-learning-environment events were aggregated only when their event day was no later than the landmark. Features described cumulative and recent click volume, active days, timing, inactivity, pre-start activity, and click trend. An assessment submission counted only when it was non-banked and both its due date and submission date were no later than the landmark. Scores were excluded because OULAD does not provide grading or score-release timestamps. Expected-assessment denominators were limited to assessments due by the landmark.
+Because students who withdraw leave later risk sets, the size and composition of the evaluated cohort change over time. Comparisons across observation days describe how available evidence and review lists change; they do not identify the optimal time for an educational intervention. A sensitivity analysis followed registrations present across the first four or all six observation days, while recognizing that this conditions on later continuation.
 
-All standard policies used module, previous attempts, studied credits, registration lead time, and the available activity and assessment-process features. The \emph{full} policy additionally used gender, region, highest education, Index of Multiple Deprivation band, age band, and disability. The \emph{six-field-excluded} policy removed all six. The secondary \emph{gender/disability-excluded} policy removed only gender and disability. Six leave-one-field-out models at days 14 and 42 removed one field at a time. Excluded fields remained available for descriptive auditing; neither candidate is a claim of complete lifecycle minimization.
+\subsection{Time-aware evidence and data-removal scenarios}
 
-\subsection{Models, selection, and calibration}
+Only information available by an observation day was used. Virtual-learning-environment features summarized cumulative and recent activity, active days, timing, inactivity, pre-start activity, and change in click activity. An assessment submission counted only when both its due date and submission date were no later than the observation day. Scores were excluded because OULAD does not record when grades became visible to educators or students.
 
-Histogram gradient boosting was implemented in scikit-learn \citep{pedregosa2011scikit}. Numeric variables were median-imputed with missingness indicators. Categorical variables were most-frequent-imputed and ordinal-encoded, with transformations fitted on training data only. The number of leaves was selected from $\{7,15,31\}$ by 2014B average precision, breaking validation ties in favor of the simpler model. Other settings were learning rate 0.05, at most 250 iterations, minimum leaf size 30, $L_2=1$, disabled internal early stopping, and seed 42. A positive-slope Platt model was fitted on 2014B predictions and transferred unchanged to 2014J. Calibration was evaluated rather than assumed \citep{vancalster2019calibration,collins2024tripod,moons2025probast}.
+All standard models used course context, previous attempts, studied credits, registration timing, and the activity and assessment-process evidence available at that stage. The \emph{full-information} model additionally used gender, region, highest education, Index of Multiple Deprivation band, age band, and disability. The \emph{broadly minimized} model omitted all six fields, whereas the \emph{targeted} model omitted only gender and disability. Additional comparisons removed one background field at a time. The term \emph{data-minimized} describes these model inputs; it does not imply that the source dataset or wider institutional lifecycle no longer contains the fields.
 
-The production run fitted 105 validation candidates and saved 36 selected pipelines before uncertainty analysis. It also saved 36 validation and 36 test prediction files. All new contrasts compare policies within this same official-data run.
+\subsection{Predictive models, selection, and calibration}
 
-\subsection{Workload-constrained estimand and ties}
+Histogram gradient boosting was implemented in scikit-learn \citep{pedregosa2011scikit}. Missing numeric values were median-imputed with missingness indicators; categorical variables were most-frequent-imputed and ordinal-encoded. Every transformation was fitted on training data only. Model complexity was selected on the validation presentation by average precision, with simpler models preferred when validation results were tied. A positive-slope Platt model was then fitted on validation predictions and transferred unchanged to the temporal evaluation presentation. Calibration was evaluated rather than assumed \citep{vancalster2019calibration,collins2024tripod,moons2025probast}. Complete hyperparameters are reported in the Supplementary Materials.
 
-Within each module $m$, calibrated risks were sorted and
+All comparisons pair a data-minimized model with a full-information control created under the same data split, feature-availability rules, model family, and software environment. Selected models and predictions were fixed before the uncertainty calculations.
+
+\subsection{Review capacity and educational interpretation of the metrics}
+
+Within each operational group $g$---a module in OULAD, a course in UCI 697, or a school in UCI 320---students were ordered by estimated risk. At review capacity $b$, the number placed in the review list was
 \[
-  k_m=\left\lceil 0.10 n_m\right\rceil
+  k_g=\left\lceil b n_g\right\rceil, \qquad b\in\{0.05,0.10,0.20,0.30\}.
 \]
-registrations were selected. Micro-aggregated precision and recall were
+The primary measure was review-list precision, the share of reviewed students who later experienced the adverse outcome. Review-list recall measured the share of all later adverse outcomes included in that list:
 \[
-  \Pten=\frac{\sum_m TP_m}{\sum_m k_m}, \qquad
-  \Rten=\frac{\sum_m TP_m}{\sum_m N_{+,m}}.
+  P_b=\frac{\sum_g TP_g}{\sum_g k_g}, \qquad
+  R_b=\frac{\sum_g TP_g}{\sum_g N_{+,g}}.
 \]
-Exact score ties were resolved by a SHA-256 key derived from module, presentation, and student identifier. A sensitivity calculated expected yield under uniform ordering within exact boundary-score blocks. This explicit rule accounts for a two-alert discrepancy in a prior day-28 replay and is part of the estimand, not a model improvement.
+For example, \Pten{} is the proportion of students in the highest-risk 10\% review list who later experienced the outcome, while \Rten{} is the proportion of all such outcomes captured in that list. Exact score ties at a list boundary were resolved by a prespecified deterministic key; a sensitivity analysis averaged over possible orders within tied boundary scores.
 
-Average precision, AUROC, Brier score, log loss, and ten-bin expected calibration error supplemented the capacity metric. The unchanged original gate required the pointwise lower 95\% bound for six-field-excluded minus full day-42 \Pten{} to exceed $-0.03$. This is a post-development operational reference, not a formal non-inferiority margin.
+Average precision (AP) summarized ranking quality across possible thresholds, area under the receiver operating characteristic curve (AUROC) measured overall discrimination, and the Brier score assessed probability accuracy. The original OULAD decision rule treated a loss greater than three percentage points in day-42 \Pten{} as practically concerning. Because this reference was chosen during development, it is used as an operational guide rather than a formal non-inferiority margin.
 
-\subsection{Paired uncertainty and common-cohort sensitivity}
+\subsection{OULAD paired uncertainty and common-cohort sensitivity}
 
-Student identifiers were resampled with replacement, retaining all selected registrations and duplicate multiplicities. Each replicate recomputed both module-specific queues. Day 42 used 5,000 paired cluster-bootstrap replicates; each other dynamic horizon used 2,000. Models, transformations, hyperparameters, and calibrators were not refitted inside the bootstrap. Percentile and basic intervals were recorded. Bonferroni-percentile sensitivity intervals were calculated over each six-horizon policy family. A two-sided sign proportion was retained only as a descriptive bootstrap statistic, not a confirmatory $p$-value.
+Uncertainty was estimated by resampling students, retaining all registrations belonging to a resampled student, and reconstructing the full-information and data-minimized review lists in every replicate. The paired design asks how the two policies differ for the same resampled educational records. The day-42 analysis used 5,000 replicates and the other OULAD stages used 2,000. Family-wise intervals accounted for the six observation days within each prespecified policy family. Models were not refitted during resampling.
 
 The four-horizon common cohort contained 8,853 registrations from 8,536 students; the six-horizon cohort contained 8,507 registrations from 8,216 students. Within each, day-42-minus-day-14 difference-in-differences compared the change in each exclusion gap with the full-control change. These analyses condition on later registration retention.
 
-\subsection{Click-independent tiers and unchanged strict gate}
+\subsection{Fallback models without clickstream data}
 
-At day 42, the original strict tier excluded all click/activity fields and retained context plus due assessment-process features. The enriched tier added typed, due-by-landmark process counts and ratios without using scores, click telemetry, or future records. A typed alternative changed the process representation. Each tier selected complexity on 2014B and was calibrated on 2014B. An expanded leaf grid added 63 and 127 leaves; it produced the same selected predictions as the standard grid.
+To examine a setting in which learning-platform activity is unavailable, day-42 fallback models excluded all clickstream variables and retained course context and assessment-process information that was due and observable by that day. An enriched version added further process counts and ratios, but no grades, click telemetry, or future records. Model selection and calibration followed the same validation procedure as the standard models.
 
-The unchanged strict gate required click-independent clean \Pten{} to be no more than 0.05 below the same-run six-field-excluded standard comparator. Improvement over the original strict tier could not substitute for failure against this comparator.
+At a 10\% review capacity, the prespecified operational rule allowed the enriched fallback to be no more than five percentage points below the standard broadly minimized comparator. This comparison asks whether a clickstream-free fallback remains practically adequate, not merely whether it improves on a weaker fallback.
 
-\subsection{External UCI datasets and cross-fitted controls}
+\subsection{External educational datasets and cross-fitted controls}
 
-Two official UCI archives were added after the OULAD analysis and are reported as distinct external analyses. UCI 697, \emph{Predict Students' Dropout and Academic Success}, contains 4,424 higher-education students, 36 predictors, and the outcomes Dropout, Enrolled, and Graduate \citep{realinho2021uci697}. The primary terminal-status comparison used Dropout versus Graduate and excluded Enrolled; a secondary outcome treated Graduate and Enrolled as non-dropout. Enrollment models used 24 enrollment-time fields. Semester-one models added six first-semester curricular-unit fields; all second-semester fields were prohibited. The historical \emph{legacy operational} subset retained application order, course, attendance schedule, previous qualification and grade, and admission grade, adding first-semester fields at the later stage. Further same-run policies excluded direct personal fields, family/financial fields, or gender plus educational special-needs status.
+Two official UCI datasets were evaluated after OULAD and are reported as distinct external analyses. UCI 697, \emph{Predict Students' Dropout and Academic Success}, contains 4,424 higher-education students, 36 predictors, and the outcomes Dropout, Enrolled, and Graduate \citep{realinho2021uci697}. The primary comparison distinguished Dropout from Graduate and excluded students still enrolled; a secondary outcome compared Dropout with all other statuses. Enrollment models used only information available on entry. Semester-one models added first-semester curricular-unit evidence while prohibiting all second-semester fields. Data-removal scenarios omitted direct personal information, family and financial information, or gender and educational special-needs status. A sparse operational comparator retained only a small set of admissions and course variables.
 
-UCI 320, \emph{Student Performance}, provides separate Mathematics ($n=395$) and Portuguese ($n=649$) samples from two secondary schools \citep{cortez2008uci320}. The subjects were not pooled: the supplied 13-field linkage key was not unique. The target was final-grade failure ($G3<10$). Baseline models excluded G1, G2, and G3; period-one models added G1; period-two models added G1 and G2 while always excluding G3. Same-run policies removed sex, a demographic/family block, a sensitive/wellbeing block, or retained only school-observable fields. These labels describe frozen operational sets rather than legal or ethical classifications of individual fields.
+UCI 320, \emph{Student Performance}, provides separate Mathematics ($n=395$) and Portuguese ($n=649$) samples from two secondary schools \citep{cortez2008uci320}. The subjects were not pooled because the supplied linkage fields did not uniquely identify the same students across files. The outcome was final-grade failure ($G3<10$). Baseline models excluded all grades; the next stages added G1 and then G2 while always excluding the final grade G3. Data-removal scenarios omitted sex, demographic and family fields, sensitive and wellbeing fields, or retained only school-observable information.
 
-Both analyses used ten shared stratified outer folds. Within each outer training fold, a stratified 20\% split was used for HGB leaf selection from $\{7,15,31\}$ and Platt calibration. Logistic regression was a sensitivity model. Every selected fold model, calibrator, split assignment, and out-of-fold probability was saved before statistics. Alert budgets were allocated separately within Course for UCI 697 and school for UCI 320, using an explicit SHA-256 row tie-break. Paired row bootstraps used 5,000 replicates for primary HGB contrasts and 2,000 for secondary contrasts. Bonferroni intervals covered the two UCI 697 or three UCI 320 stages within each frozen policy family. Because earlier UCI 697 results existed and all external choices followed OULAD inspection, neither dataset is presented as independent confirmation.
+Both UCI analyses used ten shared stratified outer folds. Model selection and calibration were conducted only within each outer training fold, and logistic regression served as a sensitivity model. Review capacity was allocated within course for UCI 697 and within school for UCI 320. Paired resampling used 5,000 replicates for the primary gradient-boosting comparisons and 2,000 for secondary comparisons. Family-wise intervals covered the two UCI 697 or three UCI 320 educational stages within each policy family. These datasets broaden the settings examined, but they are not treated as independent confirmations because their analysis followed the OULAD work.
 
-\subsection{C14 multi-budget extension and frozen status}
+\subsection{Evaluation across four review capacities}
 
-The C14 extension was specified after C12 and C13 results were known and is not preregistered confirmation. Before C14 results were computed, the protocol fixed four review fractions, $b\in\{0.05,0.10,0.20,0.30\}$. Within each operational group, the queue contained $\lceil b n_g\rceil$ observations. OULAD retained its module-specific SHA-256 tie rule; UCI 697 and UCI 320 retained the C13 Course- and school-specific rules. C14B recomputed queue size, true and false alerts, precision, recall, lift, alert-set Jaccard similarity, and the fraction of full-model alerts retained, using saved C12 test probabilities and C13 out-of-fold probabilities only. No model, feature recipe, calibrator, or split was altered.
+Before computing the final capacity analysis, review fractions of 5\%, 10\%, 20\%, and 30\% were fixed. For each fraction we reconstructed the number of reviewed students, true and false alerts, precision, recall, lift over prevalence, overlap between review lists, and the proportion of students retained from the full-information list. Existing OULAD test probabilities and UCI out-of-fold probabilities were reused, so this step changed the decision capacity but did not alter or refit the models.
 
-\subsection{Proxy-persistence audit}
+\subsection{Residual predictability after direct attribute removal}
 
-C14C asked whether an excluded field remained predictable from the fields retained by its targeted-exclusion view. It did not ask whether an outcome model actually used a particular proxy. Fixed logistic probes ($C=1$, 2,000 maximum iterations) were primary; fixed HGB probes with 15 leaves were nonlinear sensitivities. OULAD probes targeted gender and disability, were fitted on 2013B/2013J, used 2014B only to select the balanced-accuracy threshold, and were evaluated on 2014J; an unseen-student subset excluded 2014J students observed during fitting. UCI 697 probes targeted Gender and Educational special-needs status, and UCI 320 probes targeted sex, using the ten saved outer folds and preprocessing within each fit fold. Outcomes, identifiers, split fields, the target field itself, and future-stage fields were prohibited. We report AUROC, average precision, its lift over target prevalence, balanced accuracy, Brier score, prevalence, and positive-case counts. These probes are descriptive predictability tests, not fairness tests, privacy attacks, or causal analyses.
+Separate diagnostic models asked whether an excluded attribute could still be predicted from the information retained in the corresponding data-minimized model. Logistic regression was the primary diagnostic, with gradient boosting as a nonlinear sensitivity. OULAD diagnostics targeted gender and disability and were evaluated temporally on 2014J, including a subset of students not observed during fitting. UCI 697 diagnostics targeted gender and educational special-needs status, and UCI 320 diagnostics targeted sex within the saved outer folds. Educational outcomes, identifiers, split fields, future-stage information, and the target attribute itself were prohibited. These diagnostics measure residual predictability: they do not show that an early-warning model used a particular proxy or that a fairness or privacy violation occurred.
 
-\subsection{Operationally harmonized exclusion blocks}
+\subsection{Comparable information groups across datasets}
 
-C14D fixed two cross-dataset block labels. The \emph{sex/gender} block comprised gender in OULAD, Gender in UCI 697, and sex in UCI 320. The \emph{socioeconomic/family} block comprised highest education and area-deprivation band in OULAD; parental qualification and occupation, debtor and tuition status, and scholarship status in UCI 697; and parental education and occupation in UCI 320. These labels describe operational groupings, not measurement equivalence or a shared latent construct.
+Two information groups were defined to support transparent comparisons across datasets. The \emph{sex/gender} group comprised the corresponding recorded field in each dataset. The \emph{socioeconomic/family} group comprised highest education and area deprivation in OULAD; parental qualifications and occupations, debtor and tuition status, and scholarship status in UCI 697; and parental education and occupations in UCI 320. These are operationally comparable groups, not claims that the datasets measure an identical social construct.
 
-Exact saved same-run pairs were reused wherever available. New HGB outcome models were fitted only for OULAD no-gender at days 28, 56, 70, and 90; OULAD socioeconomic/family exclusion at all six horizons; and UCI 320 socioeconomic/family exclusion for both subjects at all three stages. Each of the 12 distinct stage-specific new full controls was refitted in the same C14D execution. A pair was admissible only if its control reproduced the corresponding frozen full probability with maximum absolute error no greater than $10^{-12}$. No new logistic or UCI 697 outcome model was fitted. The canonical XuetangX C05 archive was neither extracted nor retrained and remained excluded from demographic claims.
+Existing paired comparisons were reused where available. Only missing gradient-boosting comparisons needed for the two information groups were fitted, each with a full-information control created in the same execution. Controls were required to reproduce the corresponding locked probabilities to numerical precision before a comparison was accepted. No UCI 697 outcome model was refitted. A previously preserved XuetangX analysis was excluded because the official dataset schema did not support verifiable demographic comparisons.
 
-\subsection{C14 paired uncertainty and multiplicity}
+\subsection{Cross-dataset paired uncertainty and multiplicity}
 
-C14E recomputed queues within each bootstrap replicate. OULAD resampled student identifiers and retained all registration multiplicities; UCI resampled rows. The same multiplicity vector was used for full and restricted predictions and all four budgets. A deterministic stream at dataset, subject/outcome, and stage level was also shared across exact C14B/C14D duplicate views. Primary HGB contrasts used 5,000 replicates and sensitivity contrasts used 2,000. For workload metrics, each family was defined by dataset, subject/outcome, named policy or block, model, and grid and covered every frozen stage times four budgets; probability metrics covered stages only. We report pointwise 95\% percentile intervals and Bonferroni-percentile family-wise intervals. Bootstrap sign proportions and their Bonferroni products are descriptive paired statistics rather than randomization-test $p$-values. The primary estimand was precision restricted minus full; recall, overlap, AP, AUROC, and Brier differences were secondary. Failure to exclude zero was not treated as equivalence.
+Review lists were reconstructed within every bootstrap replicate. OULAD resampled students and retained repeated registrations, whereas the UCI analyses resampled rows. The same resampling multiplicities were applied to full-information and data-minimized predictions at all four capacities. Primary gradient-boosting comparisons used 5,000 replicates and sensitivity comparisons used 2,000. For review-list metrics, each family covered all prespecified stages and capacities for one dataset, outcome, model, and data-removal policy; global probability metrics covered stages. We report pointwise and Bonferroni-adjusted family-wise 95\% percentile intervals. The primary comparison was the difference in review-list precision between the data-minimized and full-information models. Recall, list overlap, AP, AUROC, and Brier-score differences were secondary. An interval that includes zero is interpreted as inconclusive, not as proof of equivalence.
 
-\subsection{Computational verification}
+\subsection{Computational reproducibility}
 
-The official OULAD input passed 54 of 54 checks. OULAD model and prediction artifacts passed 861 of 861 checks; bootstrap replay, common-cohort identities, strict-grid equivalence, gates, and the evidence ledger passed 1,954 of 1,954 checks. For C13, 114 UCI model bundles and 243,220 out-of-fold rows passed complete hash, split-disjointness, leakage, completeness, and prediction-replay checks; the maximum replay error was $1.11\times10^{-16}$. C14B reproduced 150 saved configurations at the 10\% operating point with maximum error $2.22\times10^{-16}$. C14C independently replayed 44 probes and 250,044 predictions. C14D independently replayed 28 new bundles; its same-run full-control maximum error was $1.11\times10^{-16}$, and 30 harmonized pairs contained 274,004 paired prediction rows. C14E independently recalculated all 2,869 interval rows from 42 hashed draw files. These are internal reproducibility checks, not external validation.
+Inputs, data partitions, feature-availability rules, fitted pipelines, predictions, resampling draws, tables, and figures were checked by executable verification scripts. The final audit independently reconstructed all primary capacity results and statistical intervals from preserved artifacts. Complete counts, hashes, and replay tolerances are reported in the Supplementary Materials and aggregate-only public repository. These checks establish internal reproducibility; they are not a substitute for evaluation in another institution.
 
 \section{Results}
 
-\subsection{The official-data rerun changed some intermediate results but restored provenance}
+\subsection{The provenance-corrected OULAD analysis provided a stable basis for comparison}
 
-The official-data run reproduced the v0.2.1 six-field-excluded precision values at days 14, 42, and 56 and, under the explicit SHA tie-break, selected 762 rather than 760 true-risk alerts at day 28. Full-model true-alert counts differed from the superseded recovery run by $+3$, $-9$, $-1$, $+1$, $-1$, and $-4$ across days 14--90. These changes were not adjusted toward historical values. The exact transition is reported in the supplement.
+The corrected analysis used the official OULAD archive and an explicit rule for tied scores. Small intermediate counts changed relative to the superseded recovery run, but no result was adjusted toward a historical value. The exact transition is documented in the Supplementary Materials so that the educational comparisons below rest on one consistent data source.
 
-At day 42, the active 2014J risk set contained 9,040 registrations and 3,584 future Fail/Withdrawn outcomes. Each standard policy generated 908 alerts. Full selected 769 true-risk registrations, six-field exclusion selected 762, and gender/disability exclusion selected 765.
+At day 42, 9,040 active registrations were eligible for review and 3,584 later ended in Fail or Withdrawn. At a 10\% capacity, each model produced a list of 908 registrations. The full-information model identified 769 subsequent adverse outcomes, the broadly minimized model identified 762, and the targeted model without gender and disability identified 765.
 
-\subsection{Original complete-exclusion result: day-42 gate passed, six-horizon stability did not}
+\subsection{Removing all six background fields had stage-dependent consequences}
 
-At the original day-42 operating point, six-field-excluded \Pten{} was 0.8392 versus 0.8469 for the full model. The paired difference was $-0.0077$ (95\% percentile interval $[-0.0265,0.0155]$). Its lower bound exceeded the unchanged $-0.03$ reference, so the original exploratory gate passed.
+At day 42, the broadly minimized model achieved a review-list precision of 0.8392, compared with 0.8469 for the full-information model. In practical terms, both lists contained about 84 subsequent adverse outcomes for every 100 registrations reviewed. The paired difference was $-0.0077$ (95\% interval $[-0.0265,0.0155]$), remaining within the three-percentage-point operational reference used in the original analysis.
 
-This result did not generalize uniformly across horizons. At day 14, six-field exclusion selected 670 true-risk registrations among 935 alerts versus 708 for full: a precision difference of $-0.0406$ with a pointwise interval $[-0.0608,-0.0107]$ and a six-horizon Bonferroni interval $[-0.0692,-0.0036]$. Average precision was lower for six-field exclusion at every horizon. Complete exclusion therefore cannot be described as generally lossless, even though its original day-42 gate passed.
+The same conclusion did not hold at every stage. At day 14, the broadly minimized list identified 670 subsequent adverse outcomes among 935 reviewed registrations, compared with 708 for the full-information model. The precision difference was $-0.0406$, and the family-wise interval remained below zero ($[-0.0692,-0.0036]$). Average precision was also lower at every observation day. Broad removal of background information was therefore not uniformly cost-free: its practical effect depended on when the list was produced.
 
-\subsection{Secondary gender/disability exclusion preserved queue precision within the exploratory reference}
+\subsection{Targeted removal largely preserved the yield of educator review lists}
 
-At day 42, gender/disability-excluded precision was 0.8425 versus 0.8469 for full, a difference of $-0.0044$ (Table~\ref{tab:day42}). The pointwise interval included zero. AUROC and Brier score nevertheless favored full by small amounts, showing that near-equal queue precision did not imply equal global ranking or calibration performance.
+At day 42, removing gender and disability produced a review-list precision of 0.8425, compared with 0.8469 for the full-information model: a difference of less than half a percentage point (Table~\ref{tab:day42}). The interval included zero. Small AUROC and Brier-score differences nevertheless favored the full-information model, showing that a similar yield at one review capacity does not mean that the models rank all students or estimate probabilities identically.
 
 \begin{table}[H]
-\caption{Official-data C12 day-42 comparison of gender/disability exclusion with the same-run full control.}
+\caption{Day-42 comparison of targeted gender/disability removal with the full-information model.}
 \label{tab:day42}
 \begin{tabularx}{\textwidth}{LRRRR}
 \toprule
@@ -189,20 +197,20 @@ True-risk alerts & 765 & 769 & $-4$ & --- \\
 False alerts & 143 & 139 & $+4$ & --- \\
 \input{tables/main_day42}
 \end{tabularx}
-\noindent{\footnotesize{Intervals are paired student-cluster percentile intervals with 5,000 replicates, conditional on locked models. Positive Brier differences favor the full model.}}
+\noindent{\footnotesize{Intervals use 5,000 paired student-level bootstrap replicates and are conditional on the fitted models. Positive Brier differences favor the full-information model.}}
 \end{table}
 
-Across all six horizons, precision differences ranged from $-0.0044$ at day 42 to $+0.0035$ at day 90 (Table~\ref{tab:landmarks}; Figure~\ref{fig:partial}). Every pointwise interval included zero. All six Bonferroni lower bounds exceeded $-0.03$; the minimum was $-0.0173$ at day 28. This is a post-development sensitivity compatible with a precision loss smaller than the reference under the stated conditional bootstrap. It is not a formal non-inferiority result.
+Across the six observation days, precision differences ranged from $-0.0044$ at day 42 to $+0.0035$ at day 90 (Table~\ref{tab:landmarks}; Figure~\ref{fig:partial}). Every pointwise interval included zero, and all family-wise lower bounds remained above the three-percentage-point reference. The targeted policy therefore showed no practically large loss in review-list yield under the evaluated conditions, although this evidence is not a formal equivalence or non-inferiority test.
 
 \begin{table}[H]
 \centering
-\caption{Gender/disability-excluded versus full \Pten{} at six dynamic landmarks.}
+\caption{Targeted gender/disability removal versus the full-information model at a 10\% review capacity.}
 \label{tab:landmarks}
 \scriptsize
 \setlength{\tabcolsep}{3.5pt}
 \begin{tabular}{rrrrrrrrr}
 \toprule
-Day & Alerts & Candidate TP & Candidate P & Full TP & Full P & Difference & Pointwise 95\% & Bonferroni 95\% \\
+Day & Reviewed & Targeted TP & Targeted P & Full TP & Full P & Difference & Pointwise 95\% & Family-wise 95\% \\
 \midrule
 \input{tables/main_landmarks}
 \end{tabular}
@@ -211,113 +219,102 @@ Day & Alerts & Candidate TP & Candidate P & Full TP & Full P & Difference & Poin
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.96\textwidth]{fig1_partial_six_horizons.png}
-\caption{Paired gender/disability-excluded minus full \Pten{} contrasts. Dark intervals are pointwise student-cluster percentile intervals; pale intervals are Bonferroni family sensitivities. The dashed line is the post-development $-3$-percentage-point reference. Models were locked before resampling.}
+\caption{Difference in review-list precision after targeted removal of gender and disability. Dark intervals are pointwise paired bootstrap intervals; pale intervals account for the six observation days. The dashed line marks the three-percentage-point operational reference.}
 \label{fig:partial}
 \end{figure}
 
-The favorable precision sensitivity was metric-specific. At day 14, average precision decreased by $-0.00342$ (Bonferroni interval $[-0.00613,-0.00071]$). At the later five horizons, the family-wise average-precision intervals included zero. At day 42, the small AUROC difference was $-0.0018$ (pointwise interval $[-0.0027,-0.0009]$) and the Brier difference was $+0.0006$ ($[0.0003,0.0008]$), both favoring full.
+This finding was specific to the capacity-constrained review list. At day 14, overall ranking quality measured by average precision decreased by $-0.00342$ (family-wise interval $[-0.00613,-0.00071]$). At day 42, the small AUROC difference ($-0.0018$) and Brier-score difference ($+0.0006$) also favored the full-information model. Thus, similar performance for the first 10\% of students did not imply identical behavior across the full cohort.
 
-Near-equal aggregate precision also did not imply identical recipients. Relative to full, gender/disability exclusion replaced 54, 61, 37, 35, 21, and 17 alerts in each direction over days 14--90; Jaccard similarity increased from 0.8908 to 0.9610. Complete exclusion replaced 290 alerts per direction at day 14 and 169 at day 42. Recipient-level review is therefore necessary even when a queue-level difference is small.
+The students brought to educators' attention also changed. Compared with the full-information list, targeted removal replaced between 17 and 61 registrations in each direction, depending on the observation day. Broad removal replaced 290 registrations at day 14 and 169 at day 42. Institutions should therefore examine who enters and leaves a review list even when its overall yield changes little.
 
-\subsection{Leave-one-field-out and common-cohort analyses did not establish a causal field or timing rule}
+\subsection{Earlier stages were more sensitive to prior-education information}
 
-The largest leave-one-field-out precision loss occurred when highest education was removed at day 14: $-0.0342$, pointwise interval $[-0.0544,-0.0085]$, with a Bonferroni lower bound of $-0.0619$. At day 42, all six point differences lay between $-0.0066$ and $+0.0077$. These contrasts can identify operational sensitivity but cannot rank fields by causal importance.
+The largest single-field loss occurred when highest education was removed at day 14: review-list precision decreased by $-0.0342$ (95\% interval $[-0.0544,-0.0085]$). By day 42, all six single-field differences lay between $-0.0066$ and $+0.0077$. This pattern suggests that prior educational information may matter most before richer evidence of current participation becomes available, but it does not establish that the field itself causes the outcome.
 
-For gender/disability exclusion, the day-42-minus-day-14 difference-in-differences was 0.0000 in the four-horizon common cohort (95\% interval $[-0.0169,0.0180]$) and $+0.0070$ in the six-horizon cohort ($[-0.0129,0.0234]$). Complete exclusion showed positive pointwise changes, but the Bonferroni sensitivity intervals crossed zero. Conditioning on later retention and the changing information set prevent a monotonic or causal timing interpretation.
+Following the same registrations across observation days did not establish a consistent improvement in the targeted policy relative to the full-information model. The broader removal policy showed more favorable point estimates at later stages, but family-wise intervals included zero. Later evidence can reduce dependence on enrollment information, yet these retrospective comparisons cannot determine whether waiting produces a better intervention opportunity.
 
-\subsection{Enriched click-independent features improved the original strict tier but failed the unchanged gate}
+\subsection{Clickstream-free fallback models improved but remained substantially less useful}
 
-The enriched due-process tier increased average precision by 0.0256 relative to the original strict tier (95\% interval $[0.0191,0.0322]$), increased AUROC by 0.0315 ($[0.0234,0.0397]$), and reduced Brier score by 0.0070. Its \Pten{} increase was only $+0.0055$ ($[-0.0188,0.0210]$). Point metrics are shown in Table~\ref{tab:strict}.
+Adding richer assessment-process information improved the clickstream-free fallback: average precision increased by 0.0256, AUROC by 0.0315, and the Brier score improved by 0.0070 relative to the sparse fallback. Its 10\% review-list precision increased by only $+0.0055$, with an interval that included zero. Point estimates are shown in Table~\ref{tab:strict}.
 
 \begin{table}[H]
 \centering
-\caption{Official-data C12 day-42 click-independent tier results.}
+\caption{Day-42 results for models that do not use clickstream information.}
 \label{tab:strict}
-\small
+\footnotesize
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrrr}
 \toprule
-Policy & Leaves & True alerts & \Pten & AP \\
+Policy & Model size & Relevant cases & \Pten & AP \\
 \midrule
 \input{tables/main_strict}
 \end{tabular}
+\noindent{\footnotesize{Model size is the selected number of terminal nodes.}}
 \end{table}
 
-Against the same-run six-field-excluded standard comparator, enriched strict precision was 0.7423 versus 0.8392: difference $-0.0969$ (95\% interval $[-0.1289,-0.0738]$). The unchanged $-0.05$ gate therefore failed. The typed alternative also failed, and the expanded grid produced identical predictions. The inherited count of 712 enriched true alerts was not recovered; C12 selected 674. The inherited C06/C08 value remains \texttt{NOT\_REVERIFIED} and is not used as evidence.
+Against the standard broadly minimized model, however, the enriched fallback achieved a review-list precision of 0.7423 rather than 0.8392: a loss of 9.69 percentage points (95\% interval $[-0.1289,-0.0738]$). It therefore did not meet the five-percentage-point operational rule. Removing clickstream dependence may be desirable for resilience or governance, but the resulting reduction in practical utility must be measured and an explicit fallback or abstention policy is needed.
 
-\subsection{UCI 697 reproduced a large enrollment-time penalty that attenuated after semester one}
+\subsection{Early prediction depended strongly on family and financial information in UCI 697}
 
-For the primary Dropout-versus-Graduate outcome, the full HGB control attained \Pten{} of 0.9111 at enrollment and 0.9865 after semester one. The historical legacy-operational subset attained 0.5849 and 0.9730, respectively (Table~\ref{tab:uci697}). The restricted-minus-full difference therefore changed from $-32.61$ percentage points (two-stage Bonferroni interval $[-39.25,-27.06]$) to $-1.35$ points ($[-4.04,0.00]$). The paired attenuation estimate was $+31.27$ points (95\% interval $[25.75,36.76]$). The old workload point estimates were reproduced exactly; under the new canonical paired bootstrap, however, the later interval touched zero rather than remaining strictly negative.
+For the primary Dropout-versus-Graduate outcome, the full-information model achieved a 10\% review-list precision of 0.9111 at enrollment and 0.9865 after semester one. A sparse admissions-based model achieved 0.5849 and 0.9730, respectively (Table~\ref{tab:uci697}). Thus, at enrollment, reviewing 100 students selected by the sparse model would identify about 33 fewer subsequent dropout cases than reviewing 100 students selected by the full-information model. After first-semester evidence became available, the difference narrowed to 1.35 percentage points, with the family-wise interval reaching zero.
 
 \begin{table}[H]
 \centering
-\caption{UCI 697 HGB workload precision for the primary terminal-status outcome.}
+\caption{UCI 697 review-list precision for the primary terminal-status outcome.}
 \label{tab:uci697}
 \small
 \begin{tabularx}{\textwidth}{LRRRR}
 \toprule
-Stage & Full & Legacy operational & Difference (points) & Family-wise 95\% CI \\
+Stage & Full information & Sparse operational & Difference (points) & Family-wise 95\% CI \\
 \midrule
 \input{tables/main_external_uci697}
 \end{tabularx}
 \end{table}
 
-The field blocks were not interchangeable. At enrollment, removing family/financial fields changed \Pten{} by $-21.83$ points, whereas removing seven direct personal fields changed it by $-0.54$ points and removing gender plus special-needs status changed it by $+0.81$ points; the latter two workload intervals included zero. Yet direct-personal exclusion reduced AP by 0.0091 and AUROC by 0.0108 with family-wise intervals below zero. Targeted gender/special-needs exclusion reduced enrollment AUROC by 0.0059, also with a family-wise interval below zero. After semester one, workload differences were small, but AP and Brier still identified selected losses. Thus, attenuation at the queue boundary did not make all restricted models equivalent.
+The type of information removed mattered. At enrollment, removing family and financial fields reduced 10\% review-list precision by 21.83 percentage points. Removing seven direct personal fields changed it by only $-0.54$ points, and removing gender plus special-needs status changed it by $+0.81$ points; both intervals included zero. Small differences in overall ranking remained detectable, however, and after semester one some global metrics still favored the full-information model. Stronger current academic evidence narrowed the practical gap, but it did not make every reduced model interchangeable.
 
-\subsection{UCI 320 confirmed grade-stage information but not a stable exclusion penalty}
+\subsection{Later grades improved prediction, but exclusion effects remained uncertain in UCI 320}
 
-The UCI 320 full controls improved sharply when grades became available (Table~\ref{tab:uci320}; Figure~\ref{fig:external}). In Mathematics, AP increased from 0.432 at baseline to 0.825 with G1 and 0.941 with G1+G2; \Pten{} increased from 0.575 to 0.925 and 0.975. Portuguese AP increased from 0.412 to 0.663 and 0.845, while \Pten{} increased from 0.409 to 0.591 and 0.727.
-
-\begin{table}[H]
-\centering
-\caption{UCI 320 HGB full-control performance by grade availability; subjects are not pooled.}
-\label{tab:uci320}
-\small
-\begin{tabular}{llrrr}
-\toprule
-Subject & Stage & AP & AUROC & \Pten \\
-\midrule
-\input{tables/main_uci320_full}
-\end{tabular}
-\end{table}
+The UCI 320 full-information models improved markedly after grades became available (Figure~\ref{fig:external}). In Mathematics, average precision increased from 0.432 before grades to 0.825 with G1 and 0.941 with G1 and G2; 10\% review-list precision increased from 0.575 to 0.925 and 0.975. In Portuguese, the corresponding values increased from 0.412 to 0.663 and 0.845 for average precision, and from 0.409 to 0.591 and 0.727 for review-list precision. Complete point estimates are reported in the Supplementary Materials.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.96\textwidth]{fig2_external_stage_contrasts.pdf}
-\caption{Distinct external stage profiles. Panel A shows UCI 697 full and legacy-operational HGB workload precision. Panel B shows UCI 320 full-control HGB average precision as G1 and G2 become available; Mathematics and Portuguese are analyzed separately. The panels are not pooled estimates or direct replications.}
+\caption{How later academic evidence changed prediction in two distinct datasets. Panel A shows UCI 697 review-list precision for full-information and sparse operational models. Panel B shows UCI 320 average precision as G1 and G2 become available; Mathematics and Portuguese are analyzed separately. The panels are not pooled estimates or direct replications.}
 \label{fig:external}
 \end{figure}
 
-The restricted-minus-full findings were much less stable. Nearly all UCI 320 HGB pointwise and within-policy family-wise intervals included zero for AP, AUROC, Brier, and workload precision. The sole HGB contrast whose three-stage family-wise interval excluded zero was a small Mathematics period-one AUROC improvement after removing sex ($+0.0050$). Because this isolated result sits among multiple subjects, policies, and metrics, it is retained as a non-confirmatory finding. UCI 320 therefore supports the informational value of staged grades, not a precise or universal exclusion-cost trajectory.
+By contrast, the consequences of removing background fields were uncertain. Nearly all pointwise and family-wise intervals included zero for ranking, probability accuracy, and review-list precision. The only exception was a small Mathematics period-one AUROC improvement after removing sex. Given the small samples and the many settings examined, this isolated result does not support a general policy conclusion. UCI 320 demonstrates the informational value of staged grades, while also showing why a data-removal effect observed in one educational setting should not be assumed elsewhere.
 
-\subsection{Budget sensitivity changed which workload conclusions survived}
+\subsection{Review capacity changed the practical effect of data minimization}
 
-Across C14B, 44 primary stage--policy contrasts yielded 176 precision cells at four budgets. The OULAD minimized policy was negative in 19 of 24 cells but crossed zero in both directions across horizons and budgets. Its family-wise precision interval was below zero only at the 30\% budget on days 14, 28, and 56 (Table~\ref{tab:c14budget}). The targeted gender/disability policy had no family-wise workload difference in any of its 24 cells. Thus the original 10\% operating point did not summarize the larger queues: a policy that was inconclusive at one boundary could incur a detectable loss when review extended deeper into the ranked list.
+The practical conclusion changed with the number of students an institution could review. In OULAD, broad data minimization produced lower point estimates in 19 of the 24 stage--capacity combinations. After family-wise correction, losses remained at the 30\% capacity on days 14, 28, and 56 (Table~\ref{tab:c14budget}). Targeted removal of gender and disability produced no family-wise difference at any evaluated stage or capacity. A conclusion based only on the highest-risk 10\% therefore did not fully describe what happened when educators worked further down the ranked list.
 
-In UCI 697, the legacy operational policy remained substantially below full at enrollment for all four budgets, from $-34.92$ percentage points at 5\% to $-17.97$ points at 30\%. Semester-one family-wise intervals were below zero only at 20\% and 30\%. The no-family/financial policy showed the same family-wise pattern. No primary UCI 320 workload cell excluded zero after correction. These results preserve the earlier stage interpretation but qualify it: attenuation after stronger academic evidence was incomplete and depended on the queue boundary.
+In UCI 697, the sparse operational model remained substantially below the full-information model at enrollment at all four capacities, with losses ranging from 34.92 percentage points at 5\% to 17.97 points at 30\%. After semester one, differences remained detectable only at the larger 20\% and 30\% capacities. Removing family and financial fields showed the same pattern. No UCI 320 review-list comparison remained different after family-wise correction. Later academic evidence reduced some information gaps, but the degree of reduction depended on how many students educators were expected to review.
 
 \begin{table}[H]
 \centering
-\caption{Selected primary restricted-minus-full precision differences across review budgets. Values are percentage points. Asterisks mark Bonferroni-percentile family-wise intervals that exclude zero.}
+\caption{Selected changes in review-list precision after data minimization at four institutional review capacities. Values are percentage points; asterisks identify family-wise intervals that exclude zero.}
 \label{tab:c14budget}
 \scriptsize
 \setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrrr}
 \toprule
-Context & 5\% & 10\% & 20\% & 30\% \\
+Educational setting & 5\% & 10\% & 20\% & 30\% \\
 \midrule
 \input{tables/main_c14_budget}
 \end{tabular}
 \end{table}
 
-\subsection{Excluded fields remained predictable from retained inputs}
+\subsection{Deleted attributes remained partly predictable from other records}
 
-Every fixed primary logistic probe achieved held-out AUROC above 0.63 (Table~\ref{tab:c14proxy}; Figure~\ref{fig:c14proxy}). OULAD gender AUROC ranged from 0.690 to 0.812 across horizons and disability from 0.663 to 0.680. Sex AUROC ranged from 0.746 to 0.750 in UCI 320 Mathematics and from 0.734 to 0.734 in Portuguese. UCI 697 Gender reached 0.771--0.774. Educational special-needs status in UCI 697 was less stable: AUROC was 0.637--0.655, but only 40 positive cases occurred in each outer-fold evaluation aggregation and average precision was approximately 0.020 at prevalence 0.011. The nonlinear HGB sensitivity was weaker for this rare target.
+Every primary diagnostic model discriminated the excluded attribute above chance in held-out data (Table~\ref{tab:c14proxy}; Figure~\ref{fig:c14proxy}). OULAD gender AUROC ranged from 0.690 to 0.812 across observation days, and disability ranged from 0.663 to 0.680. Sex AUROC was approximately 0.75 in UCI 320 Mathematics and 0.73 in Portuguese; UCI 697 gender reached 0.771--0.774. Educational special-needs status in UCI 697 was much less stable because only 40 positive cases were available and average precision was approximately 0.020 at a prevalence of 0.011.
 
-The OULAD unseen-student sensitivity did not remove the signal: gender AUROC ranged from 0.712 to 0.818 and disability from 0.659 to 0.676. These results show that retained variables contain information associated with the deleted fields. They do not identify the source of that association, demonstrate that the risk model used it, or establish a fairness or privacy violation.
+The association remained when OULAD evaluation was limited to students not observed during diagnostic-model fitting. The retained records therefore contained information associated with attributes that had been removed from the early-warning model. This finding does not identify the source of the association or show that the outcome model relied on it. Its practical meaning is narrower but important: direct deletion should be treated as one governance measure, not as evidence that all related information has disappeared.
 
 \begin{table}[H]
 \centering
-\caption{Primary fixed logistic probes for directly excluded fields. Ranges cover frozen stages; AP lift is average precision divided by target prevalence.}
+\caption{Held-out predictability of directly excluded attributes. Ranges cover the evaluated stages; AP lift is average precision divided by target prevalence.}
 \label{tab:c14proxy}
 \scriptsize
 \begin{tabular}{llrrrr}
@@ -331,24 +328,24 @@ Dataset & Target & Stages & Positive cases & AUROC range & AP-lift range \\
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.88\textwidth]{fig4_c14_proxy_persistence.pdf}
-\caption{Held-out AUROC ranges for fixed logistic probes after direct field exclusion. Each segment spans the frozen stages and the point is their mean. The dashed line is chance discrimination. Predictability is not evidence that the outcome model actually used a proxy.}
+\caption{Held-out AUROC ranges after direct attribute removal. Each segment spans the evaluated stages and the point is their mean; the dashed line represents chance discrimination. Residual predictability does not show that the early-warning model used a specific proxy.}
 \label{fig:c14proxy}
 \end{figure}
 
-\subsection{Harmonized blocks separated sex/gender from socioeconomic/family information}
+\subsection{Sex/gender and socioeconomic/family information had different consequences}
 
-C14D assembled 30 exact same-run pairs (Table~\ref{tab:c14harmonized}). No sex/gender workload-precision cell in OULAD, UCI 697, or UCI 320 had a family-wise interval excluding zero. This was not a general equality result: OULAD day-42 Brier score and UCI 697 enrollment AUROC showed small family-wise losses after gender exclusion, while UCI 320 Mathematics period-one AUROC showed a small improvement. Queue membership also remained imperfectly overlapping.
+Across 30 paired comparisons, removing sex/gender information produced no family-wise difference in review-list precision in OULAD, UCI 697, or UCI 320 (Table~\ref{tab:c14harmonized}). This should not be read as complete equality: small differences remained in selected global metrics, and the students included in the lists were not always identical.
 
-The socioeconomic/family block behaved differently. In OULAD, its AP and AUROC were lower and Brier score higher at every horizon after stage-wise family correction. Workload precision was below full after family-wise correction only at the 30\% budget on days 28 and 56. In UCI 697, the block had a large enrollment penalty for both outcomes and a smaller but persistent semester-one penalty; all three global metrics favored full at both stages. UCI 320 again supplied a negative precision result: no workload cell excluded zero, and probability-metric directions were mixed. Figure~\ref{fig:c14budget} displays the distinct OULAD and UCI 697 budget profiles without pooling them.
+Socioeconomic and family-related information showed a different pattern. In OULAD, removing it reduced overall ranking and probability accuracy at every observation day; review-list precision also decreased at the 30\% capacity on days 28 and 56. In UCI 697, removal produced a large enrollment-time loss and smaller remaining losses after semester one. UCI 320 again provided no stable review-list difference. Figure~\ref{fig:c14budget} shows the OULAD and UCI 697 capacity profiles separately.
 
 \begin{table}[H]
 \centering
-\caption{Primary harmonized precision families across all frozen stages and four budgets. Ranges are point estimates in percentage points; negative/positive columns count family-wise intervals excluding zero.}
+\caption{Review-list precision after removal of comparable information groups across stages and capacities. Ranges are point estimates in percentage points; the final columns count family-wise intervals that remain below or above zero.}
 \label{tab:c14harmonized}
 \scriptsize
 \begin{tabular}{llrrrr}
 \toprule
-Context & Block & Cells & Point range & Negative & Positive \\
+Setting & Information removed & Comparisons & Point range & Below zero & Above zero \\
 \midrule
 \input{tables/main_c14_harmonized}
 \end{tabular}
@@ -357,65 +354,96 @@ Context & Block & Cells & Point range & Negative & Positive \\
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{fig3_c14_budget_harmonized.pdf}
-\caption{Socioeconomic/family exclusion across review budgets. Open black circles mark cells whose Bonferroni-percentile family-wise precision interval excludes zero. Lines connect estimates within a stage only. OULAD and UCI 697 use different populations, outcomes, and block definitions and are not pooled.}
+\caption{Change in review-list precision after removing socioeconomic and family-related information. Open black circles identify family-wise intervals that exclude zero. Lines connect capacities within one educational stage. OULAD and UCI 697 use different populations, outcomes, and field definitions and are not pooled.}
 \label{fig:c14budget}
 \end{figure}
 
-\subsection{Multiplicity retained losses but did not create an equivalence claim}
+\subsection{The strongest losses were concentrated rather than universal}
 
-Across the combined C14B and C14D primary views, 296 stage--budget precision rows were evaluated. Thirty family-wise intervals were below zero and none was above zero. This count includes the planned policy and harmonized presentations of some exact same-run pairs; for example, UCI 697 no-family/financial and socioeconomic/family are numerically identical, so the duplicated rows are not independent confirmations. The corrected interpretation is therefore not that exclusion usually harms precision, but that concentrated losses survived in particular OULAD high-capacity queues and UCI 697 family/financial or sparse operational views, whereas sex/gender and all UCI 320 workload differences remained unresolved. An interval crossing zero is reported as inconclusive, not as proof of equivalence.
+Across 296 planned stage--capacity results, 30 family-wise intervals were below zero and none was above zero. Some rows describe the same paired comparison under two reporting views and are not independent confirmations. The central finding is therefore not that data minimization usually reduces review-list precision. Rather, the strongest losses were concentrated in larger OULAD review lists and in UCI 697 models that omitted family and financial information or used only sparse admissions data. Targeted sex/gender removal and all UCI 320 review-list comparisons remained inconclusive after family-wise correction.
+
+Figure~\ref{fig:resultspractice} brings the principal findings together in the form most relevant to institutional decision making: what was observed, how cautiously it can be interpreted, and what an educator-facing implementation should do next.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{fig5_results_to_practice.pdf}
+\caption{From empirical findings to responsible educational practice. The diagram summarizes the interpretation supported by the retrospective analyses and the corresponding institutional response. The arrows organize the decision pathway; they do not represent causal effects.}
+\label{fig:resultspractice}
+\end{figure}
 
 \section{Discussion}
 
 \subsection{Principal interpretation}
 
-The C14 stress test replaces a one-budget exclusion claim with a capacity-, stage-, block-, and metric-specific account. In OULAD, the original six-field policy passed its day-42 10\% gate, yet minimized-model losses survived family-wise correction in several 30\% queues. Sex/gender exclusion did not produce a family-wise workload loss, whereas removing the operational socioeconomic/family block reduced global predictive performance at every horizon and reduced workload precision in selected larger queues. Review capacity is therefore part of the estimand rather than a reporting convenience.
+The central contribution is a practical evaluation framework for data-minimized early-warning systems. A statement such as ``removing background data has little cost'' is incomplete unless it specifies which information was removed, when the prediction was made, how many students educators could review, and which aspect of performance was considered. In OULAD, broad removal appeared acceptable at the original day-42 10\% operating point but produced detectable losses in several 30\% review lists. Targeted removal of gender and disability did not produce a family-wise loss in review-list yield, whereas removing socioeconomic and family-related information reduced overall predictive performance throughout OULAD and affected selected larger lists.
 
-UCI 697 retained a large enrollment-time penalty for sparse operational and family/financial views across all four budgets. Stronger semester-one evidence attenuated those gaps but did not eliminate them at every capacity. UCI 320 constrains any generalization: G1 and G2 strongly improved the full controls, but neither harmonized block produced a family-wise workload difference in the small subject samples. It would be incorrect to attach the UCI 697 trajectory to UCI 320 or to call the latter an independent replication. The operational harmonization makes the contrasts auditable across datasets; it does not make the underlying constructs or tasks equivalent.
+The external datasets clarify why this is an educational rather than purely technical issue. In UCI 697, sparse admissions data and the omission of family and financial information substantially weakened enrollment-time prioritization. First-semester achievement evidence reduced these gaps, but waiting for stronger evidence may also reduce the time available for support. UCI 320 showed pronounced gains after grades became available but did not yield a stable data-removal effect. The appropriate stage is therefore not simply the one with the highest predictive accuracy; it is the stage that balances reliable prioritization with a meaningful opportunity to act.
 
-The difference between queue precision and global ranking metrics is substantive. Sex/gender exclusions could preserve capacity-constrained precision while AP, AUROC, or Brier showed small differences, and alert recipients changed even when aggregate precision was similar. Conversely, the socioeconomic/family block produced consistent global losses in OULAD without a workload loss at most queue boundaries. An institution must therefore specify the operating capacity and harm model, audit affected groups and individuals, and assess whether retained fields are necessary and proportionate.
+Review-list yield and whole-cohort performance answer different questions. A data-minimized model may identify a similar number of subsequent adverse outcomes within a fixed staff capacity while still changing the order of the remaining cohort, the estimated probabilities, or the students selected. Conversely, a model can lose some global discrimination without changing the yield at one particular capacity. Educational institutions should therefore evaluate both the usefulness of the actual review list and the distribution of attention it creates.
 
-The proxy audit adds a separate governance result. Directly deleted fields remained statistically predictable from the retained feature view, including among OULAD students not observed during probe fitting. This is compatible with redundant information and correlated social or behavioral processes, but it does not demonstrate that the outcome model encoded, relied on, or acted through a particular proxy. Direct exclusion alone neither removes statistical associations nor establishes fairness \citep{gardner2019fairness,pham2025fairness}. A stronger claim would require model-specific attribution or counterfactual tests, subgroup performance and allocation analyses, and a clearly specified normative criterion.
+Residual attribute predictability adds a distinct governance lesson. Gender, disability, and special-needs information remained partly recoverable from other educational records even after direct removal. This is consistent with overlapping information and correlated social or behavioral processes, but it does not establish that the outcome model used a specific proxy. Direct deletion alone neither removes statistical association nor demonstrates fairness \citep{gardner2019fairness,pham2025fairness}. A stronger fairness claim would require subgroup allocation and performance analyses, a model-specific investigation, and an explicit normative standard.
 
-The strict-tier failure is also informative. Typed due-process features improved ranking relative to a sparse click-independent baseline but remained far below the standard comparator at the capacity boundary. A degraded mode should not be called secure merely because it excludes click inputs. Deployment would require documented data provenance and latency, platform threat analysis, access controls, monitoring, abstention or fallback rules, and prospective evaluation of the clean-utility cost.
+The clickstream-free results illustrate the same need for context. Assessment-process evidence improved a sparse fallback but did not recover the practical yield of the standard comparator. Institutions may still need a fallback when platform telemetry is unavailable or should not be used, but the system should then disclose reduced confidence, abstain where appropriate, and avoid presenting a degraded list as operationally equivalent.
 
-\subsection{Why provenance changed deterministic results}
+\subsection{Why provenance matters for educational decisions}
 
-The audit demonstrates that a ZIP checksum is not administrative detail. A one-character missing-value representation altered preprocessing for a field used by full and partially excluded policies but not by the six-field-excluded policy. That pattern explains why the superseded results changed non-uniformly. Separately, changing an implicit row-order tie rule to an explicit SHA rule altered two day-28 boundary outcomes. Determinism applies only after raw bytes, parsing, missing-value semantics, feature construction, sorting, and software versions are fixed.
+The provenance correction is not merely a software detail. A different representation of missing area-deprivation values changed how the full-information and partially minimized models interpreted student records. An implicit rule for tied scores also changed two selections at a review-list boundary. In a teacher-facing system, such changes can determine which individual students appear for review. Reproducibility must therefore cover source data, missing-value semantics, information timing, list construction, and software versions, not only the final model.
 
-The correction procedure did not force C12 toward v0.2.1 or inherited C06/C08 counts. It used the official pinned bytes, retained the historical gates, reran every new policy with its same-run full control, and preserved all discrepancies and failed alternatives. This is necessary for auditability, but it does not erase earlier test-set exposure.
+\subsection{Implications for educator-facing digital technology}
 
-\subsection{Relevance to educational practice}
+Module- or course-specific lists approximate the work faced by an educator or local support team more closely than one institution-wide ranking. Their precision, false-alert burden, membership changes, and fallback performance can show whether a digital tool is ready for prospective evaluation. Large-scale teacher-facing implementations and human-centred dashboard research nevertheless demonstrate that workflow, explanation, and professional interpretation must be studied with educators \citep{herodotou2019teachers,alfredo2024dashboard}. Data-driven decision making should treat platform evidence as one input to contextual professional judgement rather than as an automated instruction \citep{evenstein2026trusting}.
 
-Module-specific queues approximate a local review budget better than one pooled institutional ranking. Precision, false alerts, recipient turnover, and degraded-mode utility can inform whether a system is ready for prospective study. They do not show that reviewing 10\% is feasible for teachers, that alerts lead to appropriate action, or that intervention benefits students. Large-scale teacher-facing implementations and human-centred dashboard research show why workflow and interpretation must be studied with educators \citep{herodotou2019teachers,alfredo2024dashboard}. Data-driven decision making also treats platform data as one input to contextual professional judgement \citep{evenstein2026trusting}.
+The results support a staged institutional procedure. First, define the educational decision, the responsible professional, and the point at which support remains possible. Second, state how many students can realistically be reviewed. Third, compare full-information and data-minimized systems at that capacity, examining list yield, false alerts, probability quality, list membership, and subgroup allocation. Fourth, repeat the evaluation when new academic evidence becomes available. Fifth, specify what the system does when important data are delayed, missing, or unavailable. A teacher-facing interface should explain why a student entered the review list, allow professional override, and record both the action taken and its outcome.
 
-For governance and practice, the findings imply a staged deployment rule. Before removing or retaining a field block, an institution should (i) freeze the intended prediction time and the information genuinely available then; (ii) define the review capacity and same-run full comparator; (iii) evaluate workload, ranking, calibration, recipients, and subgroup outcomes; (iv) repeat the comparison when stronger process or grade evidence becomes available; and (v) specify abstention or fallback behavior when telemetry is unavailable. A teacher-facing dashboard should explain why a case entered the queue, permit professional override, record follow-up actions, and be evaluated prospectively for workload, decision quality, and student benefit. This is how the study connects to the quality of professional pedagogical activity: it tests the reliability and governance of a digital decision-support instrument, not the causal effectiveness of teachers themselves.
+This procedure connects the study to the quality of educators' professional activity without replacing educational judgement with an algorithm. The present analysis evaluates the reliability and governance of a digital decision-support instrument. A subsequent prospective phase should examine whether the instrument reduces unproductive workload, improves the consistency and timeliness of professional decisions, supports appropriate interventions, and benefits students.
 
 \subsection{Limitations}
 
-First, all C12 analyses are post-development. The 2014J outcomes were exposed before the final protocol, the practical reference was selected after earlier results, and diagnostic official-data fits for days 14--56 were observed before the complete production plan was frozen. Bonferroni intervals address only the stated horizon family; they do not account for all policies, metrics, datasets, and prior decisions.
+The analysis was developed iteratively and is not preregistered confirmation. Its bootstrap intervals are conditional on fitted models, selected hyperparameters, and the positive-slope Platt calibration used here; they do not include model-selection, calibration-method, institutional-transport, or development-process uncertainty. A monotone calibration map preserves score ordering, but an isotonic analysis could introduce ties and alter probability-quality measures. The primary model family was gradient boosting, with logistic regression used only as a sensitivity in the UCI analyses. Family-wise intervals cover the prespecified stages and capacities within each named policy and metric, not every analysis conducted during the broader project.
 
-Second, the bootstraps are conditional on fitted pipelines and fixed selection and calibration choices. They do not capture model-selection, calibration, dataset, or development-process uncertainty. Some OULAD students contribute multiple registrations, while each UCI row was treated as one sampling unit. No institution-level transport sample was available.
+The OULAD outcome combines Fail and Withdrawn, although these events may require different educational responses and occur on different timelines. Later risk sets exclude earlier withdrawals, and the common-cohort analyses condition on later continuation. The available timestamps also do not reconstruct the exact moment when every assessment result became visible. Consequently, the study describes prediction at defined data snapshots; it does not identify an optimal intervention time or distinguish intervention pathways for failure and withdrawal.
 
-Third, the outcome combines Fail and Withdrawn, which have different timing and possible intervention pathways. Risk sets change as withdrawals occur. Conservative assessment rules prevent use of scores with unknown release times but cannot reconstruct the actual availability time of every process record. Literal \texttt{?} handling reproduces the pinned recipe, but alternative semantically justified missing-data models warrant prospective specification.
+The three datasets differ in platform, educational level, outcome, timing, and sample size. UCI 320 contains small subject-specific samples, and its Mathematics and Portuguese files could not be uniquely linked or pooled. The common socioeconomic/family label also covers different observed fields in each dataset and should not be interpreted as measurement invariance. These differences are useful for testing the portability of conclusions, but they prevent a pooled effect or a claim of external replication.
 
-Fourth, the common cohorts condition on later retention and cannot identify a causal timing effect. UCI 697 is a higher-education terminal-status task, whereas UCI 320 concerns subject grades in two secondary schools; neither matches OULAD's platform, outcome, or temporal split. The $G3<10$ threshold was frozen from the educational grading interpretation, not optimized, and Mathematics and Portuguese were not pooled. The strong G1/G2 result reflects predictive availability, not evidence that waiting for later grades is an optimal intervention policy.
+Residual predictability is descriptive and does not establish actual proxy use, privacy leakage, or unfair allocation by the early-warning models. The special-needs diagnostic in UCI 697 is particularly uncertain because only 40 positive cases were available. We did not conduct a complete subgroup fairness audit, privacy attack, or prospective evaluation of educator workload, intervention uptake, possible harms, or student benefit. Those analyses require an institutionally defined use case and participation by the educators and students affected.
 
-Fifth, field exclusion does not eliminate proxies, and descriptive group audits cannot certify fairness. No analysis measures privacy attacks, teachers' workload in practice, intervention uptake, harm, or causal student benefit. Multiple metrics, policies, datasets, and prior development decisions remain beyond the within-policy horizon corrections.
-
-Sixth, the C14 probe targets are observed dataset fields with dataset-specific coding. Probe discrimination is conditional on the frozen retained view and does not quantify sensitive-information leakage in an information-theoretic sense. The UCI 697 educational special-needs probe has only 40 positive cases, making its apparent lift especially unstable. The harmonized socioeconomic/family block combines area deprivation and prior education in OULAD, parental and current financial indicators in UCI 697, and parental education and occupation in UCI 320; its common label must not be mistaken for measurement invariance.
-
-Seventh, the C14 family-wise intervals control only the prespecified cells within each named policy or block and metric. They do not form a single study-wide correction over every dataset, model family, proxy target, historical analysis, and narrative comparison. Exact C14B/C14D duplicate views are retained for traceability but are not independent evidence. Bootstrap intervals remain conditional on the fitted pipelines and do not incorporate hyperparameter-selection or transport uncertainty.
-
-Finally, XuetangX was formally disqualified from demographic-exclusion evidence rather than left as an unresolved supporting dataset. The official KDD Cup 2015 files comprise enrollment identifiers, usernames and course identifiers; event logs; course dates and objects; and dropout labels, but no demographic fields. The internally preserved derivative that supplied demographics cannot be independently connected to that official schema. Canonical C05/v0.3.1 was preserved and not retrained, but it is excluded from the article's evidentiary claims. Inherited C06/C08 OULAD summaries also lack the complete models and predictions required for verification and remain \texttt{NOT\_REVERIFIED}.
+Finally, the official XuetangX schema contained no demographic fields, and a preserved derivative could not be independently connected to that schema. It was therefore excluded from all demographic evidence rather than used as unverifiable support. Detailed provenance exclusions, superseded results, and reproducibility records remain available in the Supplementary Materials.
 
 \section{Conclusion}
 
-Data-minimization claims in educational early warning are not portable across fields, metrics, stages, or review capacities. Multi-budget analysis exposed OULAD losses that the 10\% queue alone did not reveal. Sex/gender exclusion produced no family-wise workload penalty in the three datasets, but directly excluded fields remained predictable and small global-metric differences persisted. Socioeconomic/family exclusion reduced global performance throughout OULAD and UCI 697 and produced concentrated workload penalties, while UCI 320 remained inconclusive. Institutions should freeze the prediction time, review capacity, feature block, and same-run comparator; retain provenance and duplicate views transparently; audit ranking, calibration, recipients, and residual associations; and evaluate teacher workflow and student benefit prospectively. The present post-development evidence supports disciplined governance of digital decision support. It does not prove equivalence, fairness, privacy, or that alerts improve professional pedagogical practice or student outcomes.
+Educational early-warning systems allocate scarce professional attention as well as predict risk. This study shows why data minimization must be evaluated within that educational function. The consequences of removing information changed with the type of field, the point in the educational process, and the proportion of students that staff could realistically review. Targeted removal of sex/gender information did not produce a family-wise loss in review-list yield in the three datasets, while removing socioeconomic and family-related information reduced overall predictive performance in OULAD and UCI 697 and weakened selected review lists. The smaller UCI 320 analyses remained inconclusive, and excluded attributes remained partly predictable from other records.
+
+For educational institutions, the practical recommendation is clear: define the educator's decision and available review capacity before choosing or simplifying a model; evaluate the resulting list at each intended stage; examine false alerts, calibration, list membership, and subgroup allocation; and provide an explicit fallback when data are unavailable. The system should support transparent professional judgement rather than automate consequential action. This capacity-aware framework provides a reproducible basis for selecting and governing digital decision-support tools. The next step is prospective evaluation with educators to determine whether the tool improves workload, decision quality, timeliness of support, and student outcomes in practice.
+
+\appendixstart
+\appendix
+
+\section{Practical Interpretation Guide}
+
+Table~\ref{tab:interpretation} translates the principal evaluation quantities into the questions faced by educators and educational institutions. The quantities should be interpreted together; no single metric establishes that an early-warning system is ready for deployment.
+
+\begin{table}[H]
+\centering
+\caption{Plain-language interpretation of the evaluation quantities.}
+\label{tab:interpretation}
+\small
+\begin{tabularx}{\textwidth}{p{0.18\textwidth}p{0.34\textwidth}X}
+\toprule
+Quantity & Plain-language meaning & Institutional question \\
+\midrule
+Review capacity & The proportion of students that educators can realistically examine & How many cases can the responsible team review and follow up? \\
+Precision at capacity $b$ & Among students placed in the review list, the proportion who later experience the adverse outcome & How much of the review effort is directed toward students represented by the outcome definition? \\
+Recall at capacity $b$ & The proportion of all later adverse outcomes included in the review list & How many subsequent cases are missed because the list is limited? \\
+AP and AUROC & How well the model ranks students across the full range of possible thresholds & Does the model retain useful ordering beyond the chosen review boundary? \\
+Brier score & How closely predicted probabilities correspond to observed outcomes & Can the stated risk values be interpreted as probabilities? \\
+List overlap & The extent to which two models bring the same students to educators' attention & Does data minimization change who is reviewed even when aggregate yield is similar? \\
+\bottomrule
+\end{tabularx}
+\end{table}
 
 \vspace{6pt}
 
-\supplementary{The following supporting information can be downloaded at \linksupplementary{s1}: Table S1: Computational evidence layers retained during the correction; Table S2: Primary restricted-minus-full precision families across all frozen stages and budgets; Table S3: Harmonized restricted-minus-full precision at a 10\% review budget; Table S4: Primary fixed logistic proxy probes; Table S5: Official-data main-policy point estimates; Table S6: UCI 697 workload-policy contrasts; Table S7: UCI 320 workload-policy contrasts; Table S8: Leave-one-field-out minus full Precision@10\% contrasts; Table S9: Common-cohort day-42-minus-day-14 difference-in-differences; Table S10: Candidate versus full alert-list identity; Table S11: True-alert transition from the superseded derivative-input run to C12; Table S12: Inherited NOT\_REVERIFIED true-alert counts versus C12; Table S13: C12--C14 production and verification inventory. Supplementary Materials S1 is prepared as a separate MDPI supplementary-file-type document (see \texttt{supplement\_mdpi.tex}) and is paginated and numbered independently (Table S1, Figure S1, ...) from the main text, per journal convention. Citations and references appearing in the Supplementary Materials also appear in the reference list of this main article.}
+\supplementary{The following supporting information can be downloaded at \linksupplementary{s1}: Table S1: Computational evidence and provenance ledger; Table S2: Review-list precision families across stages and capacities; Table S3: Comparable information-group contrasts at a 10\% review capacity; Table S4: Complete residual-attribute predictability results; Table S5: OULAD main-policy point estimates; Tables S6--S7: UCI review-capacity contrasts; Table S8: Single-field removal results; Table S9: Common-cohort timing sensitivity; Table S10: Review-list overlap; Tables S11--S12: Provenance-transition records; Table S13: Production and verification inventory. Supplementary Materials S1 is provided as a separate MDPI supplementary-file document and is numbered independently from the main text.}
 
 \authorcontributions{Conceptualization, O.K.; methodology, O.K.; software, O.K., K.B. and K.I.; validation, O.K., K.B. and K.I.; formal analysis, A.S.; investigation, G.S.; resources, K.B. and K.I.; data curation, K.B. and K.I.; writing---original draft preparation, O.K.; writing---review and editing, D.T.; visualization, D.T.; supervision, A.S.; project administration, G.S.; funding acquisition, A.S. All authors have read and agreed to the published version of the manuscript.}
 
@@ -425,7 +453,7 @@ Data-minimization claims in educational early warning are not portable across fi
 
 \informedconsent{Not applicable. This study used only pre-existing, publicly available, de-identified secondary data; no human subjects were recruited or contacted by the authors.}
 
-\dataavailability{OULAD is available from the UCI Machine Learning Repository at \url{https://archive.ics.uci.edu/dataset/349/open+university+learning+analytics+dataset} and is described by \citet{kuzilek2017oulad}. The official archive used here had SHA-256 \texttt{\seqsplit{f2ed1902616c1fe8d2824d872c0b7d2d72be435bf0124d077044fe4be2c6d3e4}}. UCI 697 is available at \url{https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success}; the outer ZIP used here had SHA-256 \texttt{\seqsplit{e90e55fd65ec462ae283ebeb2cca409319e3460ed898d8754f62fb35cc83a65d}}. UCI 320 is available at \url{https://archive.ics.uci.edu/dataset/320/student+performance}; the outer ZIP had SHA-256 \texttt{\seqsplit{82ae9d66437b9808df42e8c89d2bb179c46e9cfbcf06f38abc1d20b3b747e177}}. The current nested \texttt{student.zip}, not \texttt{.student.zip\_old}, was analyzed. All three UCI pages identify the datasets as CC~BY~4.0. The aggregate-only reproducibility release accompanying this submission is available at \url{https://github.com/KuznetsovKarazin/SecureEWS}; it contains the C14 analysis code, frozen protocol, machine-readable aggregate results and bootstrap draws, verification reports, and manuscript sources. Raw or processed student-level data, individual predictions, fitted model bundles, private clean-room archives, and XuetangX derivative files are not redistributed.}
+\dataavailability{OULAD is available from the UCI Machine Learning Repository at \url{https://archive.ics.uci.edu/dataset/349/open+university+learning+analytics+dataset} and is described by \citet{kuzilek2017oulad}. The official archive used here had SHA-256 \texttt{\seqsplit{f2ed1902616c1fe8d2824d872c0b7d2d72be435bf0124d077044fe4be2c6d3e4}}. UCI 697 is available at \url{https://archive.ics.uci.edu/dataset/697/predict+students+dropout+and+academic+success}; the outer ZIP used here had SHA-256 \texttt{\seqsplit{e90e55fd65ec462ae283ebeb2cca409319e3460ed898d8754f62fb35cc83a65d}}. UCI 320 is available at \url{https://archive.ics.uci.edu/dataset/320/student+performance}; the outer ZIP had SHA-256 \texttt{\seqsplit{82ae9d66437b9808df42e8c89d2bb179c46e9cfbcf06f38abc1d20b3b747e177}}. The current nested \texttt{student.zip}, not \texttt{.student.zip\_old}, was analyzed. All three UCI pages identify the datasets as CC~BY~4.0. The aggregate-only reproducibility release accompanying this submission is available at \url{https://github.com/KuznetsovKarazin/SecureEWS}; it contains analysis code, the locked protocol, machine-readable aggregate results and bootstrap draws, verification reports, and manuscript sources. Raw or processed student-level data, individual predictions, fitted model bundles, private clean-room archives, and XuetangX derivative files are not redistributed.}
 
 \acknowledgments{During the preparation of this manuscript, the authors used OpenAI ChatGPT and Codex to assist with code development, verification workflows, visualization, and language and drafting support. The authors reviewed and validated the code, analyses, references, figures, and final text, revised the outputs as necessary, and take full responsibility for the content of this publication.}
 

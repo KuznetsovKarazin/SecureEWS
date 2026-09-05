@@ -1,0 +1,27 @@
+{
+  "article_copies": {
+    "fig0_capacity_aware_framework.pdf": "f2e4c898c1574cbab5f7c9464e7b6ecd0ea2a04da6b33579e53ac021c03d8f60",
+    "fig0_capacity_aware_framework.png": "28a9f02d45dd2ab178b8bd316d6eec7370216786a9e8636d989dc51889e72f72",
+    "fig5_results_to_practice.pdf": "73705f7022d28cb1066648dfc4ccb355ca773bcbd35992a93197bb4cbf905f1a",
+    "fig5_results_to_practice.png": "0888f94ae9c32467c26603781b2e24fa4e92a8374e91a91b184ac6e14e103ce5"
+  },
+  "derived_png_files": {
+    "fig0_capacity_aware_framework.png": "28a9f02d45dd2ab178b8bd316d6eec7370216786a9e8636d989dc51889e72f72",
+    "fig5_results_to_practice.png": "0888f94ae9c32467c26603781b2e24fa4e92a8374e91a91b184ac6e14e103ce5"
+  },
+  "page_sizes": {
+    "fig0_capacity_aware_framework.pdf": "463.32 x 282.96 pts",
+    "fig5_results_to_practice.pdf": "463.32 x 338.4 pts"
+  },
+  "png_renderer": "pdftoppm version 26.05.0",
+  "publisher_script": "src/c14f/publish_conceptual_figures.py",
+  "publisher_script_sha256": "9965effafc13433b3f9a404aa55cebf50825665fc41c8b5adfababaeace8093e",
+  "purpose": "Reader-facing conceptual synthesis; no new data or statistical result",
+  "release": "SecureEWS-v0.7.2",
+  "source_files": {
+    "fig0_capacity_aware_framework.pdf": "f2e4c898c1574cbab5f7c9464e7b6ecd0ea2a04da6b33579e53ac021c03d8f60",
+    "fig5_results_to_practice.pdf": "73705f7022d28cb1066648dfc4ccb355ca773bcbd35992a93197bb4cbf905f1a"
+  },
+  "source_kind": "author-revised final vector artwork",
+  "status": "PASS"
+}

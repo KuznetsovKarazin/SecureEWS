@@ -23,7 +23,7 @@
 \newcommand{\AP}{\ensuremath{\mathrm{AP}}}
 \newcommand{\AUROC}{\ensuremath{\mathrm{AUROC}}}
 
-\Title{Stress-Testing Data Minimization Across Review Budgets and Decision Stages in Educational Early Warning: Paired Evidence from OULAD and Two UCI Datasets}
+\Title{Evaluating Data-Minimized Early-Warning Systems for Educator Decision Support: Evidence Across Review Capacities and Educational Stages}
 
 \newcommand{\orcidauthorA}{0000-0001-6006-4813}
 \newcommand{\orcidauthorB}{0000-0003-2331-6326}
@@ -75,28 +75,28 @@ C05 XuetangX & Fully preserved v0.3.1 computational result & Official KDD Cup sc
 \end{table}
 \FloatBarrier
 
-\section{C14 Multi-Budget, Proxy, and Harmonized-Block Extension}
+\section{Detailed Multi-Capacity and Information-Removal Analyses}
 
-\subsection{Frozen C14 analysis status}
+\subsection{Locked final-stage evaluation protocol}
 
-C14 was specified after C12 and C13 results were available and is a post-development extension rather than preregistered confirmation. The protocol fixed review budgets of 5\%, 10\%, 20\%, and 30\%; targeted proxy outcomes; two operationally harmonized blocks; a same-run full-control replay tolerance of $10^{-12}$; 5,000 primary and 2,000 sensitivity bootstrap replicates; and Bonferroni-percentile families over every frozen stage and budget. XuetangX C05 was preserved without extraction or retraining and was excluded from demographic claims.
+The final-stage evaluation was specified after earlier OULAD and UCI results were available and is therefore a post-development stress test rather than preregistered confirmation. Before these analyses were computed, the protocol fixed review capacities of 5\%, 10\%, 20\%, and 30\%; the attributes examined for residual predictability; two operationally comparable information groups; a full-control replay tolerance of $10^{-12}$; 5,000 primary and 2,000 sensitivity bootstrap replicates; and Bonferroni-percentile families over every evaluated stage and capacity. The preserved XuetangX analysis was excluded from demographic claims because the official data schema did not support them.
 
-C14B used saved probabilities only. C14C fitted 44 fixed probes and retained 250,044 held-out predictions. C14D fitted 28 new HGB bundles and no new logistic or UCI 697 outcome models; its 12 distinct new full controls reproduced frozen probabilities with maximum absolute error $1.11\times10^{-16}$. C14E evaluated 151 contrasts in 42 bootstrap tasks and independently recalculated all 2,869 reported interval rows from hashed NPZ draws.
+The multi-capacity analysis reused saved probabilities and did not refit outcome models. The residual-attribute analysis fitted 44 diagnostic models and retained 250,044 held-out predictions. The comparable-information-group analysis fitted 28 required gradient-boosting models and no new UCI 697 outcome models; its 12 new full-information controls reproduced the locked probabilities with maximum absolute error $1.11\times10^{-16}$. The final paired analysis evaluated 151 contrasts in 42 bootstrap tasks and independently recalculated all 2,869 reported interval rows from hashed draws. Internal phase identifiers are retained in the repository manifests solely for reproducibility.
 
-\subsection{Primary precision families across stages and budgets}
+\subsection{Primary review-list precision families across stages and capacities}
 
-Table~\ref{tab:s_c14families} reports all 23 primary policy/block families. The range column is descriptive; the final two columns count cells whose Bonferroni-percentile family-wise interval lies entirely below or above zero. Exact C14B policy and C14D harmonized presentations may refer to the same saved pair and are retained for traceability rather than counted as independent evidence.
+Table~\ref{tab:s_c14families} reports all 23 primary policy and information-group families. The range column is descriptive; the final two columns count comparisons whose family-wise interval lies entirely below or above zero. The capacity and comparable-group views occasionally describe the same saved pair; those rows are retained for traceability and are not independent evidence.
 
 \scriptsize
 \setlength{\tabcolsep}{2pt}
 \begin{longtable}{p{0.07\textwidth}p{0.11\textwidth}p{0.15\textwidth}p{0.19\textwidth}rrrr}
-\caption{Primary restricted-minus-full precision families across all frozen stages and budgets. Values in the range are percentage points.}\label{tab:s_c14families}\\
+\caption{Primary data-minimized-minus-full precision families across all prespecified stages and review capacities. Values in the range are percentage points.}\label{tab:s_c14families}\\
 \toprule
-Source & Dataset & Outcome & Policy/block & Cells & Range & Negative & Positive \\
+Analysis & Dataset & Outcome & Policy/block & Cells & Range & Negative & Positive \\
 \midrule
 \endfirsthead
 \toprule
-Source & Dataset & Outcome & Policy/block & Cells & Range & Negative & Positive \\
+Analysis & Dataset & Outcome & Policy/block & Cells & Range & Negative & Positive \\
 \midrule
 \endhead
 \input{tables/supp_c14_primary_families}
@@ -106,7 +106,7 @@ Source & Dataset & Outcome & Policy/block & Cells & Range & Negative & Positive 
 
 \subsection{Harmonized block contrasts at the 10\% operating point}
 
-Table~\ref{tab:s_c14harm10} lists every C14D pair at the historically emphasized 10\% budget. Pointwise and family-wise intervals use paired multiplicities. ``Excludes zero'' is a statistical description, not an equivalence or non-inferiority decision.
+Table~\ref{tab:s_c14harm10} lists every comparable information-group pair at the historically emphasized 10\% capacity. Pointwise and family-wise intervals use paired resampling multiplicities. ``Excludes zero'' is a statistical description, not an equivalence or non-inferiority decision.
 
 \tiny
 \setlength{\tabcolsep}{1.5pt}
@@ -127,12 +127,12 @@ Dataset & Outcome & Stage & Block & Estimate & Pointwise 95\% & Family-wise 95\%
 
 \subsection{Complete primary proxy-probe metrics}
 
-Table~\ref{tab:s_c14proxy} reports the primary fixed logistic probes in their full held-out cohorts. Average-precision lift divides AP by target prevalence. The UCI 697 educational special-needs target has only 40 positives; its estimates are retained but treated as unstable. OULAD unseen-student and HGB sensitivity rows remain in the machine-readable C14C results.
+Table~\ref{tab:s_c14proxy} reports the primary fixed logistic diagnostic models in their full held-out cohorts. Average-precision lift divides AP by target prevalence. The UCI 697 educational special-needs target has only 40 positives; its estimates are retained but treated as unstable. OULAD unseen-student and gradient-boosting sensitivity rows remain in the machine-readable aggregate results.
 
 \tiny
 \setlength{\tabcolsep}{1.3pt}
 \begin{longtable}{p{0.10\textwidth}p{0.07\textwidth}p{0.14\textwidth}rrrrrrr}
-\caption{Primary fixed logistic proxy probes.}\label{tab:s_c14proxy}\\
+\caption{Primary diagnostic models for residual attribute predictability.}\label{tab:s_c14proxy}\\
 \toprule
 Dataset & Stage & Target & $n$ & Positive & Prev. & AUROC & AP & AP lift & Bal. acc. \\
 \midrule
@@ -146,9 +146,9 @@ Dataset & Stage & Target & $n$ & Positive & Prev. & AUROC & AP & AP lift & Bal. 
 \setlength{\tabcolsep}{6pt}
 \normalsize
 
-\subsection{C14 interpretation guards}
+\subsection{Interpretation boundaries}
 
-The following guards are part of the frozen reporting contract: residual predictability is not actual proxy use; operational harmonization is not measurement equivalence; a family-wise interval crossing zero is not equivalence; exact policy/block duplicates are not independent confirmations; and no result is a fairness certification, privacy guarantee, formal non-inferiority conclusion, or causal estimate of teacher or student benefit. OULAD, UCI 697, and UCI 320 remain separately identified throughout.
+The following boundaries apply throughout. Residual attribute predictability is not evidence that the early-warning model used a particular proxy. Operationally comparable information groups do not establish measurement equivalence across datasets. A family-wise interval that includes zero is inconclusive rather than proof of equivalence, and duplicate reporting views of the same paired comparison are not independent confirmations. No result constitutes a fairness certification, privacy guarantee, formal non-inferiority conclusion, or causal estimate of benefit to educators or students. OULAD, UCI 697, and UCI 320 remain separately identified.
 
 \subsection{Predictor inventory}
 
@@ -190,7 +190,7 @@ Day & Full TP/$n$ & Full P & Six-field TP/$n$ & Six-field P & G/D-excl. TP/$n$ &
 \end{table}
 \FloatBarrier
 
-\subsection{UCI 697 workload-policy contrasts}
+\subsection{UCI 697 review-capacity contrasts}
 
 \begin{table}[H]
 \centering
@@ -206,7 +206,7 @@ Stage & Policy & Difference & Pointwise 95\% & Bonferroni 95\% \\
 \end{table}
 \FloatBarrier
 
-\subsection{UCI 320 workload-policy contrasts}
+\subsection{UCI 320 review-capacity contrasts}
 
 \small
 \begin{longtable}{lllrr}
@@ -223,7 +223,7 @@ Subject & Stage & Policy & Difference & Bonferroni 95\% \\
 \end{longtable}
 \normalsize
 
-All UCI 320 workload intervals in Table~\ref{tab:s_uci320} include or touch zero. The isolated familywise HGB finding discussed in the main text concerns AUROC, not workload precision. The complete machine-readable supplement retains AP, AUROC, Brier, precision, recall, pointwise intervals, familywise intervals, and all bootstrap differences.
+All UCI 320 review-list intervals in Table~\ref{tab:s_uci320} include or touch zero. The isolated family-wise gradient-boosting finding discussed in the main text concerns AUROC, not review-list precision. The complete machine-readable supplement retains AP, AUROC, Brier, precision, recall, pointwise intervals, family-wise intervals, and all bootstrap differences.
 
 \subsection{Leave-one-field-out sensitivity}
 

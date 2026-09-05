@@ -23,6 +23,13 @@ FORBIDDEN_NAMES = {
     "SecureEWS_C14G_CLEANROOM_PROJECT.zip",
     "SecureEWS_v0.3.1_C05_COMPLETE_STAGE.zip",
 }
+INTERNAL_OPERATOR_FILES = {
+    "COVER_LETTER_MDPI.txt",
+    "FINAL_PUBLISH_STEPS_RU.md",
+    "GITHUB_ZENODO_UPLOAD_RU.md",
+    "PUBLICATION_READINESS.json",
+    "SUBMISSION_CHECKLIST_RU.md",
+}
 
 
 def sha256(path: Path) -> str:
@@ -65,7 +72,12 @@ def main() -> int:
 
     files = [
         path for path in ROOT.rglob("*")
-        if path.is_file() and ".git" not in path.parts and "__pycache__" not in path.parts
+        if (
+            path.is_file()
+            and ".git" not in path.parts
+            and "__pycache__" not in path.parts
+            and path.relative_to(ROOT).as_posix() not in INTERNAL_OPERATOR_FILES
+        )
     ]
     forbidden = []
     for path in files:
@@ -135,7 +147,7 @@ def main() -> int:
 
     failures = [item["check"] for item in checks if item["status"] != "PASS"]
     report = {
-        "release": "SecureEWS-v0.6.1",
+        "release": "SecureEWS-v0.7.2",
         "status": "PASS" if not failures else "FAIL",
         "checks_passed": len(checks) - len(failures),
         "checks_total": len(checks),

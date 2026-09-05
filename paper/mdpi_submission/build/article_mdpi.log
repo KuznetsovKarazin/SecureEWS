@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.4)  4 SEP 2026 16:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.9.4)  4 SEP 2026 22:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -915,9 +915,6 @@ Package bm Info: No bold for \U/msb/m/n, using \pmb.
 \symboldupright=\mathgroup13
 LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 149.
 )
-(/workspace/scratch/2c5391468bae/tmp/latex_qa_support/bbm.sty
-Package: bbm 2026/09/04 local QA stub; no bbm commands used
-)
 (/usr/share/texlive/texmf-dist/tex/latex/verse/verse.sty
 Package: verse 2009/09/04 v2.4a verse typesetting
 \c@vslineno=\count346
@@ -985,7 +982,7 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count368
 )
-LaTeX Info: Redefining \BBA on input line 333.
+LaTeX Info: Redefining \BBA on input line 334.
 
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrextend.sty
 Package: scrextend 2023/07/07 v3.41 KOMA-Script package (extend other classes w
@@ -1041,31 +1038,31 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 (/usr/share/texlive/texmf-dist/tex/latex/newfloat/newfloat.sty
 Package: newfloat 2023/10/01 v1.2 Defining new floating environments (AR)
 )
-Package newfloat Info: New float `listing' with options `' on input line 1565.
+Package newfloat Info: New float `listing' with options `' on input line 1566.
 \c@listing=\count372
-Package newfloat Info: float type `listing'=4 on input line 1565.
+Package newfloat Info: float type `listing'=4 on input line 1566.
 \c@lolistingdepth=\count373
 Package newfloat Info: New float `boxenv' with options `name=Box' on input line
- 1566.
+ 1567.
 \c@boxenv=\count374
-Package newfloat Info: float type `boxenv'=8 on input line 1566.
+Package newfloat Info: float type `boxenv'=8 on input line 1567.
 \c@loboxenvdepth=\count375
-Package newfloat Info: New float `chart' with options `' on input line 1567.
+Package newfloat Info: New float `chart' with options `' on input line 1568.
 \c@chart=\count376
-Package newfloat Info: float type `chart'=16 on input line 1567.
+Package newfloat Info: float type `chart'=16 on input line 1568.
 \c@lochartdepth=\count377
-Package newfloat Info: New float `scheme' with options `' on input line 1568.
+Package newfloat Info: New float `scheme' with options `' on input line 1569.
 \c@scheme=\count378
-Package newfloat Info: float type `scheme'=32 on input line 1568.
+Package newfloat Info: float type `scheme'=32 on input line 1569.
 \c@loschemedepth=\count379
-Package newfloat Info: New float `figurewide' with options `' on input line 156
-9.
+Package newfloat Info: New float `figurewide' with options `' on input line 157
+0.
 \c@figurewide=\count380
-Package newfloat Info: float type `figurewide'=64 on input line 1569.
+Package newfloat Info: float type `figurewide'=64 on input line 1570.
 \c@lofigurewidedepth=\count381
-Package newfloat Info: New float `graph' with options `' on input line 1570.
+Package newfloat Info: New float `graph' with options `' on input line 1571.
 \c@graph=\count382
-Package newfloat Info: float type `graph'=128 on input line 1570.
+Package newfloat Info: float type `graph'=128 on input line 1571.
 \c@lographdepth=\count383
 \@justcentbox=\box80
 
@@ -1477,41 +1474,29 @@ LaTeX Font Info:    Overwriting symbol font `AMSb' in version `normal'
 (Font)                  U/msb/m/n --> U/msb/m/n on input line 55.
 LaTeX Font Info:    Overwriting symbol font `AMSb' in version `bold'
 (Font)                  U/msb/m/n --> U/msb/m/n on input line 55.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 55.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 55.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 55.
-
 Package marginnote Info: Margin note 1.1 is on absolute page 1 on input line 55
 .
 Package marginnote Info: right page because not two side mode on input line 55.
 
 Package marginnote Info: xpos seems to be 167.01753pt on input line 55.
 Package epstopdf Info: Source file: <Definitions/logo-mdpi.eps>
-(epstopdf)                    date: 2026-09-02 23:56:48
+(epstopdf)                    date: 2026-09-04 00:00:00
 (epstopdf)                    size: 563678 bytes
 (epstopdf)             Output file: <Definitions/logo-mdpi-eps-converted-to.pdf
 >
-(epstopdf)                    date: 2026-09-03 00:01:03
+(epstopdf)                    date: 2026-09-04 00:00:00
 (epstopdf)                    size: 13036 bytes
 (epstopdf)             Command: <repstopdf --outfile=Definitions/logo-mdpi-eps-
 converted-to.pdf Definitions/logo-mdpi.eps>
 (epstopdf)             \includegraphics on input line 55.
 Package epstopdf Info: Output file is already uptodate.
-<Definitions/logo-mdpi-eps-converted-to.pdf, id=146, 73.33397pt x 48.37071pt>
+<Definitions/logo-mdpi-eps-converted-to.pdf, id=150, 73.33397pt x 48.37071pt>
 File: Definitions/logo-mdpi-eps-converted-to.pdf Graphic file (type pdf)
 <use Definitions/logo-mdpi-eps-converted-to.pdf>
 Package pdftex.def Info: Definitions/logo-mdpi-eps-converted-to.pdf  used on in
 put line 55.
 (pdftex.def)             Requested size: 43.13797pt x 28.45274pt.
+
 
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <7.6> not available
 (Font)              Font shape `U/wasy/m/n' tried instead on input line 55.
@@ -1520,7 +1505,7 @@ LaTeX Font Warning: Font shape `U/wasy/b/n' in size <7.6> not available
 LaTeX Font Warning: Font shape `U/wasy/b/n' in size <6> not available
 (Font)              Font shape `U/wasy/m/n' tried instead on input line 55.
 
-<Definitions/logo-orcid.pdf, id=148, 102.3825pt x 102.3825pt>
+<Definitions/logo-orcid.pdf, id=152, 102.3825pt x 102.3825pt>
 File: Definitions/logo-orcid.pdf Graphic file (type pdf)
 <use Definitions/logo-orcid.pdf>
 Package pdftex.def Info: Definitions/logo-orcid.pdf  used on input line 55.
@@ -1585,15 +1570,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-6.18796pt}.
 
 [2]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 8
-2.
- (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
-)
-Package microtype Info: Loading generic protrusion settings for font family
-(microtype)             `cmtt' (encoding: T1).
-(microtype)             For optimal results, create family-specific settings.
-(microtype)             See the microtype manual for details.
+<./figures/fig0_capacity_aware_framework.pdf, id=219, 465.05746pt x 284.02109pt
+>
+File: ./figures/fig0_capacity_aware_framework.pdf Graphic file (type pdf)
+<use ./figures/fig0_capacity_aware_framework.pdf>
+Package pdftex.def Info: ./figures/fig0_capacity_aware_framework.pdf  used on i
+nput line 90.
+(pdftex.def)             Requested size: 394.35522pt x 240.85132pt.
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1612,7 +1595,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-6.18796pt}.
 
-[4]
+[4 <./figures/fig0_capacity_aware_framework.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 18.18796pt, for example:
@@ -1630,7 +1613,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-6.18796pt}.
 
-[6] (./tables/main_day42.tex) (./tables/main_day42.tex)
+[6]
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 18.18796pt, for example:
+(fancyhdr)                \setlength{\headheight}{18.18796pt}.
+(fancyhdr)                You might also make \topmargin smaller to compensate:
+
+(fancyhdr)                \addtolength{\topmargin}{-6.18796pt}.
+
+[7] (./tables/main_day42.tex) (./tables/main_day42.tex)
 (./tables/main_day42.tex)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -1640,21 +1632,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-6.18796pt}.
 
-[7]
+[8]
 LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 199.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 199.
+(Font)              scaled to size 7.29405pt on input line 211.
 LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 199.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 199.
+(Font)              scaled to size 7.29405pt on input line 211.
  (./tables/main_landmarks.tex)
-<./figures/fig1_partial_six_horizons.png, id=277, 532.1481pt x 315.3381pt>
+<./figures/fig1_partial_six_horizons.png, id=380, 532.1481pt x 315.3381pt>
 File: ./figures/fig1_partial_six_horizons.png Graphic file (type png)
 <use ./figures/fig1_partial_six_horizons.png>
 Package pdftex.def Info: ./figures/fig1_partial_six_horizons.png  used on input
- line 213.
+ line 221.
 (pdftex.def)             Requested size: 378.58365pt x 224.3439pt.
 
 
@@ -1665,18 +1653,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-6.18796pt}.
 
-[8] (./tables/main_strict.tex)
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 18.18796pt, for example:
-(fancyhdr)                \setlength{\headheight}{18.18796pt}.
-(fancyhdr)                You might also make \topmargin smaller to compensate:
-
-(fancyhdr)                \addtolength{\topmargin}{-6.18796pt}.
-
-[9 <./figures/fig1_partial_six_horizons.png>]
+[9 <./figures/fig1_partial_six_horizons.png>] (./tables/main_strict.tex)
 (./tables/main_external_uci697.tex) (./tables/main_external_uci697.tex)
-(./tables/main_external_uci697.tex) (./tables/main_uci320_full.tex)
+(./tables/main_external_uci697.tex)
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 18.18796pt, for example:
@@ -1686,12 +1665,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-6.18796pt}.
 
 [10]
-<./figures/fig2_external_stage_contrasts.pdf, id=306, 673.2337pt x 254.14902pt>
+<./figures/fig2_external_stage_contrasts.pdf, id=401, 673.2337pt x 254.14902pt>
 
 File: ./figures/fig2_external_stage_contrasts.pdf Graphic file (type pdf)
 <use ./figures/fig2_external_stage_contrasts.pdf>
 Package pdftex.def Info: ./figures/fig2_external_stage_contrasts.pdf  used on i
-nput line 285.
+nput line 282.
 (pdftex.def)             Requested size: 378.58365pt x 142.91968pt.
  (./tables/main_c14_budget.tex)
 
@@ -1704,11 +1683,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [11 <./figures/fig2_external_stage_contrasts.pdf>] (./tables/main_c14_proxy.tex
 )
-<./figures/fig4_c14_proxy_persistence.pdf, id=328, 607.068pt x 303.534pt>
+<./figures/fig4_c14_proxy_persistence.pdf, id=424, 607.068pt x 303.534pt>
 File: ./figures/fig4_c14_proxy_persistence.pdf Graphic file (type pdf)
 <use ./figures/fig4_c14_proxy_persistence.pdf>
 Package pdftex.def Info: ./figures/fig4_c14_proxy_persistence.pdf  used on inpu
-t line 333.
+t line 330.
 (pdftex.def)             Requested size: 347.03452pt x 173.51637pt.
 
 
@@ -1721,11 +1700,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [12 <./figures/fig4_c14_proxy_persistence.pdf>]
 (./tables/main_c14_harmonized.tex)
-<./figures/fig3_c14_budget_harmonized.pdf, id=391, 809.42403pt x 310.761pt>
+<./figures/fig3_c14_budget_harmonized.pdf, id=487, 809.42403pt x 310.761pt>
 File: ./figures/fig3_c14_budget_harmonized.pdf Graphic file (type pdf)
 <use ./figures/fig3_c14_budget_harmonized.pdf>
 Package pdftex.def Info: ./figures/fig3_c14_budget_harmonized.pdf  used on inpu
-t line 359.
+t line 356.
 (pdftex.def)             Requested size: 394.35522pt x 151.40646pt.
 
 
@@ -1737,6 +1716,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-6.18796pt}.
 
 [13 <./figures/fig3_c14_budget_harmonized.pdf>]
+<./figures/fig5_results_to_practice.pdf, id=566, 465.05746pt x 339.66899pt>
+File: ./figures/fig5_results_to_practice.pdf Graphic file (type pdf)
+<use ./figures/fig5_results_to_practice.pdf>
+Package pdftex.def Info: ./figures/fig5_results_to_practice.pdf  used on input 
+line 369.
+(pdftex.def)             Requested size: 394.35522pt x 288.04103pt.
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 18.18796pt, for example:
@@ -1745,7 +1731,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-6.18796pt}.
 
-[14]
+[14 <./figures/fig5_results_to_practice.pdf>]
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 18.18796pt, for example:
@@ -1763,7 +1749,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 (fancyhdr)                \addtolength{\topmargin}{-6.18796pt}.
 
-[16] (./article_mdpi.bbl
+[16]
+Underfull \hbox (badness 6157) in paragraph at lines 441--441
+[]|\T1/ppl/m/n/9 (+20) How many sub-se-quent cases are
+ []
+
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 18.18796pt, for example:
@@ -1773,6 +1763,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-6.18796pt}.
 
 [17]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 4
+56.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
+)
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `cmtt' (encoding: T1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+
+(./article_mdpi.bbl
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 18.18796pt, for example:
@@ -1798,30 +1799,30 @@ LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `article_mdpi.out' has not changed.
-(rerunfilecheck)             Checksum: 9BBD7DFA5ABE3100A1993EEED4CDFCBD;10216.
+(rerunfilecheck)             Checksum: B57387A86A794C584EF667A23B666293;10559.
  ) 
 Here is how much of TeX's memory you used:
- 36106 strings out of 476106
- 668391 string characters out of 5793934
- 1968975 words of memory out of 5000000
- 56768 multiletter control sequences out of 15000+600000
- 651610 words of font info for 529 fonts, out of 8000000 for 9000
+ 36096 strings out of 476106
+ 668643 string characters out of 5793934
+ 1960975 words of memory out of 5000000
+ 56776 multiletter control sequences out of 15000+600000
+ 650525 words of font info for 519 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 123i,13n,121p,1952b,840s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 123i,13n,121p,1896b,804s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk> </
-root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </root/
-.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.375pk></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texm
-f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
-palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/upl
-r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on article_mdpi.pdf (19 pages, 384764 bytes).
+root/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecss0800.375pk></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/f
+onts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/mathpazo/fplmr.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/p
+alatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr
+8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on article_mdpi.pdf (19 pages, 427133 bytes).
 PDF statistics:
- 706 PDF objects out of 1000 (max. 8388607)
- 466 compressed objects within 5 object streams
- 94 named destinations out of 1000 (max. 500000)
- 117563 words of extra memory for PDF output out of 128383 (max. 10000000)
+ 858 PDF objects out of 1000 (max. 8388607)
+ 486 compressed objects within 5 object streams
+ 96 named destinations out of 1000 (max. 500000)
+ 117069 words of extra memory for PDF output out of 128383 (max. 10000000)
 

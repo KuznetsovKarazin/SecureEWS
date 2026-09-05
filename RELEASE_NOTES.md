@@ -1,26 +1,25 @@
-# SecureEWS v0.6.1
+# SecureEWS v0.7.2
 
-This patch release finalizes the manuscript package for submission to **Education Sciences (MDPI)**. It does not change the C14 scientific results, protocols, aggregate outputs, or provenance anchors released in v0.6.0.
+This release incorporates the authors' final revised conceptual diagrams into the manuscript prepared for **Education Sciences (MDPI)** and its Special Issue **“Advancing AI Education: Virtual Learning, Technology Integration, and Instructional Design.”** It does not change the frozen analyses, numerical results, aggregate research artifacts, or provenance anchors from v0.6.1.
 
-## Submission-package changes
+## Manuscript changes
 
-- selected the journal-specific MDPI class options `education,article,submit` and `education,supfile,submit` instead of the generic `apajournal` placeholder;
-- activated the corresponding author's ORCID and normalized the corresponding-author marker;
-- harmonized “family-wise” terminology and repaired long table headings without changing values;
-- clarified the secondary-data ethics statement, aggregate-only data/code availability, and AI-assistance disclosure;
-- added independently packaged article and supplement source trees plus 19-page and 9-page rendered PDFs;
-- added MDPI package verification, a submission checklist, and an academic cover letter;
-- updated GitHub/Zenodo metadata and release commands for v0.6.1.
+- reframed the study around educator decision support, professional judgement, review capacity, and responsible integration of digital technology;
+- replaced internal phase language in the main article with educational and institutional descriptions;
+- explained review-list precision and recall in plain language at first use;
+- rewrote the abstract, introduction, research questions, discussion, and conclusion for readers in education research and practice;
+- added a practical interpretation guide as Appendix A;
+- corrected the MDPI appendix initialization so the guide renders as Appendix A and its table as Table A1;
+- added a Methods framework diagram and a Results-to-practice synthesis diagram for education readers;
+- strengthened recommendations for institutional evaluation, educator-facing interfaces, fallback procedures, and prospective evaluation;
+- retained an honest post-development status while separating it from preregistered confirmation;
+- retained the detailed computational record in Supplementary Materials without presenting it as the narrative of the main article;
+- preserved author names, ORCIDs, affiliations, corresponding-author details, funding grant AP23489228, and publication declarations.
 
-## Verification summary
+## Release and QA changes
 
-- canonical C14B–C14F and private-clean-room provenance gates: unchanged and `PASS`;
-- MDPI article: 19/19 pages rendered and visually inspected;
-- MDPI supplement: 9/9 pages rendered and visually inspected;
-- LaTeX: no overfull boxes, unresolved citations/references, or duplicate labels;
-- journal identity: `Educ. Sci.` / `education`, with no generic journal label;
-- public package: aggregate-only, with no row-level educational records, predictions, model bundles, or XuetangX derivatives.
-
-## Publication approval
-
-On 4 September 2026, the corresponding author confirmed all-author approval of names/order, affiliations, CRediT roles, funding, ethics, conflicts, AI disclosure, and the mixed MIT/CC BY 4.0 licensing.
+- advanced the public release to `v0.7.2` and the submission package to `v6`;
+- updated README, citation, Zenodo, release, and verification metadata;
+- rebuilt the article and Supplementary Materials from the included LaTeX sources;
+- checked both PDFs for unresolved references/citations, overflow, duplicate labels, metadata markers, and visual defects;
+- retained the aggregate-only redistribution boundary: no row-level educational records, individual predictions, trained models, private clean-room payloads, or XuetangX derivatives.

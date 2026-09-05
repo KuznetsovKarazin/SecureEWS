@@ -44,12 +44,22 @@ def add(checks: list[dict[str, object]], name: str, passed: bool, detail: object
 def main() -> int:
     article_tex = PACKAGE / "article_source/article_mdpi.tex"
     supplement_tex = PACKAGE / "supplement_source/supplement_mdpi.tex"
-    article_pdf = PACKAGE / "outputs/SecureEWS_MDPI_article_v3.pdf"
-    supplement_pdf = PACKAGE / "outputs/SecureEWS_MDPI_supplement_v3.pdf"
+    article_pdf = PACKAGE / "outputs/SecureEWS_MDPI_article_v6.pdf"
+    supplement_pdf = PACKAGE / "outputs/SecureEWS_MDPI_supplement_v6.pdf"
     qa_path = PACKAGE / "MDPI_SUBMISSION_QA.json"
     provenance_path = PACKAGE / "article_source/figures/C14F_FIGURE_PROVENANCE.json"
+    conceptual_provenance_path = ROOT / "paper/figures/CONCEPTUAL_FIGURE_PROVENANCE.json"
     logs = [PACKAGE / "build/article_mdpi.log", PACKAGE / "build/supplement_mdpi.log"]
-    required = [article_tex, supplement_tex, article_pdf, supplement_pdf, qa_path, provenance_path, *logs]
+    required = [
+        article_tex,
+        supplement_tex,
+        article_pdf,
+        supplement_pdf,
+        qa_path,
+        provenance_path,
+        conceptual_provenance_path,
+        *logs,
+    ]
     checks: list[dict[str, object]] = []
 
     missing = [path.relative_to(ROOT).as_posix() for path in required if not path.is_file()]
@@ -140,8 +150,13 @@ def main() -> int:
     ]
     add(checks, "no_editorial_markup_commands", not markup_findings, markup_findings)
 
+    qa = json.loads(qa_path.read_text(encoding="utf-8"))
+    expected_pages = {
+        "article": qa.get("article", {}).get("pages"),
+        "supplement": qa.get("supplement", {}).get("pages"),
+    }
     pages = {"article": pdf_pages(article_pdf), "supplement": pdf_pages(supplement_pdf)}
-    add(checks, "pdf_page_counts", pages == {"article": 19, "supplement": 9}, pages)
+    add(checks, "pdf_page_counts", pages == expected_pages, {"actual": pages, "expected": expected_pages})
 
     with tempfile.TemporaryDirectory(prefix="secureews_mdpi_verify_") as temporary:
         temporary_path = Path(temporary)
@@ -167,7 +182,7 @@ def main() -> int:
             pdf_errors.append(f"{label}: Journal Not Specified")
         if "submitted to educ. sci." not in normalized:
             pdf_errors.append(f"{label}: missing Educ. Sci. identity")
-        if "stress-testing data minimization across review budgets" not in normalized or "paired evidence from oulad and two uci datasets" not in normalized:
+        if "evaluating data-minimized early-warning systems for educator decision support" not in normalized or "evidence across review capacities and educational stages" not in normalized:
             pdf_errors.append(f"{label}: missing title")
         if "\ufffd" in body:
             pdf_errors.append(f"{label}: replacement glyph")
@@ -177,7 +192,16 @@ def main() -> int:
             value = match.group(1) if match else ""
             if re.search(r"openai|chatgpt|codex|language model|ai-generated", value, re.IGNORECASE):
                 metadata_errors.append(f"{label}: {field}={value}")
+    article_normalized = " ".join(pdf_text["article"].split()).lower()
+    appendix_errors = []
+    if "appendix a practical interpretation guide" not in article_normalized:
+        appendix_errors.append("missing Appendix A heading")
+    if "table a1. plain-language interpretation" not in article_normalized:
+        appendix_errors.append("missing Table A1 caption")
+    if "appendix f practical interpretation guide" in article_normalized:
+        appendix_errors.append("stale Appendix F heading")
     add(checks, "pdf_identity_and_text", not pdf_errors, pdf_errors)
+    add(checks, "appendix_numbering", not appendix_errors, appendix_errors)
     add(checks, "pdf_metadata_has_no_ai_tool_marker", not metadata_errors, metadata_errors)
     add(checks, "all_pages_render", render_counts == pages and not render_errors, {"rendered": render_counts, "errors": render_errors})
 
@@ -214,7 +238,29 @@ def main() -> int:
             output_mismatches[relative] = {"expected": expected, "actual": actual}
     add(checks, "generated_c14f_figure_hashes", not output_mismatches, output_mismatches)
 
-    qa = json.loads(qa_path.read_text(encoding="utf-8"))
+    conceptual = json.loads(conceptual_provenance_path.read_text(encoding="utf-8"))
+    conceptual_mismatches = {}
+    expected_assets = {
+        **conceptual.get("source_files", {}),
+        **conceptual.get("derived_png_files", {}),
+    }
+    for name, expected in expected_assets.items():
+        paper_path = ROOT / "paper/figures" / name
+        article_path = PACKAGE / "article_source/figures" / name
+        for location, path in (("paper", paper_path), ("article_source", article_path)):
+            actual = sha256(path) if path.is_file() else None
+            if actual != expected:
+                conceptual_mismatches[f"{location}/{name}"] = {"expected": expected, "actual": actual}
+    publisher_source = ROOT / conceptual.get("publisher_script", "")
+    expected_source = conceptual.get("publisher_script_sha256")
+    actual_source = sha256(publisher_source) if publisher_source.is_file() else None
+    if actual_source != expected_source:
+        conceptual_mismatches[conceptual.get("publisher_script", "publisher_script")] = {
+            "expected": expected_source,
+            "actual": actual_source,
+        }
+    add(checks, "conceptual_figure_provenance", not conceptual_mismatches, conceptual_mismatches)
+
     hash_checks = {
         "article_source": (qa["article"]["source_sha256"], sha256(article_tex)),
         "article_pdf": (qa["article"]["pdf_sha256"], sha256(article_pdf)),
@@ -222,12 +268,17 @@ def main() -> int:
         "supplement_pdf": (qa["supplement"]["pdf_sha256"], sha256(supplement_pdf)),
     }
     mismatches = {name: {"expected": expected, "actual": actual} for name, (expected, actual) in hash_checks.items() if expected != actual}
-    qa_ok = qa.get("status") == "PASS" and qa.get("article", {}).get("pages_visually_inspected") == 19 and qa.get("supplement", {}).get("pages_visually_inspected") == 9 and qa.get("checks", {}).get("visual_defects") == []
+    qa_ok = (
+        qa.get("status") == "PASS"
+        and qa.get("article", {}).get("pages_visually_inspected") == pages["article"]
+        and qa.get("supplement", {}).get("pages_visually_inspected") == pages["supplement"]
+        and qa.get("checks", {}).get("visual_defects") == []
+    )
     add(checks, "qa_hashes_and_visual_record", qa_ok and not mismatches, {"hash_mismatches": mismatches, "qa_status": qa.get("status")})
 
     failures = [item["check"] for item in checks if item["status"] != "PASS"]
     report = {
-        "release": "SecureEWS-v0.6.1",
+        "release": "SecureEWS-v0.7.2",
         "status": "PASS" if not failures else "FAIL",
         "checks_passed": len(checks) - len(failures),
         "checks_total": len(checks),

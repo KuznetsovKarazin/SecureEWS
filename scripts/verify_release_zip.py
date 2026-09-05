@@ -11,9 +11,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_ARCHIVE = ROOT.parent / "SecureEWS-v0.6.1.zip"
-DEFAULT_CHECKSUM = ROOT.parent / "SecureEWS-v0.6.1.zip.sha256"
-DEFAULT_OUTPUT = ROOT.parent / "SecureEWS-v0.6.1_ZIP_VERIFICATION.json"
+DEFAULT_ARCHIVE = ROOT.parent / "SecureEWS-v0.7.2.zip"
+DEFAULT_CHECKSUM = ROOT.parent / "SecureEWS-v0.7.2.zip.sha256"
+DEFAULT_OUTPUT = ROOT.parent / "SecureEWS-v0.7.2_ZIP_VERIFICATION.json"
 SELF_EXCLUDED = {
     "MANIFEST.csv",
     "MANIFEST.json",

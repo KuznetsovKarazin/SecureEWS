@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this software or its aggregate results, please cite this release."
-title: "SecureEWS: Auditable data-minimization stress tests for educational early-warning systems"
+title: "SecureEWS: Capacity-aware evaluation of data-minimized educational early-warning systems"
 type: software
-version: 0.6.1
+version: 0.7.2
 date-released: 2026-09-04
 license: MIT
 authors:
@@ -31,20 +31,22 @@ authors:
     orcid: "https://orcid.org/0009-0006-5319-7742"
     affiliation: "Astana IT University"
 abstract: >-
-  SecureEWS provides auditable post-development stress tests of educational
-  early-warning data-minimization claims across review budgets, stages,
-  excluded feature blocks, and metrics in OULAD and two UCI datasets.
+  SecureEWS evaluates data-minimized educational early-warning systems as
+  educator decision-support tools across review capacities and educational
+  stages. The release contains code, frozen protocols, aggregate results,
+  paired-bootstrap draws, verification reports, and manuscript materials.
 keywords:
   - learning analytics
   - early-warning systems
   - data minimization
-  - workload-constrained evaluation
-  - proxy persistence
-  - multiplicity
-  - temporal validation
+  - educator decision support
+  - review capacity
+  - responsible educational technology
+  - residual attribute predictability
+  - temporal evaluation
 preferred-citation:
   type: article
-  title: "Stress-Testing Data Minimization Across Review Budgets and Decision Stages in Educational Early Warning: Paired Evidence from OULAD and Two UCI Datasets"
+  title: "Evaluating Data-Minimized Early-Warning Systems for Educator Decision Support: Evidence Across Review Capacities and Educational Stages"
   year: 2026
   authors:
     - family-names: Shaikhanova

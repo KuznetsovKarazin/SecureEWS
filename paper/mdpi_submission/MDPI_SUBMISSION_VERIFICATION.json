@@ -33,13 +33,24 @@
     {
       "check": "pdf_page_counts",
       "detail": {
-        "article": 19,
-        "supplement": 9
+        "actual": {
+          "article": 19,
+          "supplement": 9
+        },
+        "expected": {
+          "article": 19,
+          "supplement": 9
+        }
       },
       "status": "PASS"
     },
     {
       "check": "pdf_identity_and_text",
+      "detail": [],
+      "status": "PASS"
+    },
+    {
+      "check": "appendix_numbering",
       "detail": [],
       "status": "PASS"
     },
@@ -78,6 +89,11 @@
       "status": "PASS"
     },
     {
+      "check": "conceptual_figure_provenance",
+      "detail": {},
+      "status": "PASS"
+    },
+    {
       "check": "qa_hashes_and_visual_record",
       "detail": {
         "hash_mismatches": {},
@@ -86,13 +102,13 @@
       "status": "PASS"
     }
   ],
-  "checks_passed": 14,
-  "checks_total": 14,
+  "checks_passed": 16,
+  "checks_total": 16,
   "failures": [],
   "pdf_sha256": {
-    "article": "69fc8c1d36e5bac94f3b6a70849a02ee8b80654bf8c5ed8829a4da4794bd12b0",
-    "supplement": "eef452e77b0f3d89fe8a1f7f31c964cf9df0c04a99a4b9dbc46cc503db0f4bf8"
+    "article": "ead90c3eb09ea5c14375bc25520597c2d540ec17b4239df269cc6c660214b0ee",
+    "supplement": "55b2f8839b6ea71285333cd9bf771129173225e2138424f2b4de878c7441534a"
   },
-  "release": "SecureEWS-v0.6.1",
+  "release": "SecureEWS-v0.7.2",
   "status": "PASS"
 }

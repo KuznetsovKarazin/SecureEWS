@@ -37,14 +37,18 @@ def zip_entry(archive: zipfile.ZipFile, name: str, payload: bytes) -> None:
 def build_source_zip(source: Path, pdf: Path, pdf_name: str, output: Path) -> None:
     with zipfile.ZipFile(output, "w") as archive:
         for path in sorted(source.rglob("*")):
-            if path.is_file() and path.suffix not in {".aux", ".blg", ".fdb_latexmk", ".fls", ".log", ".out"}:
+            if (
+                path.is_file()
+                and path.name != pdf_name
+                and path.suffix not in {".aux", ".blg", ".fdb_latexmk", ".fls", ".log", ".out"}
+            ):
                 zip_entry(archive, path.relative_to(source).as_posix(), path.read_bytes())
         zip_entry(archive, pdf_name, pdf.read_bytes())
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--output-dir", type=Path, default=ROOT.parent / "SecureEWS_MDPI_v3")
+    parser.add_argument("--output-dir", type=Path, default=ROOT.parent / "SecureEWS_MDPI_v6")
     args = parser.parse_args()
     output_dir = args.output_dir.resolve()
     if output_dir.exists():
@@ -52,10 +56,10 @@ def main() -> int:
 
     staging = Path(tempfile.mkdtemp(prefix="secureews_mdpi_build_", dir=output_dir.parent))
     try:
-        article_pdf = MDPI / "outputs/SecureEWS_MDPI_article_v3.pdf"
-        supplement_pdf = MDPI / "outputs/SecureEWS_MDPI_supplement_v3.pdf"
-        article_zip = staging / "SecureEWS_MDPI_article_SOURCE_v3.zip"
-        supplement_zip = staging / "SecureEWS_MDPI_supplement_SOURCE_v3.zip"
+        article_pdf = MDPI / "outputs/SecureEWS_MDPI_article_v6.pdf"
+        supplement_pdf = MDPI / "outputs/SecureEWS_MDPI_supplement_v6.pdf"
+        article_zip = staging / "SecureEWS_MDPI_article_SOURCE_v6.zip"
+        supplement_zip = staging / "SecureEWS_MDPI_supplement_SOURCE_v6.zip"
         build_source_zip(MDPI / "article_source", article_pdf, "article_mdpi.pdf", article_zip)
         build_source_zip(MDPI / "supplement_source", supplement_pdf, "supplement_mdpi.pdf", supplement_zip)
 
@@ -79,7 +83,7 @@ def main() -> int:
         writer.writerows(rows)
         (staging / "MDPI_FILE_MANIFEST.csv").write_text(csv_stream.getvalue(), encoding="utf-8")
         (staging / "MDPI_FILE_MANIFEST.json").write_text(json.dumps({
-            "package": "SecureEWS_MDPI_SUBMISSION_PACKAGE_v3",
+            "package": "SecureEWS_MDPI_SUBMISSION_PACKAGE_v6",
             "status": "PASS",
             "scope": "submission payload; manifest and checksum files excluded from self-hashing",
             "files": rows,
@@ -91,8 +95,8 @@ def main() -> int:
             encoding="utf-8",
         )
 
-        combined = staging / "SecureEWS_MDPI_SUBMISSION_PACKAGE_v3.zip"
-        prefix = "SecureEWS_MDPI_SUBMISSION_PACKAGE_v3/"
+        combined = staging / "SecureEWS_MDPI_SUBMISSION_PACKAGE_v6.zip"
+        prefix = "SecureEWS_MDPI_SUBMISSION_PACKAGE_v6/"
         combined_members = sorted(path for path in staging.iterdir() if path.is_file() and path != combined)
         with zipfile.ZipFile(combined, "w") as archive:
             for path in combined_members:
@@ -100,7 +104,7 @@ def main() -> int:
         bad_member = zipfile.ZipFile(combined).testzip()
         if bad_member is not None:
             raise RuntimeError(f"ZIP integrity failure: {bad_member}")
-        (staging / "SecureEWS_MDPI_SUBMISSION_PACKAGE_v3.zip.sha256").write_text(
+        (staging / "SecureEWS_MDPI_SUBMISSION_PACKAGE_v6.zip.sha256").write_text(
             f"{sha256(combined)}  {combined.name}\n", encoding="utf-8"
         )
 

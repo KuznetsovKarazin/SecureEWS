@@ -76,7 +76,8 @@
 \RequirePackage{mathcomp} % permille
 \RequirePackage{pifont}
 \RequirePackage{bm}
-\RequirePackage{bbm}
+% bbm is optional here; this manuscript does not use \mathbbm.
+\IfFileExists{bbm.sty}{\RequirePackage{bbm}}{}
 \makeatletter
 \def\T@n@@nc@d@ngM@cr@M@d{}
 \def\LY@n@@nc@d@ngM@cr@M@d{}

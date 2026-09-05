@@ -4,17 +4,17 @@
   "journal_option": "education",
   "article": {
     "source": "article_source/article_mdpi.tex",
-    "source_sha256": "99d5f8806f65c7a71744317629d919f8dc2eaf6140485bb687cf922524342907",
-    "pdf": "outputs/SecureEWS_MDPI_article_v3.pdf",
-    "pdf_sha256": "69fc8c1d36e5bac94f3b6a70849a02ee8b80654bf8c5ed8829a4da4794bd12b0",
+    "source_sha256": "6cb2a6878ac9594b970a11e0c8c817a6e2091c710838be4a4a108b0468023052",
+    "pdf": "outputs/SecureEWS_MDPI_article_v6.pdf",
+    "pdf_sha256": "ead90c3eb09ea5c14375bc25520597c2d540ec17b4239df269cc6c660214b0ee",
     "pages": 19,
     "pages_visually_inspected": 19
   },
   "supplement": {
     "source": "supplement_source/supplement_mdpi.tex",
-    "source_sha256": "1be190bd63a5fa26f6d34d516419575850ff76bd3f5b72b61c69581276853713",
-    "pdf": "outputs/SecureEWS_MDPI_supplement_v3.pdf",
-    "pdf_sha256": "eef452e77b0f3d89fe8a1f7f31c964cf9df0c04a99a4b9dbc46cc503db0f4bf8",
+    "source_sha256": "aa10731fa0a49e3110f61dc9d48396e11f11ba1c5bbfd0f36f3cdeeac04a221b",
+    "pdf": "outputs/SecureEWS_MDPI_supplement_v6.pdf",
+    "pdf_sha256": "55b2f8839b6ea71285333cd9bf771129173225e2138424f2b4de878c7441534a",
     "pages": 9,
     "pages_visually_inspected": 9
   },
@@ -24,7 +24,6 @@
   },
   "author_metadata": {
     "status": "PASS",
-    "cross_checked_against_author_sheet": "2026-09-04",
     "author_order": [
       "Aigul Shaikhanova",
       "Oleksandr Kuznetsov",
@@ -49,8 +48,10 @@
     "undefined_citations_or_references": 0,
     "overfull_boxes": 0,
     "duplicate_labels": 0,
+    "appendix_numbering": "Appendix A / Table A1",
+    "conceptual_figures": "2 author-revised vector figures",
     "visual_defects": []
   },
   "scientific_results_changed": false,
-  "note": "Underfull table-cell warnings and MDPI class-level headheight/font warnings were visually inspected and did not produce clipping, overlap, or missing content. Volume, issue, DOI, and publication dates remain under publisher control."
+  "note": "All 28 pages were rendered at 120 dpi and visually inspected. Underfull table-cell warnings and MDPI class-level headheight/font warnings did not produce clipping, overlap, or missing content. The optional bbm package is loaded only when available because neither manuscript uses mathbbm. Volume, issue, DOI, and publication dates remain under publisher control."
 }
