@@ -152,8 +152,8 @@
     },
     {
       "path": "paper/mdpi_submission/article_source/Definitions/journalnames.tex",
-      "sha256": "8c1d911eedfdb4e4ea5c1de0086924f4370a42d5cbb1f3a672478ca3ab4e955f",
-      "size_bytes": 142428
+      "sha256": "fa8c55981f5cc4fc5e1973a8e55c8be4ce7496fc5f262a3eee0e17772eefffab",
+      "size_bytes": 137506
     },
     {
       "path": "paper/mdpi_submission/article_source/Definitions/logo-mdpi-eps-converted-to.pdf",
@@ -412,8 +412,8 @@
     },
     {
       "path": "paper/mdpi_submission/supplement_source/Definitions/journalnames.tex",
-      "sha256": "8c1d911eedfdb4e4ea5c1de0086924f4370a42d5cbb1f3a672478ca3ab4e955f",
-      "size_bytes": 142428
+      "sha256": "fa8c55981f5cc4fc5e1973a8e55c8be4ce7496fc5f262a3eee0e17772eefffab",
+      "size_bytes": 137506
     },
     {
       "path": "paper/mdpi_submission/supplement_source/Definitions/logo-mdpi-eps-converted-to.pdf",
