@@ -10,8 +10,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-OUTPUT = ROOT.parent / "SecureEWS-v0.7.2.zip"
-SHA_FILE = ROOT.parent / "SecureEWS-v0.7.2.zip.sha256"
+OUTPUT = ROOT.parent / "SecureEWS-v0.7.3.zip"
+SHA_FILE = ROOT.parent / "SecureEWS-v0.7.3.zip.sha256"
 EXCLUDED_PARTS = {".git", "__pycache__", ".pytest_cache", ".venv", "verification_runs"}
 EXCLUDED_FILES = {
     "COVER_LETTER_MDPI.txt",

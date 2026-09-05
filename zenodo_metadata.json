@@ -13,8 +13,8 @@
     ],
     "access_right": "open",
     "license": "MIT",
-    "version": "0.7.2",
-    "publication_date": "2026-09-04",
+    "version": "0.7.3",
+    "publication_date": "2026-09-05",
     "language": "eng",
     "keywords": ["learning analytics", "educational early-warning systems", "educator decision support", "data minimization", "review capacity", "responsible educational technology", "temporal evaluation"],
     "notes": "Funding: Science Committee of the Ministry of Science and Higher Education of the Republic of Kazakhstan, grant AP23489228. Mixed-license release: source code is MIT; documentation, manuscript materials, figures, tables, aggregate results, and bootstrap draws are CC BY 4.0. Third-party datasets and row-level artifacts are not redistributed."

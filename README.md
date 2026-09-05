@@ -1,4 +1,4 @@
-# SecureEWS v0.7.2
+# SecureEWS v0.7.3
 
 SecureEWS evaluates educational early-warning systems as tools for educator decision support. Its central question is practical: can an institution collect and use less student-background information while preserving the usefulness of the review lists that teachers, advisers, or support teams can realistically act on?
 

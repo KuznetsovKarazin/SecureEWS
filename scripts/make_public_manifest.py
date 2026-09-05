@@ -57,7 +57,7 @@ def main() -> int:
     writer.writerows(rows)
     atomic_text(ROOT / "MANIFEST.csv", stream.getvalue())
     atomic_text(ROOT / "MANIFEST.json", json.dumps({
-        "release": "SecureEWS-v0.7.2",
+        "release": "SecureEWS-v0.7.3",
         "status": "PASS",
         "scope": "public payload; manifest files and runtime verification report excluded to avoid self-reference",
         "files": rows,

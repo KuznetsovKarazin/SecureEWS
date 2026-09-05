@@ -1,6 +1,6 @@
 param(
-    [string]$ArchivePath = "..\SecureEWS-v0.7.2.zip",
-    [string]$ChecksumPath = "..\SecureEWS-v0.7.2.zip.sha256",
+    [string]$ArchivePath = "..\SecureEWS-v0.7.3.zip",
+    [string]$ChecksumPath = "..\SecureEWS-v0.7.3.zip.sha256",
     [string]$MetadataPath = ".\zenodo_metadata.json",
     [switch]$Sandbox
 )

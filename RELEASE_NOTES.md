@@ -1,3 +1,7 @@
+# SecureEWS v0.7.3
+
+Corrected manifest checksums for Git-normalized line endings. Updated release metadata and packaging version. Manuscript PDFs, figures, analyses, and numerical results are unchanged.
+
 # SecureEWS v0.7.2
 
 This release incorporates the authors' final revised conceptual diagrams into the manuscript prepared for **Education Sciences (MDPI)** and its Special Issue **“Advancing AI Education: Virtual Learning, Technology Integration, and Instructional Design.”** It does not change the frozen analyses, numerical results, aggregate research artifacts, or provenance anchors from v0.6.1.

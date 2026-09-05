@@ -147,7 +147,7 @@ def main() -> int:
 
     failures = [item["check"] for item in checks if item["status"] != "PASS"]
     report = {
-        "release": "SecureEWS-v0.7.2",
+        "release": "SecureEWS-v0.7.3",
         "status": "PASS" if not failures else "FAIL",
         "checks_passed": len(checks) - len(failures),
         "checks_total": len(checks),

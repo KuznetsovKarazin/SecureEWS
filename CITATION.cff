@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software or its aggregate results, please cite this release."
 title: "SecureEWS: Capacity-aware evaluation of data-minimized educational early-warning systems"
 type: software
-version: 0.7.2
-date-released: 2026-09-04
+version: 0.7.3
+date-released: 2026-09-05
 license: MIT
 authors:
   - family-names: Shaikhanova
